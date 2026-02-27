@@ -1,0 +1,247 @@
+.our-approach-main {
+  background: $white;
+  padding: 112px 0 88px;
+}
+
+.our-approach-container.container {
+  margin-inline: auto;
+  max-width: 1720px;
+  padding-inline: 0;
+  width: calc(100% - 200px);
+}
+
+.our-approach-intro {
+  margin-inline: auto;
+  max-width: 1088px;
+}
+
+.our-approach-kicker-row {
+  align-items: center;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.our-approach-kicker-line {
+  background: $stroke-grey;
+  display: block;
+  height: 1px;
+  width: 95px;
+}
+
+.our-approach-kicker {
+  color: $txt-grey;
+  font-family: $font-neue-haas;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 350;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.our-approach-copy {
+  color: $txt-grey;
+  font-family: $font-neue-haas;
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 350;
+  letter-spacing: 0.02em;
+  line-height: 30px;
+  margin: 0;
+  text-align: center;
+}
+
+.our-approach-copy strong {
+  font-weight: 500;
+}
+
+.our-approach-copy-large {
+  font-size: 44px;
+  letter-spacing: 0;
+  line-height: 30px;
+}
+
+.our-approach-cards {
+  column-gap: 44px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 68px;
+}
+
+.our-approach-card {
+  min-width: 0;
+  padding-right: 22px;
+  position: relative;
+}
+
+.our-approach-card:not(:last-child)::after {
+  background: $stroke-grey;
+  content: "";
+  height: 100%;
+  position: absolute;
+  right: -22px;
+  top: 0;
+  width: 1px;
+}
+
+.our-approach-card-number {
+  color: rgba($txt-grey, 0.5);
+  font-family: $font-neue-haas;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  margin: 0 0 22px;
+}
+
+.our-approach-card-image {
+  aspect-ratio: 514 / 434;
+  background-color: #b67a7a;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.our-approach-card-text {
+  color: $txt-grey;
+  font-family: $font-neue-haas;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 350;
+  letter-spacing: 0.01em;
+  line-height: 28px;
+  margin: 16px 0 0;
+}
+
+.our-approach-card-text-lead {
+  font-size: 23px;
+  font-weight: 400;
+}
+
+@media (max-width: 1440px) {
+  .our-approach-main {
+    padding: 86px 0 72px;
+  }
+
+  .our-approach-copy {
+    font-size: clamp(16px, 1.2vw, 19px);
+    line-height: clamp(25px, 1.9vw, 30px);
+  }
+
+  .our-approach-copy-large {
+    font-size: clamp(32px, 2.9vw, 44px);
+  }
+
+  .our-approach-cards {
+    column-gap: 34px;
+    margin-top: 54px;
+  }
+
+  .our-approach-card {
+    padding-right: 17px;
+  }
+
+  .our-approach-card:not(:last-child)::after {
+    right: -17px;
+  }
+
+  .our-approach-card-number {
+    font-size: clamp(29px, 2.2vw, 34px);
+    margin-bottom: 16px;
+  }
+
+  .our-approach-card-text {
+    font-size: clamp(14px, 1.05vw, 16px);
+    line-height: clamp(23px, 1.8vw, 28px);
+  }
+
+  .our-approach-card-text-lead {
+    font-size: clamp(20px, 1.5vw, 23px);
+  }
+}
+
+@media (max-width: 1180px) {
+  .our-approach-container.container {
+    width: calc(100% - 40px);
+  }
+
+  .our-approach-intro {
+    max-width: 920px;
+  }
+
+  .our-approach-cards {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 28px;
+  }
+
+  .our-approach-card {
+    border-bottom: 1px solid $stroke-grey;
+    padding: 0 0 24px;
+  }
+
+  .our-approach-card:not(:last-child)::after {
+    display: none;
+  }
+
+  .our-approach-card:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: 639px) {
+  .our-approach-main {
+    padding: 64px 0 56px;
+  }
+
+  .our-approach-container.container {
+    width: calc(100% - 28px);
+  }
+
+  .our-approach-kicker-row {
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .our-approach-kicker-line {
+    width: 56px;
+  }
+
+  .our-approach-kicker {
+    font-size: 12px;
+  }
+
+  .our-approach-copy {
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+  .our-approach-copy-large {
+    font-size: 24px;
+    line-height: 27px;
+  }
+
+  .our-approach-cards {
+    margin-top: 40px;
+    row-gap: 24px;
+  }
+
+  .our-approach-card-number {
+    font-size: 30px;
+    margin-bottom: 12px;
+  }
+
+  .our-approach-card-text {
+    line-height: 25px;
+    margin-top: 12px;
+  }
+
+  .our-approach-card-text-lead {
+    font-size: 21px;
+  }
+}

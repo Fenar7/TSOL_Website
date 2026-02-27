@@ -1,6 +1,7 @@
 import AboutSection from "./components/AboutSection/AboutSection";
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
+import OurApproachSection from "./components/OurApproachSection/OurApproachSection";
 
 export default function Home() {
   return (
@@ -8,7 +9,8 @@ export default function Home() {
       <Header />
       <main className="home-main">
         <Hero />
-        <AboutSection/>
+        <AboutSection />
+        <OurApproachSection />
       </main>
     </>
   );
