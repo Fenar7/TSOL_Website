@@ -1,0 +1,303 @@
+.about-section-main {
+  background: $white;
+  padding: 83px 0 88px;
+}
+
+.about-section-container.container {
+  display: grid;
+  gap: 70px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 872px);
+  margin-inline: auto;
+  max-width: 1720px;
+  padding-inline: 0;
+  width: calc(100% - 200px);
+}
+
+.about-left-column {
+  padding-top: 8px;
+}
+
+.about-kicker-row {
+  align-items: center;
+  display: flex;
+  gap: 22px;
+  margin-bottom: 25px;
+}
+
+.about-kicker-line {
+  background: $stroke-grey;
+  display: block;
+  height: 1px;
+  width: 95px;
+}
+
+.about-kicker {
+  color: $txt-grey;
+  font-family: $font-neue-haas;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 350;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.about-copy {
+  color: $txt-grey;
+  font-family: $font-neue-haas;
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 350;
+  letter-spacing: 0.02em;
+  line-height: 30px;
+}
+
+.about-copy p {
+  margin: 0;
+}
+
+.about-copy p + p {
+  margin-top: 24px;
+}
+
+.about-copy strong {
+  color: $txt-grey;
+  font-weight: 500;
+}
+
+.about-inline-tsol {
+  font-size: 25px;
+  letter-spacing: 0;
+}
+
+.about-copy em {
+  font-style: italic;
+  font-weight: 350;
+}
+
+.about-know-more {
+  align-items: center;
+  color: $txt-grey;
+  display: inline-flex;
+  font-family: $font-neue-haas;
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 400;
+  gap: 8px;
+  line-height: 1;
+  margin-top: 40px;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.about-know-more:hover {
+  opacity: 0.75;
+}
+
+.about-know-arrow {
+  font-size: 18px;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+.about-stats {
+  align-items: flex-end;
+  display: flex;
+  gap: 36px;
+  margin-top: 24px;
+}
+
+.about-stat {
+  width: 232px;
+}
+
+.about-stat:first-child {
+  width: 189px;
+}
+
+.about-stat-title {
+  color: $black;
+  font-family: $font-neue-haas;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  margin: 0;
+}
+
+.about-stat-text {
+  color: $txt-grey;
+  font-family: $font-neue-haas;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 350;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  margin: 8px 0 0;
+}
+
+.about-stat-divider {
+  background: $stroke-grey;
+  display: block;
+  flex: 0 0 1px;
+  height: 102px;
+}
+
+.about-right-column {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.about-image {
+  aspect-ratio: 872 / 648;
+  background-color: #b67a7a;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.about-caption {
+  color: $txt-grey;
+  font-family: $font-neue-haas;
+  font-size: 26px;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+  margin: 0;
+  text-transform: lowercase;
+}
+
+@media (max-width: 1440px) {
+  .about-section-main {
+    padding: 66px 0 72px;
+  }
+
+  .about-section-container.container {
+    gap: 46px;
+  }
+
+  .about-copy {
+    font-size: clamp(16px, 1.25vw, 19px);
+    line-height: clamp(25px, 1.9vw, 30px);
+  }
+
+  .about-know-more {
+    font-size: clamp(17px, 1.15vw, 19px);
+  }
+
+  .about-stat-title {
+    font-size: clamp(30px, 2.35vw, 34px);
+  }
+
+  .about-stat-text {
+    font-size: clamp(14px, 1.1vw, 16px);
+  }
+
+  .about-caption {
+    font-size: clamp(22px, 1.85vw, 26px);
+  }
+}
+
+@media (max-width: 1180px) {
+  .about-section-container.container {
+    gap: 34px;
+    grid-template-columns: minmax(0, 1fr);
+    width: calc(100% - 40px);
+  }
+
+  .about-left-column {
+    order: 2;
+    padding-top: 0;
+  }
+
+  .about-right-column {
+    order: 1;
+  }
+
+  .about-caption {
+    font-size: clamp(22px, 2.8vw, 26px);
+  }
+}
+
+@media (max-width: 639px) {
+  .about-section-main {
+    padding: 54px 0 60px;
+  }
+
+  .about-section-container.container {
+    width: calc(100% - 28px);
+  }
+
+  .about-kicker-row {
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .about-kicker-line {
+    width: 62px;
+  }
+
+  .about-kicker {
+    font-size: 12px;
+  }
+
+  .about-copy {
+    font-size: 16px;
+    letter-spacing: 0.01em;
+    line-height: 27px;
+  }
+
+  .about-inline-tsol {
+    font-size: 22px;
+  }
+
+  .about-copy p + p {
+    margin-top: 18px;
+  }
+
+  .about-know-more {
+    font-size: 18px;
+    margin-top: 28px;
+  }
+
+  .about-know-arrow {
+    font-size: 17px;
+  }
+
+  .about-stats {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 20px;
+  }
+
+  .about-stat,
+  .about-stat:first-child {
+    width: 100%;
+  }
+
+  .about-stat-divider {
+    height: 1px;
+    width: 100%;
+  }
+
+  .about-stat-title {
+    font-size: 34px;
+  }
+
+  .about-stat-text {
+    font-size: 16px;
+    margin-top: 6px;
+  }
+
+  .about-caption {
+    font-size: 22px;
+    line-height: 1.15;
+  }
+}
