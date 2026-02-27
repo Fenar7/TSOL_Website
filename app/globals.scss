@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "Neue Haas Display";
+  font-family: "Neue Haas Grotesk Display Pro";
   src: url("/fonts/fonnts.com-NeueHaasDisplayXXThin.ttf") format("truetype");
   font-weight: 100;
   font-style: normal;
@@ -9,7 +9,7 @@
 }
 
 @font-face {
-  font-family: "Neue Haas Display";
+  font-family: "Neue Haas Grotesk Display Pro";
   src: url("/fonts/fonnts.com-NeueHaasDisplayXXThinItalic.ttf")
     format("truetype");
   font-weight: 100;
@@ -18,7 +18,7 @@
 }
 
 @font-face {
-  font-family: "Neue Haas Display";
+  font-family: "Neue Haas Grotesk Display Pro";
   src: url("/fonts/fonnts.com-NeueHaasDisplayXThin.ttf") format("truetype");
   font-weight: 200;
   font-style: normal;
@@ -26,7 +26,7 @@
 }
 
 @font-face {
-  font-family: "Neue Haas Display";
+  font-family: "Neue Haas Grotesk Display Pro";
   src: url("/fonts/fonnts.com-NeueHaasDisplayXThinItalic.ttf")
     format("truetype");
   font-weight: 200;
@@ -35,7 +35,7 @@
 }
 
 @font-face {
-  font-family: "Neue Haas Display";
+  font-family: "Neue Haas Grotesk Display Pro";
   src: url("/fonts/fonnts.com-NeueHaasDisplayThin.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
@@ -43,7 +43,7 @@
 }
 
 @font-face {
-  font-family: "Neue Haas Display";
+  font-family: "Neue Haas Grotesk Display Pro";
   src: url("/fonts/fonnts.com-NeueHaasDisplayThinItalic.ttf")
     format("truetype");
   font-weight: 300;
@@ -52,7 +52,7 @@
 }
 
 @font-face {
-  font-family: "Neue Haas Display";
+  font-family: "Neue Haas Grotesk Display Pro";
   src: url("/fonts/fonnts.com-NeueHaasDisplayLight.ttf") format("truetype");
   font-weight: 350;
   font-style: normal;
@@ -60,7 +60,7 @@
 }
 
 @font-face {
-  font-family: "Neue Haas Display";
+  font-family: "Neue Haas Grotesk Display Pro";
   src: url("/fonts/fonnts.com-NeueHaasDisplayLightItalic.ttf")
     format("truetype");
   font-weight: 350;
@@ -69,7 +69,7 @@
 }
 
 @font-face {
-  font-family: "Neue Haas Display";
+  font-family: "Neue Haas Grotesk Display Pro";
   src: url("/fonts/fonnts.com-NeueHaasDisplayRoman.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
@@ -77,7 +77,7 @@
 }
 
 @font-face {
-  font-family: "Neue Haas Display";
+  font-family: "Neue Haas Grotesk Display Pro";
   src: url("/fonts/fonnts.com-NeueHaasDisplayRomanItalic.ttf")
     format("truetype");
   font-weight: 400;
@@ -86,7 +86,7 @@
 }
 
 @font-face {
-  font-family: "Neue Haas Display";
+  font-family: "Neue Haas Grotesk Display Pro";
   src: url("/fonts/fonnts.com-NeueHaasDisplayMediu.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
@@ -94,7 +94,7 @@
 }
 
 @font-face {
-  font-family: "Neue Haas Display";
+  font-family: "Neue Haas Grotesk Display Pro";
   src: url("/fonts/fonnts.com-NeueHaasDisplayMediumItalic.ttf")
     format("truetype");
   font-weight: 500;
@@ -103,7 +103,7 @@
 }
 
 @font-face {
-  font-family: "Neue Haas Display";
+  font-family: "Neue Haas Grotesk Display Pro";
   src: url("/fonts/fonnts.com-NeueHaasDisplayBold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
@@ -111,7 +111,7 @@
 }
 
 @font-face {
-  font-family: "Neue Haas Display";
+  font-family: "Neue Haas Grotesk Display Pro";
   src: url("/fonts/fonnts.com-NeueHaasDisplayBoldItalic.ttf")
     format("truetype");
   font-weight: 700;
@@ -120,7 +120,7 @@
 }
 
 @font-face {
-  font-family: "Neue Haas Display";
+  font-family: "Neue Haas Grotesk Display Pro";
   src: url("/fonts/fonnts.com-NeueHaasDisplayBlack.ttf") format("truetype");
   font-weight: 900;
   font-style: normal;
@@ -128,7 +128,7 @@
 }
 
 @font-face {
-  font-family: "Neue Haas Display";
+  font-family: "Neue Haas Grotesk Display Pro";
   src: url("/fonts/fonnts.com-NeueHaasDisplayBlackItalic.ttf")
     format("truetype");
   font-weight: 900;
@@ -142,6 +142,9 @@
   --txt-grey: #{$txt-grey};
   --stroke-grey: #{$stroke-grey};
   --font-neue-haas: #{$font-neue-haas};
+  --site-header-height: 82px;
+  --hero-top-gap: 10px;
+  --hero-bottom-gap: 14px;
 }
 
 @theme inline {
@@ -157,4 +160,25 @@ body {
   background: var(--white);
   color: var(--black);
   font-family: var(--font-neue-haas);
+}
+
+.home-main {
+  background: var(--white);
+  min-height: calc(100dvh - var(--site-header-height));
+}
+
+@media (max-width: 1023px) {
+  :root {
+    --site-header-height: 72px;
+    --hero-top-gap: 8px;
+    --hero-bottom-gap: 10px;
+  }
+}
+
+@media (max-width: 639px) {
+  :root {
+    --site-header-height: 66px;
+    --hero-top-gap: 6px;
+    --hero-bottom-gap: 8px;
+  }
 }

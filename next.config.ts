@@ -1,10 +1,13 @@
 import type { NextConfig } from "next";
 import path from "path";
 
+const sassVariablesPath = path
+  .join(process.cwd(), "app/styles/_variables.scss")
+  .replaceAll("\\", "/");
+
 const nextConfig: NextConfig = {
   sassOptions: {
-    includePaths: [path.join(process.cwd(), "app")],
-    additionalData: `@use "styles/variables" as *;`,
+    additionalData: `@use "${sassVariablesPath}" as *;`,
   },
 };
 

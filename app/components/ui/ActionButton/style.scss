@@ -1,0 +1,43 @@
+.action-button {
+  align-items: center;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  display: inline-flex;
+  font-family: $font-neue-haas;
+  font-size: clamp(16px, 0.94vw, 18px);
+  font-style: normal;
+  font-weight: 400;
+  justify-content: center;
+  line-height: 1;
+  min-height: 48px;
+  padding: 11px 17px;
+  text-decoration: none;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.action-button--outline {
+  background: rgba($black, 0.12);
+  border-color: rgba($white, 0.75);
+  color: $white;
+}
+
+.action-button--outline:hover {
+  background: rgba($white, 0.14);
+}
+
+.action-button--solid {
+  background: $white;
+  border-color: $white;
+  color: $black;
+}
+
+.action-button--solid:hover {
+  background: rgba($white, 0.9);
+}
+
+@media (max-width: 767px) {
+  .action-button {
+    min-height: 44px;
+    padding-inline: 14px;
+  }
+}
