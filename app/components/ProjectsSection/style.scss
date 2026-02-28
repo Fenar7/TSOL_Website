@@ -1,0 +1,129 @@
+.projects-section-main {
+  background: $white;
+  padding: 63px 0 70px;
+}
+
+.projects-section-container.container {
+  margin-inline: auto;
+  max-width: 1720px;
+  padding-inline: 0;
+  width: calc(100% - 200px);
+}
+
+.projects-section-title {
+  margin-inline: auto;
+  max-width: 737px;
+}
+
+.projects-section-title .section-title__title {
+  letter-spacing: 0;
+  word-spacing: 0.2em;
+}
+
+.projects-grid {
+  column-gap: 37px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  row-gap: 32px;
+  margin-top: 73px;
+}
+
+.projects-item {
+  min-width: 0;
+}
+
+.projects-item-image {
+  aspect-ratio: 548 / 393;
+  background-color: #ababab;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.projects-item-title {
+  color: $black;
+  font-family: $font-neue-haas;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 17px 0 0;
+}
+
+.projects-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 44px;
+}
+
+.projects-cta-btn {
+  font-size: 19px;
+  min-height: 45px;
+  padding: 11px 18px;
+}
+
+@media (max-width: 1440px) {
+  .projects-section-main {
+    padding: 56px 0 62px;
+  }
+
+  .projects-grid {
+    column-gap: 28px;
+    margin-top: 58px;
+    row-gap: 26px;
+  }
+
+  .projects-item-title {
+    font-size: clamp(20px, 1.7vw, 25px);
+    margin-top: 14px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .projects-section-container.container {
+    width: calc(100% - 40px);
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .projects-section-main {
+    padding: 48px 0 54px;
+  }
+
+  .projects-grid {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 38px;
+    row-gap: 24px;
+  }
+
+  .projects-item-title {
+    font-size: 22px;
+    margin-top: 12px;
+  }
+
+  .projects-cta {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 639px) {
+  .projects-section-container.container {
+    width: calc(100% - 28px);
+  }
+
+  .projects-section-title .section-title__title {
+    word-spacing: 0.1em;
+  }
+
+  .projects-cta-btn {
+    font-size: 17px;
+    min-height: 42px;
+    padding-inline: 16px;
+  }
+}
