@@ -25,6 +25,16 @@
   background: rgba($white, 0.14);
 }
 
+.action-button--outline-dark {
+  background: transparent;
+  border-color: rgba($black, 0.85);
+  color: $black;
+}
+
+.action-button--outline-dark:hover {
+  background: rgba($black, 0.05);
+}
+
 .action-button--solid {
   background: $white;
   border-color: $white;
