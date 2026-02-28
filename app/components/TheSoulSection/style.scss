@@ -1,0 +1,144 @@
+.the-soul-main {
+  background: $white;
+  padding: 96px 0 104px;
+}
+
+.the-soul-container.container {
+  align-items: center;
+  column-gap: clamp(24px, 3.7vw, 68px);
+  display: grid;
+  grid-template-columns: minmax(0, 756px) minmax(0, 860px);
+  justify-content: space-between;
+  margin-inline: auto;
+  max-width: 1720px;
+  padding-inline: 0;
+  width: calc(100% - 200px);
+}
+
+.the-soul-left-column {
+  min-width: 0;
+}
+
+.the-soul-kicker-row {
+  align-items: center;
+  display: flex;
+  gap: 15px;
+  margin-bottom: 16px;
+}
+
+.the-soul-kicker-line {
+  background: $stroke-grey;
+  display: block;
+  height: 1px;
+  width: 95px;
+}
+
+.the-soul-kicker {
+  color: $txt-grey;
+  font-family: $font-neue-haas;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 350;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.the-soul-copy {
+  color: $txt-grey;
+  font-family: $font-neue-haas;
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 350;
+  letter-spacing: 0.02em;
+  line-height: 30px;
+}
+
+.the-soul-copy p {
+  margin: 0;
+}
+
+.the-soul-copy p + p {
+  margin-top: 28px;
+}
+
+.the-soul-copy strong {
+  color: $txt-grey;
+  font-weight: 500;
+}
+
+.the-soul-right-column {
+  min-width: 0;
+}
+
+.the-soul-image {
+  aspect-ratio: 860 / 592;
+  background-color: #1f1f1f;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 4px;
+  width: 100%;
+}
+
+@media (max-width: 1440px) {
+  .the-soul-main {
+    padding: 84px 0 88px;
+  }
+
+  .the-soul-copy {
+    font-size: clamp(16px, 1.18vw, 19px);
+    line-height: clamp(25px, 1.86vw, 30px);
+  }
+}
+
+@media (max-width: 1180px) {
+  .the-soul-container.container {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 28px;
+    width: calc(100% - 40px);
+  }
+
+  .the-soul-left-column {
+    order: 2;
+  }
+
+  .the-soul-right-column {
+    order: 1;
+  }
+}
+
+@media (max-width: 639px) {
+  .the-soul-main {
+    padding: 62px 0 62px;
+  }
+
+  .the-soul-container.container {
+    row-gap: 22px;
+    width: calc(100% - 28px);
+  }
+
+  .the-soul-kicker-row {
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .the-soul-kicker-line {
+    width: 62px;
+  }
+
+  .the-soul-kicker {
+    font-size: 12px;
+  }
+
+  .the-soul-copy {
+    font-size: 16px;
+    letter-spacing: 0.01em;
+    line-height: 27px;
+  }
+
+  .the-soul-copy p + p {
+    margin-top: 18px;
+  }
+}
