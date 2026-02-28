@@ -5,6 +5,7 @@ interface SectionTitleProps {
   className?: string;
   label: string;
   subtitle?: ReactNode;
+  tone?: "default" | "light";
   title: ReactNode;
 }
 
@@ -12,10 +13,11 @@ const SectionTitle = ({
   className = "",
   label,
   subtitle,
+  tone = "default",
   title,
 }: SectionTitleProps) => {
   return (
-    <div className={`section-title ${className}`.trim()}>
+    <div className={`section-title section-title--${tone} ${className}`.trim()}>
       <div className="section-title__kicker-row">
         <span className="section-title__kicker-line" aria-hidden="true" />
         <p className="section-title__kicker">{label}</p>

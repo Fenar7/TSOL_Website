@@ -1,0 +1,136 @@
+.services-section-main {
+  background: $white;
+  padding: 82px 0 110px;
+}
+
+.services-section-container {
+  width: 100%;
+}
+
+.services-section-content.container {
+  margin-inline: auto;
+  max-width: 1720px;
+  padding-inline: 0;
+  width: calc(100% - 200px);
+}
+
+.services-section-title {
+  margin-inline: auto;
+  max-width: 498px;
+}
+
+.services-items-container {
+  column-gap: 34px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 126px;
+}
+
+.service-item {
+  border: 1px solid $stroke-grey;
+  border-radius: 5px;
+  min-width: 0;
+  padding: 30px;
+}
+
+.service-item-image {
+  aspect-ratio: 487 / 255;
+  background-color: #413f35;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+}
+
+.service-item-title {
+  color: $black;
+  font-family: $font-neue-haas;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.05;
+  margin: 19px 0 0;
+}
+
+.service-item-description {
+  color: $txt-grey;
+  font-family: $font-neue-haas;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 350;
+  letter-spacing: 0.01em;
+  line-height: 28px;
+  margin: 8px 0 0;
+}
+
+@media (max-width: 1520px) {
+  .services-section-main {
+    padding: 74px 0 94px;
+  }
+
+  .services-items-container {
+    column-gap: 24px;
+    margin-top: 92px;
+  }
+
+  .service-item {
+    padding: 22px;
+  }
+
+  .service-item-title {
+    font-size: clamp(29px, 2.1vw, 34px);
+    margin-top: 16px;
+  }
+
+  .service-item-description {
+    font-size: clamp(14px, 1vw, 16px);
+    line-height: clamp(24px, 1.65vw, 28px);
+  }
+}
+
+@media (max-width: 1180px) {
+  .services-section-content.container {
+    width: calc(100% - 40px);
+  }
+
+  .services-items-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 72px;
+    row-gap: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .services-section-main {
+    padding: 58px 0 66px;
+  }
+
+  .services-items-container {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 48px;
+    row-gap: 18px;
+  }
+
+  .service-item {
+    padding: 16px;
+  }
+
+  .service-item-title {
+    font-size: 30px;
+    margin-top: 14px;
+  }
+
+  .service-item-description {
+    line-height: 26px;
+  }
+}
+
+@media (max-width: 639px) {
+  .services-section-content.container {
+    width: calc(100% - 28px);
+  }
+
+  .services-section-title {
+    max-width: 100%;
+  }
+}

@@ -54,6 +54,22 @@
   text-align: center;
 }
 
+.section-title--light .section-title__kicker-line {
+  background: rgba($white, 0.42);
+}
+
+.section-title--light .section-title__kicker {
+  color: rgba($white, 0.6);
+}
+
+.section-title--light .section-title__title {
+  color: $white;
+}
+
+.section-title--light .section-title__subtitle {
+  color: rgba($white, 0.72);
+}
+
 @media (max-width: 1023px) {
   .section-title {
     gap: 20px;
