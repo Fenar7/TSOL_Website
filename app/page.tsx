@@ -2,6 +2,7 @@ import AboutSection from "./components/AboutSection/AboutSection";
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
 import OurApproachSection from "./components/OurApproachSection/OurApproachSection";
+import ProjectsSection from "./components/ProjectsSection/ProjectsSection";
 import TheSoulSection from "./components/TheSoulSection/TheSoulSection";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
         <AboutSection />
         <OurApproachSection />
         <TheSoulSection />
+        <ProjectsSection />
       </main>
     </>
   );
