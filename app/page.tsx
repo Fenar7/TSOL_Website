@@ -11,7 +11,6 @@ import TheSoulSection from "./components/TheSoulSection/TheSoulSection";
 export default function Home() {
   return (
     <>
-      <Header />
       <main className="home-main">
         <Hero />
         <AboutSection />

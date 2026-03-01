@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import SectionTitle from "../ui/SectionTitle/SectionTitle";
 import "./style.scss";
 
@@ -68,7 +69,14 @@ const TestimonialsSection = () => {
                 onClick={() => scrollTrack("prev")}
                 aria-label="Previous testimonials"
               >
-                ←
+                <Image
+                  src="/images/icons/testimonial-arrow.png"
+                  alt=""
+                  aria-hidden="true"
+                  className="testimonials-nav-icon testimonials-nav-icon--prev"
+                  height={56}
+                  width={56}
+                />
               </button>
               <button
                 type="button"
@@ -76,7 +84,14 @@ const TestimonialsSection = () => {
                 onClick={() => scrollTrack("next")}
                 aria-label="Next testimonials"
               >
-                →
+                <Image
+                  src="/images/icons/testimonial-arrow.png"
+                  alt=""
+                  aria-hidden="true"
+                  className="testimonials-nav-icon"
+                  height={56}
+                  width={56}
+                />
               </button>
             </div>
           </div>
