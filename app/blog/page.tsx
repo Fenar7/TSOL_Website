@@ -1,9 +1,12 @@
-import React from 'react'
+import BlogPageSection from "../components/BlogPageSection/BlogPageSection";
+import "./style.scss";
 
 const page = () => {
   return (
-    <div>page</div>
-  )
-}
+    <main className="blog-page-main">
+      <BlogPageSection />
+    </main>
+  );
+};
 
-export default page
+export default page;
