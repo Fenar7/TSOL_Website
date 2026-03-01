@@ -1,6 +1,5 @@
 import AboutSection from "./components/AboutSection/AboutSection";
 import ContactCtaSection from "./components/ContactCtaSection/ContactCtaSection";
-import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
 import OurApproachSection from "./components/OurApproachSection/OurApproachSection";
 import ProjectsSection from "./components/ProjectsSection/ProjectsSection";
@@ -10,17 +9,15 @@ import TheSoulSection from "./components/TheSoulSection/TheSoulSection";
 
 export default function Home() {
   return (
-    <>
-      <main className="home-main">
-        <Hero />
-        <AboutSection />
-        <OurApproachSection />
-        <TheSoulSection />
-        <ProjectsSection />
-        <ServicesSection />
-        <ContactCtaSection />
-        <TestimonialsSection/>
-      </main>
-    </>
+    <main className="home-main">
+      <Hero />
+      <AboutSection />
+      <OurApproachSection />
+      <TheSoulSection />
+      <ProjectsSection />
+      <ServicesSection />
+      <ContactCtaSection />
+      <TestimonialsSection />
+    </main>
   );
 }
