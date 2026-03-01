@@ -2,7 +2,7 @@ import type { MouseEventHandler, ReactNode } from "react";
 import Link from "next/link";
 import "./style.scss";
 
-type ActionButtonVariant = "outline" | "outline-dark" | "solid";
+type ActionButtonVariant = "outline" | "outline-dark" | "solid" | "solid-dark";
 
 interface ActionButtonProps {
   children: ReactNode;

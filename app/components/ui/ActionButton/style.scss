@@ -45,6 +45,16 @@
   background: rgba($white, 0.9);
 }
 
+.action-button--solid-dark {
+  background: $black;
+  border-color: $black;
+  color: $white;
+}
+
+.action-button--solid-dark:hover {
+  background: rgba($black, 0.9);
+}
+
 @media (max-width: 767px) {
   .action-button {
     min-height: 44px;
