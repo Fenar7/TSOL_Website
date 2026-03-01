@@ -1,0 +1,26 @@
+.contact-page-main {
+  background: $white;
+  min-height: calc(100dvh - var(--site-header-height));
+}
+
+.contact-page-hero .page-hero-title-single {
+  margin-inline: auto;
+  max-width: 786px;
+}
+
+.contact-page-hero .page-hero-subtitle {
+  font-style: italic;
+  max-width: 786px;
+}
+
+@media (max-width: 1023px) {
+  .contact-page-hero .page-hero-title-single {
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 639px) {
+  .contact-page-hero .page-hero-title-single {
+    max-width: 100%;
+  }
+}

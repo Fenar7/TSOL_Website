@@ -1,17 +1,22 @@
 import Image from "next/image";
+import type { CSSProperties } from "react";
 import "./style.scss";
 
 type PageHeroSectionProps = {
+  title?: string;
   titleLead?: string;
   titleMain?: string;
-  subtitle: string;
+  subtitle?: string;
   imageSrc: string;
   imageAlt?: string;
   className?: string;
   priority?: boolean;
+  contentAlign?: "left" | "center";
+  overlayOpacity?: number;
 };
 
 const PageHeroSection = ({
+  title,
   titleLead = "The",
   titleMain = "TSOL",
   subtitle,
@@ -19,11 +24,23 @@ const PageHeroSection = ({
   imageAlt = "Architectural interior",
   className = "",
   priority = false,
+  contentAlign = "left",
+  overlayOpacity = 0.2,
 }: PageHeroSectionProps) => {
+  const ariaTitle = title ?? `${titleLead} ${titleMain}`.trim();
+  const contentClassName = `page-hero-content ${
+    contentAlign === "center" ? "is-centered" : ""
+  }`.trim();
+
   return (
     <section
       className={`page-hero-section-main ${className}`.trim()}
-      aria-label={`${titleLead} ${titleMain}`.trim()}
+      aria-label={ariaTitle}
+      style={
+        {
+          "--page-hero-overlay-opacity": overlayOpacity.toString(),
+        } as CSSProperties
+      }
     >
       <div className="page-hero-section container">
         <div className="page-hero-card">
@@ -37,16 +54,20 @@ const PageHeroSection = ({
           />
           <div className="page-hero-overlay" aria-hidden="true" />
 
-          <div className="page-hero-content">
-            <h1 className="page-hero-title">
-              {titleLead ? (
-                <span className="page-hero-title-lead">{titleLead}</span>
-              ) : null}
-              {titleMain ? (
-                <span className="page-hero-title-main">{titleMain}</span>
-              ) : null}
-            </h1>
-            <p className="page-hero-subtitle">{subtitle}</p>
+          <div className={contentClassName}>
+            {title ? (
+              <h1 className="page-hero-title page-hero-title-single">{title}</h1>
+            ) : (
+              <h1 className="page-hero-title">
+                {titleLead ? (
+                  <span className="page-hero-title-lead">{titleLead}</span>
+                ) : null}
+                {titleMain ? (
+                  <span className="page-hero-title-main">{titleMain}</span>
+                ) : null}
+              </h1>
+            )}
+            {subtitle ? <p className="page-hero-subtitle">{subtitle}</p> : null}
           </div>
         </div>
       </div>

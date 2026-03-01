@@ -1,4 +1,5 @@
 import PageHeroSection from "../components/PageHeroSection/PageHeroSection";
+import StorySection from "../components/StorySection/StorySection";
 import "./style.scss";
 
 const page = () => {
@@ -12,6 +13,7 @@ const page = () => {
         imageAlt="TSOL interior space"
         priority
       />
+      <StorySection/>
     </main>
   );
 };

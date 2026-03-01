@@ -1,0 +1,125 @@
+.story-section-main {
+  background: $white;
+  padding: clamp(56px, 4.75vw, 91px) 0 clamp(72px, 7.1vw, 136px);
+}
+
+.story-section-container.container {
+  margin-inline: auto;
+  max-width: 1720px;
+  padding-inline: 0;
+  width: calc(100% - 200px);
+}
+
+.story-section-header {
+  margin-bottom: clamp(24px, 1.72vw, 33px);
+  max-width: 1232px;
+}
+
+.story-title {
+  color: $black;
+  font-family: $font-neue-haas;
+  font-size: clamp(34px, 2.35vw, 45px);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 1.05;
+  margin: 0;
+}
+
+.story-subtitle {
+  color: $black;
+  font-family: $font-neue-haas;
+  font-size: clamp(24px, 1.56vw, 30px);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 1.1;
+  margin: clamp(3px, 0.06vw, 6px) 0 0;
+}
+
+.story-designation {
+  color: $txt-grey;
+  font-family: $font-neue-haas;
+  font-size: clamp(16px, 0.99vw, 19px);
+  font-style: normal;
+  font-weight: 350;
+  letter-spacing: 0.02em;
+  line-height: clamp(24px, 1.56vw, 30px);
+  margin: clamp(8px, 0.73vw, 14px) 0 0;
+}
+
+.story-body {
+  color: $txt-grey;
+  font-family: $font-neue-haas;
+  font-size: clamp(16px, 0.99vw, 19px);
+  font-style: normal;
+  font-weight: 350;
+  letter-spacing: 0.02em;
+  line-height: clamp(25px, 1.56vw, 30px);
+  text-align: justify;
+}
+
+.story-body p {
+  margin: 0;
+}
+
+.story-body p + p {
+  margin-top: clamp(22px, 1.98vw, 38px);
+}
+
+.story-highlight {
+  color: $txt-grey;
+  font-family: $font-neue-haas;
+  font-size: clamp(16px, 0.99vw, 19px);
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: clamp(25px, 1.56vw, 30px);
+}
+
+@media (max-width: 1023px) {
+  .story-section-container.container {
+    width: calc(100% - 40px);
+  }
+
+  .story-section-header {
+    max-width: min(100%, 840px);
+  }
+}
+
+@media (max-width: 639px) {
+  .story-section-main {
+    padding: 44px 0 72px;
+  }
+
+  .story-section-container.container {
+    width: calc(100% - 28px);
+  }
+
+  .story-title {
+    font-size: clamp(32px, 8.3vw, 38px);
+    line-height: 1.08;
+  }
+
+  .story-subtitle {
+    font-size: clamp(25px, 7vw, 30px);
+    line-height: 1.12;
+  }
+
+  .story-designation {
+    letter-spacing: 0.01em;
+    line-height: 1.4;
+  }
+
+  .story-body {
+    font-size: 19px;
+    letter-spacing: 0.01em;
+    line-height: 1.42;
+    text-align: left;
+  }
+
+  .story-highlight {
+    font-size: 19px;
+    line-height: 1.42;
+  }
+}

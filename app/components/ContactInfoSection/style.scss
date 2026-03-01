@@ -1,0 +1,126 @@
+.contact-info-section {
+  background: $white;
+  padding-top: clamp(34px, 2.5vw, 48px);
+}
+
+.contact-info-container.container {
+  display: grid;
+  gap: clamp(16px, 2.08vw, 40px);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-inline: auto;
+  max-width: 1720px;
+  padding-inline: 0;
+  width: calc(100% - 200px);
+}
+
+.contact-info-card {
+  border: 1px solid $stroke-grey;
+  border-radius: 5px;
+  min-height: 256px;
+}
+
+.contact-info-card-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  padding: 26px 29px 30px;
+}
+
+.contact-info-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.contact-info-icon-image {
+  display: block;
+  height: auto;
+  width: auto;
+}
+
+.contact-info-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.contact-info-title {
+  color: #040707;
+  font-family: $font-neue-haas;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.contact-info-caption {
+  color: $txt-grey;
+  font-family: $font-neue-haas;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  margin: 0;
+}
+
+.contact-info-detail {
+  color: #040707;
+  font-family: $font-neue-haas;
+  font-size: clamp(20px, 1.3vw, 25px);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 1.14;
+  margin: 0;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.contact-info-detail:hover {
+  opacity: 0.72;
+}
+
+@media (max-width: 1439px) {
+  .contact-info-card {
+    min-height: 232px;
+  }
+
+  .contact-info-card-inner {
+    padding: 24px 24px 26px;
+  }
+}
+
+@media (max-width: 1180px) {
+  .contact-info-container.container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: calc(100% - 40px);
+  }
+}
+
+@media (max-width: 639px) {
+  .contact-info-container.container {
+    grid-template-columns: minmax(0, 1fr);
+    width: calc(100% - 28px);
+  }
+
+  .contact-info-card {
+    min-height: 206px;
+  }
+
+  .contact-info-card-inner {
+    padding: 20px 18px 22px;
+  }
+
+  .contact-info-title {
+    font-size: 24px;
+  }
+
+  .contact-info-caption {
+    font-size: 16px;
+  }
+
+  .contact-info-detail {
+    font-size: 26px;
+  }
+}
