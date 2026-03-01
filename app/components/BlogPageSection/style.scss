@@ -64,13 +64,22 @@
 }
 
 .blog-page-card-arrow-link {
+  align-items: center;
+  background: $white;
   bottom: 19px;
   display: inline-flex;
   height: 40px;
+  justify-content: center;
   position: absolute;
   right: 19px;
   transition: transform 0.2s ease, opacity 0.2s ease;
   width: 40px;
+}
+
+.blog-page-card-arrow-icon {
+  display: block;
+  height: 16px;
+  width: 16px;
 }
 
 .blog-page-card-arrow-link:hover {
@@ -222,6 +231,18 @@
   .blog-page-card-image-wrap {
     height: min(393px, 72vw);
     min-height: 240px;
+  }
+
+  .blog-page-card-arrow-link {
+    bottom: 14px;
+    height: 36px;
+    right: 14px;
+    width: 36px;
+  }
+
+  .blog-page-card-arrow-icon {
+    height: 14px;
+    width: 14px;
   }
 
   .blog-page-pagination {

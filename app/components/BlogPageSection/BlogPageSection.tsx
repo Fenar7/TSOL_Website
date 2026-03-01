@@ -50,8 +50,9 @@ const BlogPageSection = () => {
                   <Image
                     src="/images/icons/top-right-arrow.svg"
                     alt=""
-                    width={40}
-                    height={40}
+                    width={16}
+                    height={16}
+                    className="blog-page-card-arrow-icon"
                   />
                 </Link>
               </div>
