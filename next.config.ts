@@ -6,6 +6,7 @@ const sassVariablesPath = path
   .replaceAll("\\", "/");
 
 const nextConfig: NextConfig = {
+  transpilePackages: ["next-sanity", "sanity", "@sanity/vision"],
   sassOptions: {
     additionalData: `@use "${sassVariablesPath}" as *;`,
   },
