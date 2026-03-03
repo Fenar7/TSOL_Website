@@ -1,16 +1,113 @@
+"use client";
+
+import { useLayoutEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./style.scss";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const aboutImageUrl =
   "https://www.figma.com/api/mcp/asset/3e0e6743-eadc-4607-994b-403901948724";
 
 const AboutSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const kickerLineRef = useRef<HTMLSpanElement>(null);
+  const kickerTextRef = useRef<HTMLParagraphElement>(null);
+
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      // ── ScrollTrigger timeline ──
+      const tl = gsap.timeline({
+        defaults: { ease: "power3.out" },
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 95%", // Earliest possible moment (enters screen)
+          toggleActions: "play none none none",
+        },
+      });
+
+      // 1. Kicker line draws across
+      tl.fromTo(kickerLineRef.current,
+        { scaleX: 0, transformOrigin: "left center" },
+        { scaleX: 1, duration: 0.6, ease: "power4.inOut" }
+      )
+
+        // 2. Kicker text drifts in
+        .fromTo(kickerTextRef.current,
+          { opacity: 0, x: -30 },
+          { opacity: 1, x: 0, duration: 0.5 },
+          "-=0.4"
+        )
+
+        // 3. Image mask sweeps open
+        .fromTo(".about-img-wrap",
+          { clipPath: "inset(100% 0 0% 0)" },
+          { clipPath: "inset(0% 0 0% 0)", duration: 1.2, ease: "power4.inOut" },
+          "-=0.3"
+        )
+
+        // 4. Image zooms out inside mask
+        .fromTo(".about-image",
+          { scale: 1.35 },
+          { scale: 1, duration: 1.8, ease: "power2.out" },
+          "<"
+        )
+
+        // 5. Paragraphs stunning reveal
+        .fromTo(".about-copy p",
+          { opacity: 0, y: 50 },
+          { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: "power3.out" },
+          "<0.2"
+        )
+
+        // 6. Know More link
+        .fromTo(".about-know-more",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.6 },
+          "-=0.8"
+        )
+
+        // 7. Stat titles
+        .fromTo(".about-stat-title",
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8, stagger: 0.1 },
+          "-=0.6"
+        )
+
+        // 8. Stat divider grows
+        .fromTo(".about-stat-divider",
+          { scaleY: 0, opacity: 0, transformOrigin: "bottom center" },
+          { scaleY: 1, opacity: 1, duration: 0.6, ease: "power4.out" },
+          "-=0.8"
+        )
+
+        // 9. Stat supporting text
+        .fromTo(".about-stat-text",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.5, stagger: 0.1 },
+          "-=0.5"
+        )
+
+        // 10. Caption fades and lifts
+        .fromTo(".about-caption",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+          "-=0.8"
+        );
+
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="about-section-main" aria-label="About TSOL">
+    <section className="about-section-main" aria-label="About TSOL" ref={sectionRef}>
       <div className="about-section-container container">
         <div className="about-left-column">
           <div className="about-kicker-row">
-            <span className="about-kicker-line" aria-hidden="true" />
-            <p className="about-kicker">What is TSOL</p>
+            <span className="about-kicker-line" aria-hidden="true" ref={kickerLineRef} />
+            <p className="about-kicker" ref={kickerTextRef}>What is TSOL</p>
           </div>
 
           <div className="about-copy">
@@ -65,12 +162,14 @@ const AboutSection = () => {
         </div>
 
         <div className="about-right-column">
-          <div
-            className="about-image"
-            role="img"
-            aria-label="Interior architectural latticework with filtered natural light"
-            style={{ backgroundImage: `url(${aboutImageUrl})` }}
-          />
+          <div className="about-img-wrap">
+            <div
+              className="about-image"
+              role="img"
+              aria-label="Interior architectural latticework with filtered natural light"
+              style={{ backgroundImage: `url(${aboutImageUrl})` }}
+            />
+          </div>
           <p className="about-caption">
             the light filters through latticework - evoking the breath of nature..
           </p>

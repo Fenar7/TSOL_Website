@@ -58,7 +58,7 @@
   margin: 0;
 }
 
-.about-copy p + p {
+.about-copy p+p {
   margin-top: 24px;
 }
 
@@ -154,16 +154,29 @@
   min-height: 0;
 }
 
+.about-img-wrap {
+  border-radius: 4px;
+  flex: 1 1 auto;
+  min-height: 260px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  clip-path: inset(100% 0 0 0);
+  /* HIDE BEFORE JS */
+}
+
 .about-image {
   background-color: #b67a7a;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 4px;
-  flex: 1 1 auto;
-  min-height: 260px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
 }
+
 
 .about-caption {
   color: $txt-grey;
@@ -225,7 +238,7 @@
     order: 1;
   }
 
-  .about-image {
+  .about-img-wrap {
     aspect-ratio: 872 / 648;
     flex: none;
     min-height: 0;
@@ -268,7 +281,7 @@
     font-size: 22px;
   }
 
-  .about-copy p + p {
+  .about-copy p+p {
     margin-top: 18px;
   }
 
