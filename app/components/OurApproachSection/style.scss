@@ -97,13 +97,25 @@
   margin: 0 0 22px;
 }
 
-.our-approach-card-image {
+.our-approach-img-wrap {
   aspect-ratio: 514 / 434;
+  border-radius: 4px;
+  clip-path: inset(100% 0 0 0);
+  /* HIDE BEFORE JS */
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.our-approach-card-image {
   background-color: #b67a7a;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 4px;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
   width: 100%;
 }
 
