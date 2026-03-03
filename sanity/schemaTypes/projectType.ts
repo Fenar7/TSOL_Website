@@ -20,9 +20,48 @@ export const projectType = defineType({
     }),
     defineField({
       name: "coverImage",
-      title: "Cover image",
+      title: "Cover Image",
       type: "image",
       options: { hotspot: true },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "gallery",
+      title: "Additional Images",
+      description: "Add multiple project images for the gallery",
+      type: "array",
+      of: [{ type: "image", options: { hotspot: true } }],
+    }),
+    defineField({
+      name: "category",
+      title: "Category",
+      type: "string",
+      options: {
+        list: [
+          "Residential",
+          "Commercial",
+          "Healthcare",
+          "Hospitality",
+          "Institutional",
+          "Interior",
+          "Landscape",
+        ],
+      },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: "status",
+      title: "Status",
+      type: "string",
+      options: {
+        list: [
+          { title: "Ongoing", value: "Ongoing" },
+          { title: "Completed", value: "Completed" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "Ongoing",
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: "year",
@@ -40,24 +79,25 @@ export const projectType = defineType({
       type: "string",
     }),
     defineField({
-      name: "status",
-      title: "Status",
-      type: "string",
-      options: {
-        list: ["Concept", "In Progress", "Completed"],
-      },
-    }),
-    defineField({
-      name: "content",
-      title: "Content",
+      name: "body",
+      title: "Body",
+      description: "Rich text content for the project detail page",
       type: "array",
       of: [{ type: "block" }],
     }),
-    defineField({
-      name: "gallery",
-      title: "Gallery",
-      type: "array",
-      of: [{ type: "image", options: { hotspot: true } }],
-    }),
   ],
+  preview: {
+    select: {
+      title: "title",
+      media: "coverImage",
+      subtitle: "category",
+    },
+    prepare({ title, media, subtitle }) {
+      return {
+        title,
+        media,
+        subtitle: subtitle ?? "No category",
+      };
+    },
+  },
 });

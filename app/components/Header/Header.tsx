@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import "./style.scss";
@@ -13,12 +14,18 @@ const navLinks = [
 ];
 
 const Header = () => {
+  const pathname = usePathname();
+  const isStudioRoute = pathname.startsWith("/studio");
   const [menuOpen, setMenuOpen] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
   const mobileLinksRef = useRef<(HTMLAnchorElement | null)[]>([]);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
   useLayoutEffect(() => {
+    if (isStudioRoute) {
+      return;
+    }
+
     if (!mobileMenuRef.current) {
       return;
     }
@@ -74,9 +81,14 @@ const Header = () => {
       timelineRef.current = null;
       ctx.revert();
     };
-  }, []);
+  }, [isStudioRoute]);
 
   useEffect(() => {
+    if (isStudioRoute) {
+      document.body.style.overflow = "";
+      return;
+    }
+
     if (!timelineRef.current) {
       return;
     }
@@ -89,7 +101,7 @@ const Header = () => {
 
     timelineRef.current.reverse();
     document.body.style.overflow = "";
-  }, [menuOpen]);
+  }, [menuOpen, isStudioRoute]);
 
   useEffect(() => {
     return () => {
@@ -100,6 +112,10 @@ const Header = () => {
   const closeMobileMenu = () => {
     setMenuOpen(false);
   };
+
+  if (isStudioRoute) {
+    return null;
+  }
 
   return (
     <div className="header-container-main">
