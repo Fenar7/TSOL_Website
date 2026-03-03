@@ -1,9 +1,13 @@
 "use client";
 
-import { useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import Image from "next/image";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SectionTitle from "../ui/SectionTitle/SectionTitle";
 import "./style.scss";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const testimonials = [
   {
@@ -33,26 +37,66 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
 
+  // ── scroll-track navigation ──
   const scrollTrack = (direction: "prev" | "next") => {
-    if (!trackRef.current) {
-      return;
-    }
-
+    if (!trackRef.current) return;
     const card = trackRef.current.querySelector<HTMLElement>(".testimonial-video");
     const cardWidth = card?.offsetWidth ?? 508;
     const gap = 27;
-    const offset = cardWidth + gap;
-
-    trackRef.current.scrollBy({
-      behavior: "smooth",
-      left: direction === "next" ? offset : -offset,
-    });
+    trackRef.current.scrollBy({ behavior: "smooth", left: direction === "next" ? cardWidth + gap : -(cardWidth + gap) });
   };
 
+  // ── GSAP scroll animations ──
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 95%",
+          toggleActions: "restart none none reverse",
+        },
+      });
+
+      // 1. Section label + title fade + rise from the left
+      tl.fromTo(
+        ".testimonials-title",
+        { opacity: 0, x: -40 },
+        { opacity: 1, x: 0, duration: 0.75, ease: "power3.out" }
+      )
+
+        // 2. Nav arrows materialise from the right — one by one
+        .fromTo(
+          ".testimonials-nav-btn",
+          { opacity: 0, x: 24 },
+          { opacity: 1, x: 0, duration: 0.55, stagger: 0.12, ease: "power3.out" },
+          "-=0.45"
+        )
+
+        // 3. Video cards stream in horizontally with depth stagger
+        //    Each card starts slightly below + to the right, creating a "cascade" effect
+        .fromTo(
+          ".testimonial-video",
+          { opacity: 0, x: 70, scale: 0.96 },
+          {
+            opacity: 1,
+            x: 0,
+            scale: 1,
+            duration: 0.75,
+            stagger: 0.1,
+            ease: "power3.out",
+          },
+          "-=0.3"
+        );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="testimonials-main">
+    <section className="testimonials-main" ref={sectionRef}>
       <div className="testimonials-section-container flex items-center justify-center">
         <div className="testimonials-section container">
           <div className="testimonials-heading-row">

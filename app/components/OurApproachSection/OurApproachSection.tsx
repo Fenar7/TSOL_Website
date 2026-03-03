@@ -24,7 +24,7 @@ const OurApproachSection = () => {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 95%", // Earliest possible moment
-          toggleActions: "play none none none",
+          toggleActions: "restart none none reverse",
         },
       });
 

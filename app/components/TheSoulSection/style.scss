@@ -59,7 +59,7 @@
   margin: 0;
 }
 
-.the-soul-copy p + p {
+.the-soul-copy p+p {
   margin-top: 28px;
 }
 
@@ -72,13 +72,25 @@
   min-width: 0;
 }
 
-.the-soul-image {
+.the-soul-img-wrap {
   aspect-ratio: 860 / 592;
+  border-radius: 4px;
+  clip-path: inset(100% 0 0 0);
+  /* hidden before JS */
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.the-soul-image {
   background-color: #1f1f1f;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 4px;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
   width: 100%;
 }
 
@@ -138,7 +150,7 @@
     line-height: 27px;
   }
 
-  .the-soul-copy p + p {
+  .the-soul-copy p+p {
     margin-top: 18px;
   }
 }

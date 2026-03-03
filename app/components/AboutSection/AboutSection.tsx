@@ -23,7 +23,7 @@ const AboutSection = () => {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 95%", // Earliest possible moment (enters screen)
-          toggleActions: "play none none none",
+          toggleActions: "restart none none reverse", // Restart on enter, reverse on leaveBack
         },
       });
 

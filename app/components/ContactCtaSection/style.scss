@@ -28,14 +28,26 @@
   max-width: 1017px;
 }
 
-.contact-cta-image {
+.contact-cta-img-wrap {
   aspect-ratio: 833 / 522;
+  clip-path: inset(0% 0 100% 0);
+  /* hidden before JS — top-to-bottom wipe */
+  margin: 38px auto 0;
+  overflow: hidden;
+  position: relative;
+  width: min(100%, 833px);
+}
+
+.contact-cta-image {
   background-color: #9ea39f;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  margin: 38px auto 0;
-  width: min(100%, 833px);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
 .contact-cta-actions {
@@ -61,7 +73,7 @@
     max-width: 900px;
   }
 
-  .contact-cta-image {
+  .contact-cta-img-wrap {
     margin-top: 30px;
   }
 }
@@ -79,7 +91,7 @@
     max-width: 100%;
   }
 
-  .contact-cta-image {
+  .contact-cta-img-wrap {
     margin-top: 24px;
   }
 

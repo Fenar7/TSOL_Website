@@ -1,16 +1,80 @@
+"use client";
+
+import { useLayoutEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./style.scss";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const theSoulImageUrl =
   "https://www.figma.com/api/mcp/asset/3b7ba4e2-7a3e-4918-97fe-0d90395b708d";
 
 const TheSoulSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const kickerLineRef = useRef<HTMLSpanElement>(null);
+  const kickerTextRef = useRef<HTMLParagraphElement>(null);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 95%",
+          toggleActions: "restart none none reverse",
+        },
+      });
+
+      // 1. Kicker line grows from left
+      tl.fromTo(
+        kickerLineRef.current,
+        { scaleX: 0, transformOrigin: "left center" },
+        { scaleX: 1, duration: 0.6, ease: "power4.inOut" }
+      )
+
+        // 2. Kicker text drifts in
+        .fromTo(
+          kickerTextRef.current,
+          { opacity: 0, x: -20 },
+          { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" },
+          "-=0.35"
+        )
+
+        // 3. Left column paragraphs — staggered upward reveal
+        .fromTo(
+          ".the-soul-copy p",
+          { opacity: 0, y: 45 },
+          { opacity: 1, y: 0, duration: 0.75, stagger: 0.18, ease: "power3.out" },
+          "-=0.25"
+        )
+
+        // 4. Image wrapper unmasked from the bottom upward
+        .fromTo(
+          ".the-soul-img-wrap",
+          { clipPath: "inset(100% 0 0% 0)" },
+          { clipPath: "inset(0% 0 0% 0)", duration: 1.2, ease: "power4.inOut" },
+          "<0.1"
+        )
+
+        // 5. Inner image zooms out while revealed
+        .fromTo(
+          ".the-soul-image",
+          { scale: 1.3 },
+          { scale: 1, duration: 1.8, ease: "power2.out" },
+          "<"
+        );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="the-soul-main" aria-label="The Soul">
+    <section className="the-soul-main" aria-label="The Soul" ref={sectionRef}>
       <div className="the-soul-container container">
         <div className="the-soul-left-column">
           <div className="the-soul-kicker-row">
-            <span className="the-soul-kicker-line" aria-hidden="true" />
-            <p className="the-soul-kicker">The Soul</p>
+            <span className="the-soul-kicker-line" aria-hidden="true" ref={kickerLineRef} />
+            <p className="the-soul-kicker" ref={kickerTextRef}>The Soul</p>
           </div>
 
           <div className="the-soul-copy">
@@ -32,12 +96,14 @@ const TheSoulSection = () => {
         </div>
 
         <div className="the-soul-right-column">
-          <div
-            className="the-soul-image"
-            role="img"
-            aria-label="Landscape with water body and elevated residence"
-            style={{ backgroundImage: `url(${theSoulImageUrl})` }}
-          />
+          <div className="the-soul-img-wrap">
+            <div
+              className="the-soul-image"
+              role="img"
+              aria-label="Landscape with water body and elevated residence"
+              style={{ backgroundImage: `url(${theSoulImageUrl})` }}
+            />
+          </div>
         </div>
       </div>
     </section>

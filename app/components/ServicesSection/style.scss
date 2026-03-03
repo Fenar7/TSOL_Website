@@ -33,12 +33,24 @@
   padding: 30px;
 }
 
-.service-item-image {
+.service-img-wrap {
   aspect-ratio: 487 / 255;
+  clip-path: inset(100% 0 0 0);
+  /* hidden before JS */
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.service-item-image {
   background-color: #413f35;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
   width: 100%;
 }
 
