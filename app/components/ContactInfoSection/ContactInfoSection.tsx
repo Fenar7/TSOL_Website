@@ -1,5 +1,12 @@
+"use client";
+
 import Image from "next/image";
+import { useLayoutEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./style.scss";
+
+gsap.registerPlugin(ScrollTrigger);
 
 type ContactCard = {
   id: string;
@@ -61,8 +68,66 @@ const contactCards: ContactCard[] = [
 ];
 
 const ContactInfoSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 95%",
+          toggleActions: "restart none none reverse",
+        },
+      });
+
+      // Cards materialise upward with stagger — border flashes in from transparent
+      tl.fromTo(
+        ".contact-info-card",
+        {
+          opacity: 0,
+          y: 70,
+          borderColor: "transparent",
+        },
+        {
+          opacity: 1,
+          y: 0,
+          borderColor: "var(--stroke-grey, #d8d5cc)",
+          duration: 0.75,
+          stagger: 0.12,
+          ease: "power3.out",
+        }
+      )
+
+        // Icons pop in with a slight scale bounce
+        .fromTo(
+          ".contact-info-icon",
+          { opacity: 0, scale: 0.6 },
+          { opacity: 1, scale: 1, duration: 0.45, stagger: 0.12, ease: "back.out(1.4)" },
+          "-=0.65"
+        )
+
+        // Card titles lift up
+        .fromTo(
+          ".contact-info-title",
+          { opacity: 0, y: 14 },
+          { opacity: 1, y: 0, duration: 0.4, stagger: 0.12, ease: "power3.out" },
+          "-=0.45"
+        )
+
+        // Details fade last — the most important info arrives last for drama
+        .fromTo(
+          ".contact-info-detail",
+          { opacity: 0, y: 10 },
+          { opacity: 1, y: 0, duration: 0.4, stagger: 0.12, ease: "power3.out" },
+          "-=0.4"
+        );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="contact-info-section" aria-label="Contact details">
+    <section className="contact-info-section" aria-label="Contact details" ref={sectionRef}>
       <div className="contact-info-container container">
         {contactCards.map((card) => (
           <article key={card.id} className="contact-info-card">

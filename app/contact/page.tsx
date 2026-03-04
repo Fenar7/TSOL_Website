@@ -7,14 +7,15 @@ const page = () => {
   return (
     <main className="contact-page-main">
       <PageHeroSection
-        title="Let’s Create Something Extraordinary Together"
-        subtitle="Contact us to begin your story: let’s shape life together"
+        title="Let's Create Something Extraordinary Together"
+        subtitle="Contact us to begin your story: let's shape life together"
         imageSrc="/images/contact-hero-image.png"
         imageAlt="Contact page hero showing warm architectural entrance"
         contentAlign="center"
         overlayOpacity={0.35}
         className="contact-page-hero"
         priority
+        animated
       />
       <ContactInfoSection />
       <ContactMapSection />
