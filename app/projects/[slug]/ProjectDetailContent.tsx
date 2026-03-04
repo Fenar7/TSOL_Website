@@ -131,19 +131,38 @@ const ProjectDetailContent = ({
                 <div className="project-detail-container container">
                     {/* ── Gallery ── */}
                     <div className="project-gallery">
-                        <button
-                            type="button"
-                            className="project-main-image"
-                            style={{
-                                backgroundImage: `url(${urlFor(coverImage)
-                                    .width(1400)
-                                    .height(723)
-                                    .auto("format")
-                                    .url()})`,
-                            }}
-                            onClick={() => openViewer(0)}
-                            aria-label="View cover image full screen"
-                        />
+                        <div style={{ position: "relative" }}>
+                            <button
+                                type="button"
+                                className="project-main-image"
+                                style={{
+                                    backgroundImage: `url(${urlFor(coverImage)
+                                        .width(1400)
+                                        .height(723)
+                                        .auto("format")
+                                        .url()})`,
+                                }}
+                                onClick={() => openViewer(0)}
+                                aria-label="View cover image full screen"
+                            />
+
+                            {/* Mobile-only pill: shows total photo count, opens lightbox */}
+                            {allImages.length > 1 && (
+                                <button
+                                    type="button"
+                                    className="project-mobile-photo-pill"
+                                    onClick={() => openViewer(0)}
+                                    aria-label={`View all ${allImages.length} photos`}
+                                >
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                                        <rect x="3" y="6" width="18" height="14" rx="2" />
+                                        <circle cx="12" cy="13" r="3" />
+                                        <path d="M9 6l1.5-2h3L15 6" />
+                                    </svg>
+                                    {allImages.length} photos
+                                </button>
+                            )}
+                        </div>
 
                         {sideThumbnails.length > 0 && (
                             <div className="project-side-thumbs">

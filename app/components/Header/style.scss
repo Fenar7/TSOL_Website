@@ -128,18 +128,33 @@
 .mobile-nav {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding-top: 122px;
+  gap: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 130px;
 }
 
 .mobile-nav-link {
+  border-bottom: 1px solid rgba($black, 0.07);
   color: $black;
+  display: block;
   font-family: $font-neue-haas;
-  font-size: clamp(2.2rem, 9vw, 3.1rem);
-  font-weight: 500;
-  letter-spacing: 0.01em;
+  font-size: clamp(2.6rem, 10vw, 3.8rem);
+  font-weight: 300;
+  letter-spacing: -0.01em;
   line-height: 1;
+  padding: 22px 0;
   text-decoration: none;
+  transition: opacity 0.2s ease, padding-left 0.25s ease;
+
+  &:first-child {
+    border-top: 1px solid rgba($black, 0.07);
+  }
+
+  &:hover {
+    opacity: 0.45;
+    padding-left: 8px;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -166,6 +181,11 @@
   .mobile-toggle {
     display: flex;
   }
+
+  .mobile-nav {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 @media (max-width: 639px) {
@@ -176,5 +196,10 @@
   .logo {
     font-size: 30px;
     letter-spacing: 0.19em;
+  }
+
+  .mobile-nav {
+    padding-left: 14px;
+    padding-right: 14px;
   }
 }

@@ -120,32 +120,34 @@
   }
 
   .page-hero-card {
-    aspect-ratio: 4 / 3;
-    min-height: 300px;
+    aspect-ratio: unset;
+    min-height: clamp(420px, 80vw, 560px);
   }
 
   .page-hero-content {
     left: 18px;
     max-width: calc(100% - 36px);
-    top: auto;
-    transform: none;
-    bottom: 22px;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
   }
 
+  /* Centred variant — needs both X and Y */
   .page-hero-content.is-centered {
     left: 50%;
-    max-width: calc(100% - 28px);
+    max-width: calc(100% - 36px);
     text-align: center;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
   }
+
 
   .page-hero-title {
     gap: 7px;
   }
 
   .page-hero-title-single {
-    font-size: clamp(37px, 10.3vw, 52px);
-    line-height: 1.07;
+    font-size: clamp(30px, 8vw, 44px);
+    line-height: 1.1;
   }
 
   .page-hero-title-lead {

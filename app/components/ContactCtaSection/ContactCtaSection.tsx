@@ -9,8 +9,7 @@ import "./style.scss";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const contactCtaImageUrl =
-  "https://www.figma.com/api/mcp/asset/385f008f-54fb-42d7-8fa5-4da19cdaec28";
+const contactCtaImageUrl = "/images/our-motto-image.png";
 
 const ContactCtaSection = () => {
   const sectionRef = useRef<HTMLElement>(null);

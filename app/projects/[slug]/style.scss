@@ -81,6 +81,11 @@
     width: 20px;
 }
 
+/* Mobile photo pill — hidden on desktop, shown only on mobile */
+.project-mobile-photo-pill {
+    display: none;
+}
+
 /* ── Heading ── */
 
 .project-heading {
@@ -393,8 +398,49 @@
         padding-bottom: 74px;
     }
 
-    .project-side-thumbs {
-        grid-template-columns: minmax(0, 1fr);
+    /* Hide side thumbs and overflow gallery — single card layout */
+    .project-side-thumbs,
+    .project-full-gallery {
+        display: none;
+    }
+
+    /* Single cover image fills width with a nice portrait ratio */
+    .project-main-image {
+        aspect-ratio: 4 / 3;
+        height: auto;
+    }
+
+    /* Mobile photo count pill — absolute over the cover image */
+    .project-mobile-photo-pill {
+        align-items: center;
+        background: rgba(0, 0, 0, 0.66);
+        backdrop-filter: blur(6px);
+        border: 0;
+        border-radius: 999px;
+        bottom: 14px;
+        color: #fff;
+        cursor: pointer;
+        display: inline-flex;
+        font-family: $font-neue-haas;
+        font-size: 14px;
+        font-weight: 400;
+        gap: 7px;
+        height: auto;
+        letter-spacing: 0.02em;
+        padding: 8px 16px;
+        position: absolute;
+        right: 14px;
+        z-index: 2;
+        transition: background 0.2s ease;
+
+        svg {
+            display: block;
+            flex-shrink: 0;
+        }
+
+        &:active {
+            background: rgba(0, 0, 0, 0.85);
+        }
     }
 
     .project-heading {
@@ -430,11 +476,6 @@
         margin-left: 22px;
     }
 
-    .project-full-gallery {
-        grid-template-columns: minmax(0, 1fr);
-        margin-top: 40px;
-    }
-
     .project-back {
         margin-top: 40px;
     }
@@ -445,8 +486,8 @@
     }
 
     .project-viewer-panel {
-        height: min(74vh, 680px);
-        width: 95vw;
+        height: min(78vh, 700px);
+        width: 98vw;
     }
 
     .project-viewer-close {
