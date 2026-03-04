@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import IntroLoader from "./components/IntroLoader/IntroLoader";
 import GlobalHoverEffects from "./components/GlobalHoverEffects/GlobalHoverEffects";
+import PageTransition from "./components/PageTransition/PageTransition";
 
 export const metadata: Metadata = {
   title: {
@@ -32,6 +33,7 @@ export default function RootLayout({
       <body className="antialiased">
         <IntroLoader />
         <GlobalHoverEffects />
+        <PageTransition />
         <Header />
         {children}
         <Footer />

@@ -1,0 +1,38 @@
+.page-transition-panel {
+    align-items: center;
+    background: #0d0d0d;
+    display: flex;
+    inset: 0;
+    justify-content: center;
+    pointer-events: none;
+    position: fixed;
+    will-change: transform;
+    z-index: 9000;
+}
+
+.page-transition-inner {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.page-transition-line {
+    background: rgba(255, 255, 255, 0.18);
+    height: 1px;
+    transform-origin: left;
+    transform: scaleX(0);
+    width: clamp(80px, 12vw, 160px);
+}
+
+.page-transition-wordmark {
+    color: rgba(255, 255, 255, 0.88);
+    font-family: $font-neue-haas, "Helvetica Neue", sans-serif;
+    font-size: clamp(26px, 3.5vw, 48px);
+    font-weight: 400;
+    letter-spacing: 0.24em;
+    line-height: 1;
+    opacity: 0;
+    text-transform: uppercase;
+    user-select: none;
+}
