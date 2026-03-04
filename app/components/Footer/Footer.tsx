@@ -64,10 +64,10 @@ const Footer = () => {
           <h3 className="footer-group-title footer-links-title">Links</h3>
           <div className="footer-links-list">
             <Link href="/">Home</Link>
-            <a href="#">About</a>
-            <a href="#">Portfolio</a>
-            <a href="#">Blog</a>
-            <a href="#">Contact</a>
+            <Link href="/about-tsol">About</Link>
+            <Link href="/projects">Portfolio</Link>
+            <Link href="/blog">Blog</Link>
+            <Link href="/contact">Contact</Link>
           </div>
         </nav>
 

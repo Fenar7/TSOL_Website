@@ -16,7 +16,7 @@ const ALL_PROJECTS_QUERY = `
     title,
     slug,
     coverImage,
-    category,
+    category->{ _id, title, slug },
     status
   }
 `;
@@ -31,7 +31,7 @@ const HOMEPAGE_PROJECTS_QUERY = `
     title,
     slug,
     coverImage,
-    category,
+    category->{ _id, title, slug },
     status
   }
 `;
@@ -47,7 +47,7 @@ const PROJECT_BY_SLUG_QUERY = `
     slug,
     coverImage,
     gallery,
-    category,
+    category->{ _id, title, slug },
     status,
     year,
     areaSqft,
@@ -63,11 +63,17 @@ export async function getProjectBySlug(
 }
 
 const CATEGORIES_QUERY = `
-  array::unique(*[_type == "project"].category)
+  *[_type == "category"] | order(title asc) {
+    _id,
+    title,
+    slug
+  }
 `;
 
-export async function getCategories(): Promise<string[]> {
-  return client.fetch<string[]>(CATEGORIES_QUERY);
+export type SanityCategory = { _id: string; title: string; slug: { current: string } };
+
+export async function getCategories(): Promise<SanityCategory[]> {
+  return client.fetch<SanityCategory[]>(CATEGORIES_QUERY);
 }
 
 /* ================================================================== */

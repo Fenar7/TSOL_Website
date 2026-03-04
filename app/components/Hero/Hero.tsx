@@ -118,10 +118,10 @@ const Hero = () => {
               </div>
 
               <div className="hero-actions" ref={buttonsRef}>
-                <ActionButton href="#" variant="outline">
+                <ActionButton href="/projects" variant="outline">
                   View Portfolio
                 </ActionButton>
-                <ActionButton href="#" variant="solid">
+                <ActionButton href="/contact" variant="solid">
                   Discuss your space
                 </ActionButton>
               </div>

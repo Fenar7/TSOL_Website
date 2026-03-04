@@ -8,14 +8,12 @@ type SanityImageSource = Parameters<ReturnType<typeof import("@sanity/image-url"
 
 export type ProjectStatus = "Ongoing" | "Completed";
 
-export type ProjectCategory =
-    | "Residential"
-    | "Commercial"
-    | "Healthcare"
-    | "Hospitality"
-    | "Institutional"
-    | "Interior"
-    | "Landscape";
+/** Dereferenced category document returned by GROQ's -> operator */
+export interface ProjectCategory {
+    _id: string;
+    title: string;
+    slug: { current: string };
+}
 
 export interface SanityProject {
     _id: string;

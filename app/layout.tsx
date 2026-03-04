@@ -3,6 +3,7 @@ import "./globals.scss";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import IntroLoader from "./components/IntroLoader/IntroLoader";
+import GlobalHoverEffects from "./components/GlobalHoverEffects/GlobalHoverEffects";
 
 export const metadata: Metadata = {
   title: {
@@ -30,6 +31,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased">
         <IntroLoader />
+        <GlobalHoverEffects />
         <Header />
         {children}
         <Footer />

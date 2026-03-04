@@ -1,15 +1,17 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import { gsap } from "gsap";
 import SectionTitle from "../ui/SectionTitle/SectionTitle";
 import { urlFor } from "@/sanity/image";
 import type { ProjectCard } from "../../lib/types";
+import type { SanityCategory } from "../../lib/queries";
 import "./style.scss";
 
 interface ProjectsPageSectionProps {
   projects: ProjectCard[];
-  categories: string[];
+  categories: SanityCategory[];
 }
 
 const ProjectsPageSection = ({
@@ -18,16 +20,44 @@ const ProjectsPageSection = ({
 }: ProjectsPageSectionProps) => {
   const [activeStatus, setActiveStatus] = useState<string>("All");
   const [activeCategory, setActiveCategory] = useState<string>("All");
+  const gridRef = useRef<HTMLDivElement>(null);
+  const isFirstRender = useRef(true);
 
   const filteredProjects = useMemo(() => {
     return projects.filter((project) => {
       const statusMatch =
         activeStatus === "All" || project.status === activeStatus;
       const categoryMatch =
-        activeCategory === "All" || project.category === activeCategory;
+        activeCategory === "All" || project.category?._id === activeCategory;
       return statusMatch && categoryMatch;
     });
   }, [projects, activeStatus, activeCategory]);
+
+  /* ── Filter switch GSAP animation ── */
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    const cards = grid.querySelectorAll(".projects-page-item");
+    if (!cards.length) return;
+
+    gsap.fromTo(
+      cards,
+      { opacity: 0, y: 28 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        stagger: 0.07,
+        ease: "power3.out",
+        clearProps: "transform,opacity",
+      }
+    );
+  }, [filteredProjects]);
 
   const statusFilters = ["All", "Ongoing", "Completed"];
 
@@ -84,13 +114,13 @@ const ProjectsPageSection = ({
                   </button>
                   {categories.map((cat) => (
                     <button
-                      key={cat}
+                      key={cat._id}
                       type="button"
-                      className={`projects-page-filter-pill ${activeCategory === cat ? "is-active" : ""
+                      className={`projects-page-filter-pill ${activeCategory === cat._id ? "is-active" : ""
                         }`.trim()}
-                      onClick={() => setActiveCategory(cat)}
+                      onClick={() => setActiveCategory(cat._id)}
                     >
-                      {cat}
+                      {cat.title}
                     </button>
                   ))}
                 </div>
@@ -111,7 +141,7 @@ const ProjectsPageSection = ({
 
         {/* ── Grid ── */}
         {filteredProjects.length > 0 ? (
-          <div className="projects-page-grid">
+          <div className="projects-page-grid" ref={gridRef}>
             {filteredProjects.map((project) => (
               <Link
                 key={project._id}
@@ -133,8 +163,8 @@ const ProjectsPageSection = ({
                   />
                   <span
                     className={`projects-page-item-badge ${project.status === "Ongoing"
-                        ? "is-ongoing"
-                        : "is-completed"
+                      ? "is-ongoing"
+                      : "is-completed"
                       }`}
                   >
                     {project.status}
@@ -143,7 +173,7 @@ const ProjectsPageSection = ({
                 <div className="projects-page-item-info">
                   <h3 className="projects-page-item-title">{project.title}</h3>
                   <span className="projects-page-item-category">
-                    {project.category}
+                    {project.category?.title ?? ""}
                   </span>
                 </div>
               </Link>

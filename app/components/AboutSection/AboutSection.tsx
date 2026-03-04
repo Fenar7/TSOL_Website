@@ -140,7 +140,7 @@ const AboutSection = () => {
             </p>
           </div>
 
-          <a className="about-know-more" href="#">
+          <a className="about-know-more" href="/about-tsol">
             <span>Know More</span>
             <span className="about-know-arrow" aria-hidden="true">
               ↗

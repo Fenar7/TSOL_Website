@@ -41,10 +41,12 @@
 }
 
 .blog-page-card {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   gap: 13px;
   min-width: 0;
+  text-decoration: none;
 }
 
 .blog-page-card-image-wrap {

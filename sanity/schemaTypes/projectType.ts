@@ -35,18 +35,8 @@ export const projectType = defineType({
     defineField({
       name: "category",
       title: "Category",
-      type: "string",
-      options: {
-        list: [
-          "Residential",
-          "Commercial",
-          "Healthcare",
-          "Hospitality",
-          "Institutional",
-          "Interior",
-          "Landscape",
-        ],
-      },
+      type: "reference",
+      to: [{ type: "category" }],
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -90,7 +80,7 @@ export const projectType = defineType({
     select: {
       title: "title",
       media: "coverImage",
-      subtitle: "category",
+      subtitle: "category.title",
     },
     prepare({ title, media, subtitle }) {
       return {

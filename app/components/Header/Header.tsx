@@ -7,10 +7,10 @@ import { gsap } from "gsap";
 import "./style.scss";
 
 const navLinks = [
-  { label: "About", href: "#" },
-  { label: "Portfolio", href: "#" },
-  { label: "Journal", href: "#" },
-  { label: "Contact", href: "#" },
+  { label: "About", href: "/about-tsol" },
+  { label: "Portfolio", href: "/projects" },
+  { label: "Journal", href: "/blog" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const Header = () => {

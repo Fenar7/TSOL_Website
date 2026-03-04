@@ -82,10 +82,10 @@ const ContactCtaSection = () => {
           </div>
 
           <div className="contact-cta-actions">
-            <ActionButton href="#" variant="outline-dark" className="contact-cta-btn">
+            <ActionButton href="/projects" variant="outline-dark" className="contact-cta-btn">
               Explore Projects
             </ActionButton>
-            <ActionButton href="#" variant="solid-dark" className="contact-cta-btn">
+            <ActionButton href="/contact" variant="solid-dark" className="contact-cta-btn">
               Request a Consultation
             </ActionButton>
           </div>

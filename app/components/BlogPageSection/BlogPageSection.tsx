@@ -48,7 +48,12 @@ const BlogPageSection = ({ posts }: BlogPageSectionProps) => {
           <>
             <div className="blog-page-grid">
               {visiblePosts.map((post) => (
-                <article key={post._id} className="blog-page-card">
+                <Link
+                  key={post._id}
+                  href={`/blog/${post.slug.current}`}
+                  className="blog-page-card"
+                  aria-label={`Read article: ${post.title}`}
+                >
                   <div className="blog-page-card-image-wrap">
                     <div
                       className="blog-page-card-image"
@@ -62,12 +67,7 @@ const BlogPageSection = ({ posts }: BlogPageSectionProps) => {
                           .url()})`,
                       }}
                     />
-
-                    <Link
-                      href={`/blog/${post.slug.current}`}
-                      className="blog-page-card-arrow-link"
-                      aria-label={`Read article: ${post.title}`}
-                    >
+                    <span className="blog-page-card-arrow-link" aria-hidden="true">
                       <Image
                         src="/images/icons/top-right-arrow.svg"
                         alt=""
@@ -75,22 +75,18 @@ const BlogPageSection = ({ posts }: BlogPageSectionProps) => {
                         height={16}
                         className="blog-page-card-arrow-icon"
                       />
-                    </Link>
+                    </span>
                   </div>
 
                   <div className="blog-page-card-content">
                     <h3 className="blog-page-card-title">
-                      <Link
-                        href={`/blog/${post.slug.current}`}
-                        className="blog-page-card-title-link"
-                      >
+                      <span className="blog-page-card-title-link">
                         {post.title}
-                      </Link>
+                      </span>
                     </h3>
                     {post.excerpt && (
                       <p className="blog-page-card-excerpt">{post.excerpt}</p>
                     )}
-
                     <div className="blog-page-card-date">
                       <Image
                         src="/images/icons/calendr.svg"
@@ -101,7 +97,7 @@ const BlogPageSection = ({ posts }: BlogPageSectionProps) => {
                       <span>{formatDate(post.date)}</span>
                     </div>
                   </div>
-                </article>
+                </Link>
               ))}
             </div>
 

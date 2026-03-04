@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: PageProps) {
 
     return {
         title: `${project.title} — TSOL Architecture`,
-        description: `${project.category} project by TSOL Architecture${project.location ? ` in ${project.location}` : ""
+        description: `${project.category?.title ?? "Architecture"} project by TSOL Architecture${project.location ? ` in ${project.location}` : ""
             }.`,
     };
 }
@@ -40,7 +40,7 @@ const ProjectDetailPage = async ({ params }: PageProps) => {
                 title={project.title}
                 coverImage={project.coverImage}
                 gallery={project.gallery}
-                category={project.category}
+                category={project.category?.title}
                 status={project.status}
                 year={project.year}
                 areaSqft={project.areaSqft}
