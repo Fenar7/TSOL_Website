@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./style.scss";
@@ -14,15 +14,16 @@ const AboutSection = () => {
   const kickerLineRef = useRef<HTMLSpanElement>(null);
   const kickerTextRef = useRef<HTMLParagraphElement>(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     let ctx = gsap.context(() => {
       // ── ScrollTrigger timeline ──
       const tl = gsap.timeline({
         defaults: { ease: "power3.out" },
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 95%", // Earliest possible moment (enters screen)
-          toggleActions: "restart none none reverse", // Restart on enter, reverse on leaveBack
+          start: "top 80%",
+          toggleActions: "restart none none reverse",
+          invalidateOnRefresh: true,
         },
       });
 
@@ -97,7 +98,13 @@ const AboutSection = () => {
 
     }, sectionRef);
 
-    return () => ctx.revert();
+    // Refresh ScrollTrigger after layout settles (important on mobile)
+    const timer = setTimeout(() => ScrollTrigger.refresh(), 300);
+
+    return () => {
+      clearTimeout(timer);
+      ctx.revert();
+    };
   }, []);
 
   return (
