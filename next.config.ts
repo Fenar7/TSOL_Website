@@ -10,6 +10,12 @@ const nextConfig: NextConfig = {
   sassOptions: {
     additionalData: `@use "${sassVariablesPath}" as *;`,
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;

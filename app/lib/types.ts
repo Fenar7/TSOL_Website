@@ -1,5 +1,8 @@
 import type { PortableTextBlock } from "@portabletext/react";
-import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+
+// SanityImageSource — acceptable input to sanity's imageUrlBuilder
+// Using a local alias avoids the unstable deep import from @sanity/image-url
+type SanityImageSource = Parameters<ReturnType<typeof import("@sanity/image-url")["default"]>["image"]>[0];
 
 /* ── Project types ── */
 
