@@ -1,8 +1,68 @@
+"use client";
+
+import { useLayoutEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./style.scss";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const StorySection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 95%",
+          toggleActions: "restart none none reverse",
+        },
+      });
+
+      // 1. "The Founder" title — large, bold entrance from left
+      tl.fromTo(
+        ".story-title",
+        { opacity: 0, x: -50 },
+        { opacity: 1, x: 0, duration: 0.75, ease: "power3.out" }
+      )
+
+        // 2. Subtitle — "Akbar Khan Architect" drifts in slightly after
+        .fromTo(
+          ".story-subtitle",
+          { opacity: 0, x: -35 },
+          { opacity: 1, x: 0, duration: 0.65, ease: "power3.out" },
+          "-=0.45"
+        )
+
+        // 3. Designation — drifts up
+        .fromTo(
+          ".story-designation",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" },
+          "-=0.35"
+        )
+
+        // 4. Body paragraphs — staggered upward reveal
+        .fromTo(
+          ".story-body p",
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            stagger: 0.15,
+            ease: "power3.out",
+          },
+          "-=0.3"
+        );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="story-section-main" aria-label="The Founder Story">
+    <section className="story-section-main" aria-label="The Founder Story" ref={sectionRef}>
       <div className="story-section-container container">
         <header className="story-section-header">
           <h2 className="story-title">The Founder</h2>

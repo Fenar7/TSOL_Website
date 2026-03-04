@@ -12,8 +12,9 @@ const page = () => {
         imageSrc="/images/about-hero-image.png"
         imageAlt="TSOL interior space"
         priority
+        animated
       />
-      <StorySection/>
+      <StorySection />
     </main>
   );
 };
