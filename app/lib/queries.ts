@@ -85,7 +85,7 @@ const ALL_BLOG_POSTS_QUERY = `
     _id,
     title,
     slug,
-    coverImage,
+    "coverImage": coverImage { ..., asset-> },
     excerpt,
     date
   }
@@ -100,10 +100,19 @@ const BLOG_POST_BY_SLUG_QUERY = `
     _id,
     title,
     slug,
-    coverImage,
+    "coverImage": coverImage {
+      ...,
+      asset->
+    },
     excerpt,
     date,
-    body
+    body[] {
+      ...,
+      _type == "image" => {
+        ...,
+        asset->
+      }
+    }
   }
 `;
 

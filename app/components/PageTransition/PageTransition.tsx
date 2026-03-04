@@ -61,7 +61,6 @@ export default function PageTransition() {
             isAnimating.current = true;
 
             e.preventDefault();
-            e.stopPropagation();
 
             const panel = panelRef.current;
             const wordmark = wordmarkRef.current;

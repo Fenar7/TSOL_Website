@@ -26,11 +26,13 @@ export default function GlobalHoverEffects() {
             delegate: Element | Document = document
         ) => {
             const handleEnter = (e: Event) => {
-                const target = (e.target as Element).closest(selector);
+                if (!(e.target instanceof Element)) return;
+                const target = e.target.closest(selector);
                 if (target) onEnter(target);
             };
             const handleLeave = (e: Event) => {
-                const target = (e.target as Element).closest(selector);
+                if (!(e.target instanceof Element)) return;
+                const target = e.target.closest(selector);
                 if (target) onLeave(target);
             };
             delegate.addEventListener("mouseenter", handleEnter, true);
