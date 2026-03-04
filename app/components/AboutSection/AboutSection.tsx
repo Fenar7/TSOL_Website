@@ -7,8 +7,7 @@ import "./style.scss";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const aboutImageUrl =
-  "https://www.figma.com/api/mcp/asset/3e0e6743-eadc-4607-994b-403901948724";
+const aboutImageUrl = "/images/about-image.png";
 
 const AboutSection = () => {
   const sectionRef = useRef<HTMLElement>(null);

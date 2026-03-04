@@ -11,11 +11,6 @@ export const metadata: Metadata = {
   },
   description:
     "TSOL — The Shape Of Life is a timeless architecture and design studio led by Akbar Khan, crafting spaces shaped by lived human experience. Residential, interiors, and landscaping across Kerala since 1991.",
-  icons: {
-    icon: "/images/TSOL-black-logo.png",
-    shortcut: "/images/TSOL-black-logo.png",
-    apple: "/images/TSOL-black-logo.png",
-  },
   openGraph: {
     title: "TSOL — The Shape Of Life | Architecture & Design Studio",
     description:

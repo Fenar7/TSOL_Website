@@ -7,12 +7,9 @@ import "./style.scss";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const approachImageOne =
-  "https://www.figma.com/api/mcp/asset/97495494-aa32-4e50-96cc-057d0b295f25";
-const approachImageTwo =
-  "https://www.figma.com/api/mcp/asset/eb1926d4-40f9-4176-b7c4-7a7a39a75d07";
-const approachImageThree =
-  "https://www.figma.com/api/mcp/asset/c7185cfc-d6f5-474f-89e8-42a0d2c61025";
+const approachImageOne = "/images/our-approach-1.png";
+const approachImageTwo = "/images/our-approach-2.png";
+const approachImageThree = "/images/our-approach-3.png";
 
 const OurApproachSection = () => {
   const sectionRef = useRef<HTMLElement>(null);

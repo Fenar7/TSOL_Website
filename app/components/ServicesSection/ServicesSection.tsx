@@ -11,21 +11,21 @@ gsap.registerPlugin(ScrollTrigger);
 const servicesItems = [
   {
     id: "service-architecture",
-    imageUrl: "https://www.figma.com/api/mcp/asset/d10fa574-0675-4f07-8a96-288b09350530",
+    imageUrl: "/images/architecture.png",
     title: "Architecture",
     description:
       "We design with lived experience in mind. Plans are shaped for posture, movement, rest, gathering, and openness, so the space feels clear, calm, and true to life.",
   },
   {
     id: "service-interiors",
-    imageUrl: "https://www.figma.com/api/mcp/asset/fd7a470c-88c8-436a-8a7d-4b5f7772e572",
+    imageUrl: "/images/interior.png",
     title: "Interiors",
     description:
       "Interiors carry the soul of daily life. Proportion, material, comfort, and atmosphere are held with care, so the space feels human, grounded, and worth returning to.",
   },
   {
     id: "service-landscaping",
-    imageUrl: "https://www.figma.com/api/mcp/asset/3f931599-3aa3-43c3-9433-2e576ec1d069",
+    imageUrl: "/images/landscaping.png",
     title: "Landscaping",
     description:
       "Landscape extends the space into nature. Shade, air, paths, and quiet corners are shaped to feel natural through the day, and to mature with time.",
