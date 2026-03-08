@@ -74,7 +74,7 @@ const OurApproachSection = () => {
             <span className="our-approach-kicker-line" aria-hidden="true" />
           </div>
 
-          <p className="our-approach-copy">
+          {/* <p className="our-approach-copy">
             The buildings form emerges from lived patterns. Instead of starting
             with dramatic shapes or fashionable style,{" "}
             <strong className="our-approach-copy-large">TSOL, thinks</strong> about{" "}
@@ -83,7 +83,7 @@ const OurApproachSection = () => {
             safe. A kitchen becomes central because family life gathers there -
             streets curve because people slow down and linger there - not because
             straight lines are more efficient.
-          </p>
+          </p> */}
         </div>
 
         <div className="our-approach-cards">

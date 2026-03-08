@@ -10,14 +10,10 @@ import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import "./style.scss";
 
 interface ProjectDetailContentProps {
-    title: string;
+    title?: string;
     coverImage: SanityImageSource;
     gallery?: SanityImageSource[];
-    category: string;
     status: string;
-    year?: number;
-    areaSqft?: number;
-    location?: string;
     body?: PortableTextBlock[];
 }
 
@@ -25,11 +21,7 @@ const ProjectDetailContent = ({
     title,
     coverImage,
     gallery,
-    category,
     status,
-    year,
-    areaSqft,
-    location,
     body,
 }: ProjectDetailContentProps) => {
     const allImages = useMemo(() => {
@@ -118,12 +110,7 @@ const ProjectDetailContent = ({
     }, [viewerOpen, activeIndex, isAnimating]);
 
     /* ── Meta line ── */
-    const metaParts: string[] = [];
-    if (year) metaParts.push(String(year));
-    if (areaSqft) metaParts.push(`${areaSqft.toLocaleString()} sqft`);
-    if (location) metaParts.push(location);
-    if (status) metaParts.push(status);
-    const metaLine = metaParts.join(" | ");
+    const metaLine = status ?? "";
 
     return (
         <>
@@ -222,7 +209,7 @@ const ProjectDetailContent = ({
                     <div className="project-heading">
                         <div className="project-kicker-row">
                             <span className="project-kicker-line" aria-hidden="true" />
-                            <p className="project-kicker">{category}</p>
+                            <p className="project-kicker">{status}</p>
                         </div>
                         <h1 className="project-title">{title}</h1>
                         {metaLine && <p className="project-meta">{metaLine}</p>}

@@ -65,16 +65,18 @@
 }
 
 @media (max-width: 1180px) {
-  .contact-cta-section.container {
-    width: calc(100% - 40px);
-  }
-
   .contact-cta-title .section-title__subtitle {
     max-width: 900px;
   }
 
   .contact-cta-img-wrap {
     margin-top: 30px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .contact-cta-section.container {
+    width: calc(100% - 40px);
   }
 }
 

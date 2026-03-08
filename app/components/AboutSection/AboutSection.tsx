@@ -112,8 +112,8 @@ const AboutSection = () => {
       <div className="about-section-container container">
         <div className="about-left-column">
           <div className="about-kicker-row">
-            <span className="about-kicker-line" aria-hidden="true" ref={kickerLineRef} />
-            <p className="about-kicker" ref={kickerTextRef}>What is TSOL</p>
+            {/* <span className="about-kicker-line" aria-hidden="true" ref={kickerLineRef} /> */}
+            {/* <p className="about-kicker" ref={kickerTextRef}>What is TSOL</p> */}
           </div>
 
           <div className="about-copy">
@@ -157,7 +157,7 @@ const AboutSection = () => {
           <div className="about-stats">
             <article className="about-stat">
               <p className="about-stat-title">Since 1991</p>
-              <p className="about-stat-text">Practice led by Akbar Khan</p>
+              <p className="about-stat-text">Practice led by Akbar Khan Architect</p>
             </article>
             <span className="about-stat-divider" aria-hidden="true" />
             <article className="about-stat">

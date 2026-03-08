@@ -8,31 +8,20 @@ type SanityImageSource = Parameters<ReturnType<typeof import("@sanity/image-url"
 
 export type ProjectStatus = "Ongoing" | "Completed";
 
-/** Dereferenced category document returned by GROQ's -> operator */
-export interface ProjectCategory {
-    _id: string;
-    title: string;
-    slug: { current: string };
-}
-
 export interface SanityProject {
     _id: string;
-    title: string;
+    title?: string;
     slug: { current: string };
     coverImage: SanityImageSource;
     gallery?: SanityImageSource[];
-    category: ProjectCategory;
     status: ProjectStatus;
-    year?: number;
-    areaSqft?: number;
-    location?: string;
     body?: PortableTextBlock[];
 }
 
 /** Listing card — lighter payload (no body / gallery) */
 export type ProjectCard = Pick<
     SanityProject,
-    "_id" | "title" | "slug" | "coverImage" | "category" | "status"
+    "_id" | "title" | "slug" | "coverImage" | "status"
 >;
 
 /* ── Blog types ── */

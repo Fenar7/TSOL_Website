@@ -53,9 +53,11 @@ export default function PageTransition() {
                 anchor.getAttribute("target") === "_blank"
             ) return;
 
-            // Don't transition to current page
+            // Don't transition to current page, Sanity studio, or from Sanity studio
             const targetPath = href.split("?")[0];
             if (targetPath === pathname || targetPath === window.location.pathname) return;
+            if (targetPath.startsWith("/studio")) return;
+            if (window.location.pathname.startsWith("/studio")) return;
 
             if (isAnimating.current) return;
             isAnimating.current = true;
@@ -106,6 +108,12 @@ export default function PageTransition() {
     useEffect(() => {
         if (prevPathname.current === pathname) return;
         prevPathname.current = pathname;
+
+        // Never animate for studio routes
+        if (pathname.startsWith("/studio")) {
+            isAnimating.current = false;
+            return;
+        }
 
         const panel = panelRef.current;
         const wordmark = wordmarkRef.current;

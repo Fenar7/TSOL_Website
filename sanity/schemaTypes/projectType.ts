@@ -9,7 +9,7 @@ export const projectType = defineType({
       name: "title",
       title: "Title",
       type: "string",
-      validation: (rule) => rule.required().min(3),
+      // Optional — no validation required
     }),
     defineField({
       name: "slug",
@@ -33,13 +33,6 @@ export const projectType = defineType({
       of: [{ type: "image", options: { hotspot: true } }],
     }),
     defineField({
-      name: "category",
-      title: "Category",
-      type: "reference",
-      to: [{ type: "category" }],
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
       name: "status",
       title: "Status",
       type: "string",
@@ -54,24 +47,9 @@ export const projectType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: "year",
-      title: "Year",
-      type: "number",
-    }),
-    defineField({
-      name: "areaSqft",
-      title: "Area (sqft)",
-      type: "number",
-    }),
-    defineField({
-      name: "location",
-      title: "Location",
-      type: "string",
-    }),
-    defineField({
       name: "body",
       title: "Body",
-      description: "Rich text content for the project detail page",
+      description: "Rich text content for the project detail page (optional)",
       type: "array",
       of: [{ type: "block" }],
     }),
@@ -80,13 +58,13 @@ export const projectType = defineType({
     select: {
       title: "title",
       media: "coverImage",
-      subtitle: "category.title",
+      subtitle: "status",
     },
     prepare({ title, media, subtitle }) {
       return {
-        title,
+        title: title ?? "Untitled project",
         media,
-        subtitle: subtitle ?? "No category",
+        subtitle: subtitle ?? "",
       };
     },
   },

@@ -5,19 +5,20 @@ import OurApproachSection from "./components/OurApproachSection/OurApproachSecti
 import ProjectsSection from "./components/ProjectsSection/ProjectsSection";
 import ServicesSection from "./components/ServicesSection/ServicesSection";
 import TestimonialsSection from "./components/TestimonialsSection/TestimonialsSection";
-import TheSoulSection from "./components/TheSoulSection/TheSoulSection";
+import { getTestimonials } from "./lib/queries";
 
-export default function Home() {
+export default async function Home() {
+  const testimonials = await getTestimonials();
+
   return (
     <main className="home-main">
       <Hero />
       <AboutSection />
       <OurApproachSection />
-      <TheSoulSection />
       <ProjectsSection />
       <ServicesSection />
       <ContactCtaSection />
-      <TestimonialsSection />
+      <TestimonialsSection testimonials={testimonials} />
     </main>
   );
 }

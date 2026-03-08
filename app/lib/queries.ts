@@ -16,7 +16,6 @@ const ALL_PROJECTS_QUERY = `
     title,
     slug,
     coverImage,
-    category->{ _id, title, slug },
     status
   }
 `;
@@ -31,7 +30,6 @@ const HOMEPAGE_PROJECTS_QUERY = `
     title,
     slug,
     coverImage,
-    category->{ _id, title, slug },
     status
   }
 `;
@@ -47,11 +45,7 @@ const PROJECT_BY_SLUG_QUERY = `
     slug,
     coverImage,
     gallery,
-    category->{ _id, title, slug },
     status,
-    year,
-    areaSqft,
-    location,
     body
   }
 `;
@@ -60,20 +54,6 @@ export async function getProjectBySlug(
   slug: string
 ): Promise<SanityProject | null> {
   return client.fetch<SanityProject | null>(PROJECT_BY_SLUG_QUERY, { slug });
-}
-
-const CATEGORIES_QUERY = `
-  *[_type == "category"] | order(title asc) {
-    _id,
-    title,
-    slug
-  }
-`;
-
-export type SanityCategory = { _id: string; title: string; slug: { current: string } };
-
-export async function getCategories(): Promise<SanityCategory[]> {
-  return client.fetch<SanityCategory[]>(CATEGORIES_QUERY);
 }
 
 /* ================================================================== */
@@ -122,4 +102,30 @@ export async function getBlogPostBySlug(
   return client.fetch<SanityBlogPost | null>(BLOG_POST_BY_SLUG_QUERY, {
     slug,
   });
+}
+
+/* ================================================================== */
+/*  TESTIMONIALS                                                        */
+/* ================================================================== */
+
+export interface SanityTestimonial {
+  _id: string;
+  thumbnail: {
+    asset: { url: string };
+  };
+  video: {
+    asset: { url: string; mimeType?: string };
+  };
+}
+
+const ALL_TESTIMONIALS_QUERY = `
+  *[_type == "testimonial"] | order(order asc) {
+    _id,
+    "thumbnail": thumbnail { asset-> { url } },
+    "video": video { asset-> { url, mimeType } }
+  }
+`;
+
+export async function getTestimonials(): Promise<SanityTestimonial[]> {
+  return client.fetch<SanityTestimonial[]>(ALL_TESTIMONIALS_QUERY);
 }
