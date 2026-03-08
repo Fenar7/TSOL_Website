@@ -1,5 +1,5 @@
 import ProjectsPageSection from "../components/ProjectsPageSection/ProjectsPageSection";
-import { getAllProjects, getCategories } from "../lib/queries";
+import { getAllProjects } from "../lib/queries";
 import "./style.scss";
 
 export const metadata = {
@@ -9,14 +9,11 @@ export const metadata = {
 };
 
 const ProjectsPage = async () => {
-  const [projects, categories] = await Promise.all([
-    getAllProjects(),
-    getCategories(),
-  ]);
+  const projects = await getAllProjects();
 
   return (
     <main className="projects-page-main">
-      <ProjectsPageSection projects={projects} categories={categories} />
+      <ProjectsPageSection projects={projects} />
     </main>
   );
 };

@@ -6,32 +6,24 @@ import { gsap } from "gsap";
 import SectionTitle from "../ui/SectionTitle/SectionTitle";
 import { urlFor } from "@/sanity/image";
 import type { ProjectCard } from "../../lib/types";
-import type { SanityCategory } from "../../lib/queries";
 import "./style.scss";
 
 interface ProjectsPageSectionProps {
   projects: ProjectCard[];
-  categories: SanityCategory[];
 }
 
 const ProjectsPageSection = ({
   projects,
-  categories,
 }: ProjectsPageSectionProps) => {
   const [activeStatus, setActiveStatus] = useState<string>("All");
-  const [activeCategory, setActiveCategory] = useState<string>("All");
   const gridRef = useRef<HTMLDivElement>(null);
   const isFirstRender = useRef(true);
 
   const filteredProjects = useMemo(() => {
     return projects.filter((project) => {
-      const statusMatch =
-        activeStatus === "All" || project.status === activeStatus;
-      const categoryMatch =
-        activeCategory === "All" || project.category?._id === activeCategory;
-      return statusMatch && categoryMatch;
+      return activeStatus === "All" || project.status === activeStatus;
     });
-  }, [projects, activeStatus, activeCategory]);
+  }, [projects, activeStatus]);
 
   /* ── Filter switch GSAP animation ── */
   useEffect(() => {
@@ -63,10 +55,9 @@ const ProjectsPageSection = ({
 
   const clearFilters = () => {
     setActiveStatus("All");
-    setActiveCategory("All");
   };
 
-  const hasActiveFilters = activeStatus !== "All" || activeCategory !== "All";
+  const hasActiveFilters = activeStatus !== "All";
 
   return (
     <section
@@ -99,33 +90,6 @@ const ProjectsPageSection = ({
                 ))}
               </div>
             </div>
-
-            {categories.length > 0 && (
-              <div className="projects-page-filter-group">
-                <span className="projects-page-filter-label">Category</span>
-                <div className="projects-page-filter-pills">
-                  <button
-                    type="button"
-                    className={`projects-page-filter-pill ${activeCategory === "All" ? "is-active" : ""
-                      }`.trim()}
-                    onClick={() => setActiveCategory("All")}
-                  >
-                    All
-                  </button>
-                  {categories.map((cat) => (
-                    <button
-                      key={cat._id}
-                      type="button"
-                      className={`projects-page-filter-pill ${activeCategory === cat._id ? "is-active" : ""
-                        }`.trim()}
-                      onClick={() => setActiveCategory(cat._id)}
-                    >
-                      {cat.title}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
 
             {hasActiveFilters && (
               <button
@@ -173,7 +137,7 @@ const ProjectsPageSection = ({
                 <div className="projects-page-item-info">
                   <h3 className="projects-page-item-title">{project.title}</h3>
                   <span className="projects-page-item-category">
-                    {project.category?.title ?? ""}
+                    {project.status ?? ""}
                   </span>
                 </div>
               </Link>

@@ -14,7 +14,7 @@ const ProjectsSection = async () => {
         <SectionTitle
           className="projects-section-title"
           label="Portfolio"
-          title="Emotion Memory Meaning..."
+          title="Emotion Memory Meaning"
         />
 
         {projects.length > 0 ? (

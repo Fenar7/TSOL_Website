@@ -118,19 +118,23 @@ const AboutSection = () => {
 
           <div className="about-copy">
             <p>
-              In architecture <strong>The Shape Of Life</strong> is a poetic way of
-              talking about how buildings take form from living patterns, not just
-              from geometry style or technology what shape does human life naturally
-              want to take and how can architect support it?
+              In architecture, the shape of life is a poetic way of talking about how buildings are shaped around everyday life patterns.
+
+              For instance, how people move and pause in a home, how they meet, rest, argue, celebrate or feel safe. A kitchen becomes central because family life gathers there; streets curve so that people can slow down and linger there—not because straight lines are more efficient.
+
+              At TSOL, we ask: what shape does human life naturally want to take, and how can architecture support it?
+
             </p>
 
             <p>
-              In the quiet geometry of existence, every curve and line echoes the
-              pulse of creation <strong>The Shape Of Life</strong>,{" "}
-              <strong className="about-inline-tsol">TSOL</strong>{" "}
-              <em>(tee-sol)</em>, is more than a name, its a philosophy - the sacred
-              union form and spirit, where buildings rise not as inert structures
-              but as sanctuary for the human soul.
+              <strong className="about-philosophy-label">Philosophy</strong>
+            </p>
+
+            <p>
+              <strong className="about-inline-tsol">The Shape Of Life</strong>,{" "}
+              TSOL <em>(tee-sol)</em>, is more than a name, it&apos;s a
+              philosophy—the sacred union form and spirit, where buildings rise
+              not as inert structures but as a sanctuary for the human soul.
             </p>
 
             <p>
@@ -140,10 +144,13 @@ const AboutSection = () => {
               emphasises the quantitative aspect which is most readily comprehensible,
               such as the shape of a building, the form of a pool, the body of a
               man. The <em>hidden</em> is the essential or qualitative aspect which
-              all things possess. in order to know a thing is in its completeness,
-              one must not only seek its outward and ephemeral reality but also its
-              essential and inward reality - that in which the eternal beauty of
-              every object resides.&quot;
+              all things possess.
+            </p>
+            <p>
+              In order to know a thing is in its completeness, one must not only
+              seek its outward and ephemeral reality but also its essential and
+              inward reality—that in which the eternal beauty of every object
+              resides.&quot;
             </p>
           </div>
 

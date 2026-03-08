@@ -98,8 +98,8 @@ const OurApproachSection = () => {
               />
             </div>
             <p className="our-approach-card-text">
-              <span className="our-approach-card-text-lead">A space</span> is defined
-              by how it is lived. By posture and movement, rest and gathering,
+              <span className="our-approach-card-text-lead">Space</span> is defined
+              by how it is lived in. By posture and movement, rest and gathering,
               silence and openness.
             </p>
           </article>
@@ -132,9 +132,9 @@ const OurApproachSection = () => {
               />
             </div>
             <p className="our-approach-card-text">
-              When design is guided by life, it becomes{" "}
-              <span className="our-approach-card-text-lead">timeless</span>, because
-              it is rooted in what does not change in life.
+              <span className="our-approach-card-text-lead">Timeless</span> structures
+              emerge from design that stays relevant to life, being rooted in
+              unchanging human values and natural principles.
             </p>
           </article>
         </div>

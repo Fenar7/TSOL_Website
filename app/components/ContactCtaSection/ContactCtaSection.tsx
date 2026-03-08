@@ -66,7 +66,7 @@ const ContactCtaSection = () => {
           <SectionTitle
             className="contact-cta-title"
             label="Our Motto"
-            subtitle="Architecture with a broader vision, and deeper engagement with design practice, energised by a new generation of architects and engineers grounded in timeless principles and values"
+            subtitle="Architecture that is not only functional but connects with a deep human need for harmony, expression and belonging."
             title="Let's Shape Life Together"
           />
 
