@@ -22,7 +22,7 @@ export default function PageTransition() {
     const router = useRouter();
 
     const panelRef = useRef<HTMLDivElement>(null);
-    const wordmarkRef = useRef<HTMLDivElement>(null);
+    const brandRef = useRef<HTMLDivElement>(null);
     const lineRef = useRef<HTMLDivElement>(null);
 
     const isAnimating = useRef(false);
@@ -65,7 +65,7 @@ export default function PageTransition() {
             e.preventDefault();
 
             const panel = panelRef.current;
-            const wordmark = wordmarkRef.current;
+            const brand = brandRef.current;
             const line = lineRef.current;
             if (!panel) return;
 
@@ -86,9 +86,9 @@ export default function PageTransition() {
                     "-=0.1"
                 )
 
-                // 3 — Wordmark fades up
+                // 3 — Brand lockup fades up
                 .fromTo(
-                    wordmark,
+                    brand,
                     { opacity: 0, y: 14 },
                     { opacity: 1, y: 0, duration: 0.22, ease: "power2.out" },
                     "-=0.18"
@@ -116,7 +116,7 @@ export default function PageTransition() {
         }
 
         const panel = panelRef.current;
-        const wordmark = wordmarkRef.current;
+        const brand = brandRef.current;
         const line = lineRef.current;
         if (!panel) return;
 
@@ -128,13 +128,13 @@ export default function PageTransition() {
                 isAnimating.current = false;
                 // Reset below screen for next transition
                 gsap.set(panel, { yPercent: 100 });
-                gsap.set(wordmark, { opacity: 0, y: 14 });
+                gsap.set(brand, { opacity: 0, y: 14 });
                 gsap.set(line, { scaleX: 0 });
             },
         });
 
-        // Brief pause then wordmark fades out
-        tl.to(wordmark, { opacity: 0, duration: 0.15, ease: "power2.in" }, "+=0.05")
+        // Brief pause then brand lockup fades out.
+        tl.to(brand, { opacity: 0, duration: 0.15, ease: "power2.in" }, "+=0.05")
 
             // Line erases from right
             .to(
@@ -155,8 +155,9 @@ export default function PageTransition() {
         <div ref={panelRef} className="page-transition-panel" aria-hidden="true">
             <div className="page-transition-inner">
                 <div ref={lineRef} className="page-transition-line" />
-                <div ref={wordmarkRef} className="page-transition-wordmark">
-                    TSOL
+                <div ref={brandRef} className="page-transition-brand">
+                    <div className="page-transition-wordmark">TSOL</div>
+                    <div className="page-transition-subtitle">Architecture</div>
                 </div>
             </div>
         </div>
