@@ -43,7 +43,7 @@
   align-items: baseline;
   color: $white;
   display: flex;
-  font-family: $font-neue-haas;
+  font-family: $font-primary;
   font-style: normal;
   font-weight: 400;
   gap: clamp(8px, 0.58vw, 10px);
@@ -69,7 +69,7 @@
 
 .page-hero-subtitle {
   color: $white;
-  font-family: $font-neue-haas;
+  font-family: $font-primary;
   font-size: clamp(15px, 1.34vw, 23px);
   font-style: italic;
   font-weight: 400;

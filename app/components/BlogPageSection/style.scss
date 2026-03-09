@@ -98,7 +98,7 @@
 
 .blog-page-card-title {
   color: $black;
-  font-family: $font-neue-haas;
+  font-family: $font-primary;
   font-size: 25px;
   font-style: normal;
   font-weight: 400;
@@ -108,7 +108,7 @@
 
 .blog-page-card-excerpt {
   color: $txt-grey;
-  font-family: $font-neue-haas;
+  font-family: $font-primary;
   font-size: 19px;
   font-style: normal;
   font-weight: 350;
@@ -121,7 +121,7 @@
   align-items: center;
   color: #a4a4a4;
   display: inline-flex;
-  font-family: "Inter", sans-serif;
+  font-family: $font-primary;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -150,7 +150,7 @@
   color: $txt-grey;
   cursor: pointer;
   display: inline-flex;
-  font-family: $font-neue-haas;
+  font-family: $font-primary;
   font-size: 17px;
   font-style: normal;
   font-weight: 400;
@@ -325,7 +325,7 @@
 
 .blog-page-empty-title {
   color: $black;
-  font-family: $font-neue-haas;
+  font-family: $font-primary;
   font-size: 30px;
   font-weight: 400;
   letter-spacing: 0.005em;
@@ -335,7 +335,7 @@
 
 .blog-page-empty-subtitle {
   color: $txt-grey;
-  font-family: $font-neue-haas;
+  font-family: $font-primary;
   font-size: 17px;
   font-weight: 350;
   line-height: 1.6;

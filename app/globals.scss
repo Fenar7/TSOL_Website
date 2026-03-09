@@ -128,12 +128,46 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Optima";
+  src: url("/fonts/optima/fonnts.com-OPTIMA.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Optima";
+  src: url("/fonts/optima/fonnts.com-Optima_Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Optima";
+  src: url("/fonts/optima/fonnts.com-Optima-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Optima";
+  src: url("/fonts/optima/fonnts.com-OPTIMA_B.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --white: #{$white};
   --black: #{$black};
   --txt-grey: #{$txt-grey};
   --stroke-grey: #{$stroke-grey};
   --font-neue-haas: #{$font-neue-haas};
+  --font-optima: #{$font-optima};
+  --font-primary: #{$font-primary};
   --site-header-height: 82px;
   --hero-top-gap: 10px;
   --hero-bottom-gap: 14px;
@@ -145,7 +179,9 @@
   --color-txt-grey: var(--txt-grey);
   --color-stroke-grey: var(--stroke-grey);
   --font-neue-haas: var(--font-neue-haas);
-  --font-sans: var(--font-neue-haas);
+  --font-optima: var(--font-optima);
+  --font-primary: var(--font-primary);
+  --font-sans: var(--font-primary);
 }
 
 html,
@@ -156,7 +192,7 @@ body {
 body {
   background: var(--white);
   color: var(--black);
-  font-family: var(--font-neue-haas);
+  font-family: var(--font-primary);
 }
 
 .home-main {

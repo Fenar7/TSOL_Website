@@ -66,7 +66,7 @@ const ContactCtaSection = () => {
           <SectionTitle
             className="contact-cta-title"
             label="Our Motto"
-            subtitle="Architecture that is not only functional but connects with a deep human need for harmony, expression and belonging."
+            subtitle="&quot;Each thing has an outer as well as an inner meaning every external form is complimented by an inner reality which is its hidden, internal essence. The manifest is the sensible form, that which emphasises the quantitative aspect which is most readily comprehensible, such as the shape of a building, the form of a pool, the body of a man. The hidden is the essential or qualitative aspect which all things possess. In order to know a thing is in its completeness, one must not only seek its outward and ephemeral reality but also its essential and inward reality—that in which the eternal beauty of every object resides.&quot;"
             title="Let's Shape Life Together"
           />
 

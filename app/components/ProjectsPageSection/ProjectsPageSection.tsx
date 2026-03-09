@@ -67,7 +67,7 @@ const ProjectsPageSection = ({
       <div className="projects-page-section-container container">
         <SectionTitle
           className="projects-page-section-title"
-          label="Portfolio"
+          label="Selected Works"
           title="Emotion Memory Meaning..."
         />
 

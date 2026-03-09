@@ -1,3 +1,4 @@
+import AboutSection from "../components/AboutSection/AboutSection";
 import PageHeroSection from "../components/PageHeroSection/PageHeroSection";
 import StorySection from "../components/StorySection/StorySection";
 import "./style.scss";
@@ -14,6 +15,7 @@ const page = () => {
         priority
         animated
       />
+      <AboutSection/>
       <StorySection />
     </main>
   );

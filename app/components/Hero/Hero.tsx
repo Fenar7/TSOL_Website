@@ -3,16 +3,13 @@
 import { useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
-import ActionButton from "../ui/ActionButton/ActionButton";
 import "./style.scss";
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const buttonsRef = useRef<HTMLDivElement>(null);
-  const rightTextRef = useRef<HTMLParagraphElement>(null);
+  const leftBrandRef = useRef<HTMLDivElement>(null);
+  const philosophyRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
@@ -26,17 +23,8 @@ const Hero = () => {
       // ── Initial setup
       gsap.set(imageRef.current, { scale: 1.15 });
       gsap.set(overlayRef.current, { opacity: 0 });
-      gsap.set(".hero-line-anim", {
-        yPercent: 120, // push down outside the overflow:hidden wrapper
-        opacity: 1
-      });
-      gsap.set([titleRef.current, subtitleRef.current], {
-        yPercent: 100,
-        opacity: 0,
-        clipPath: "inset(0 0 100% 0)"
-      });
-      gsap.set(buttonsRef.current, { opacity: 0, y: 20 });
-      gsap.set(rightTextRef.current, { xPercent: 20, opacity: 0 });
+      gsap.set(leftBrandRef.current, { y: 34, opacity: 0 });
+      gsap.set(philosophyRef.current, { y: 24, opacity: 0 });
 
       // ── Animation sequence
       tl.to(imageRef.current, {
@@ -49,39 +37,19 @@ const Hero = () => {
           duration: 1.2,
           ease: "power2.out",
         }, "<0.2")
-
-        // Staggered reveal of small "The Shape of Life" lines cleanly pushing up into view
-        .to(".hero-line-anim", {
-          yPercent: 0,
-          duration: 0.85,
-          stagger: 0.1,
-          ease: "power4.out",
-        }, "<0.4")
-
-        // Huge Title + Subtext mask reveals
-        .to([titleRef.current, subtitleRef.current], {
-          yPercent: 0,
-          opacity: 1,
-          clipPath: "inset(0 0 0% 0)",
-          duration: 1,
-          stagger: 0.15,
-          ease: "power4.out",
-        }, "<0.25")
-
-        // Buttons and right text drift in
-        .to(buttonsRef.current, {
-          opacity: 1,
+        .to(leftBrandRef.current, {
           y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-        }, "<0.3")
-        .to(rightTextRef.current, {
-          xPercent: 0,
           opacity: 1,
-          duration: 1.2,
+          duration: 0.9,
           ease: "power3.out",
-        }, "<0.1");
-    }, containerRef); // << scoped to containerRef, so ".hero-line-anim" is uniquely local!
+        }, "<0.45")
+        .to(philosophyRef.current, {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+        }, "<0.22");
+    }, containerRef);
 
     return () => ctx.revert();
   }, []);
@@ -102,32 +70,23 @@ const Hero = () => {
           <div className="hero-overlay" aria-hidden="true" ref={overlayRef} />
 
           <div className="hero-content">
-            <div className="left-section">
-              <p className="hero-shape-text">
-                <span className="hero-line-mask"><span className="hero-line-anim">The</span></span>
-                <span className="hero-line-mask"><span className="hero-line-anim">Shape</span></span>
-                <span className="hero-line-mask"><span className="hero-line-anim">of Life</span></span>
-              </p>
-
-              <div className="hero-mask-wrap">
-                <h1 className="hero-title" ref={titleRef}>TSOL</h1>
-              </div>
-
-              <div className="hero-mask-wrap">
-                <p className="hero-subtitle" ref={subtitleRef}>architecture</p>
-              </div>
-
-              <div className="hero-actions" ref={buttonsRef}>
-                <ActionButton href="/projects" variant="outline">
-                  View Portfolio
-                </ActionButton>
-                <ActionButton href="/contact" variant="solid">
-                  Discuss your space
-                </ActionButton>
-              </div>
+            <div className="hero-left-brand" ref={leftBrandRef}>
+              <h1 className="hero-brand-title">TSOL</h1>
+              <p className="hero-brand-subtitle">architecture</p>
             </div>
 
-            <p className="right-section" ref={rightTextRef}>shape your life</p>
+            <div className="hero-philosophy-wrap" ref={philosophyRef}>
+              <p className="hero-philosophy">
+                <span className="hero-philosophy-lead">The Shape Of Life, </span>
+                <span className="hero-philosophy-tsol">TSOL</span>
+                <span className="hero-philosophy-rest">
+                  {" "}
+                  (tee-sol), is more than a name, it&apos;s a philosophy - the
+                  sacred union form and spirit, where buildings rise not as inert
+                  structures but as a sanctuary for the human soul.
+                </span>
+              </p>
+            </div>
           </div>
         </div>
       </div>

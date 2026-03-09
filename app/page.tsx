@@ -13,11 +13,11 @@ export default async function Home() {
   return (
     <main className="home-main">
       <Hero />
-      <AboutSection />
       <OurApproachSection />
-      <ProjectsSection />
+      {/* <ProjectsSection /> */}
       <ServicesSection />
       <ContactCtaSection />
+       {/* <AboutSection /> */}
       <TestimonialsSection testimonials={testimonials} />
     </main>
   );

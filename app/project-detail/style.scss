@@ -57,7 +57,7 @@
   bottom: 9px;
   color: $white;
   display: inline-flex;
-  font-family: "Poppins", sans-serif;
+  font-family: $font-primary;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
@@ -94,7 +94,7 @@
 
 .project-kicker {
   color: $txt-grey;
-  font-family: $font-neue-haas;
+  font-family: $font-primary;
   font-size: 15px;
   font-style: normal;
   font-weight: 350;
@@ -106,7 +106,7 @@
 
 .project-title {
   color: $black;
-  font-family: $font-neue-haas;
+  font-family: $font-primary;
   font-size: 45px;
   font-style: normal;
   font-weight: 400;
@@ -117,7 +117,7 @@
 
 .project-meta {
   color: $txt-grey;
-  font-family: $font-neue-haas;
+  font-family: $font-primary;
   font-size: 19px;
   font-style: normal;
   font-weight: 350;
@@ -128,7 +128,7 @@
 
 .project-description {
   color: $txt-grey;
-  font-family: $font-neue-haas;
+  font-family: $font-primary;
   font-size: 19px;
   font-style: normal;
   font-weight: 350;
@@ -196,7 +196,7 @@
   color: #040707;
   cursor: pointer;
   display: inline-flex;
-  font-family: $font-neue-haas;
+  font-family: $font-primary;
   font-size: 33px;
   font-weight: 300;
   height: 44px;
@@ -217,7 +217,7 @@
   color: #040707;
   cursor: pointer;
   display: inline-flex;
-  font-family: $font-neue-haas;
+  font-family: $font-primary;
   font-size: 54px;
   font-weight: 300;
   height: 56px;
@@ -242,7 +242,7 @@
   background: rgba(0, 0, 0, 0.62);
   border-radius: 999px;
   color: $white;
-  font-family: $font-neue-haas;
+  font-family: $font-primary;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
