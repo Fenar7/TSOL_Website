@@ -16,15 +16,18 @@
 .story-portrait-wrap {
   background: #b67a7a;
   border-radius: 4px;
+  clip-path: inset(0% 0% 0% 0%);
   height: auto;
   overflow: hidden;
   position: relative;
   width: min(557px, 100%);
   aspect-ratio: 557 / 402;
+  will-change: clip-path, opacity, transform;
 }
 
 .story-portrait {
   object-fit: cover;
+  will-change: transform;
 }
 
 .story-heading {
@@ -33,6 +36,11 @@
   flex-direction: column;
   gap: 17px;
   margin-top: 60px;
+}
+
+.story-title-mask,
+.story-subtitle-mask {
+  overflow: hidden;
 }
 
 .story-title {
@@ -45,6 +53,7 @@
   line-height: 1;
   margin: 0;
   text-align: center;
+  will-change: transform, opacity;
 }
 
 .story-subtitle {
@@ -57,6 +66,7 @@
   line-height: 1.1;
   margin: 0;
   text-align: center;
+  will-change: transform, opacity;
 }
 
 .story-body {
@@ -79,6 +89,10 @@
 
 .story-body p + p {
   margin-top: 38px;
+}
+
+.story-paragraph {
+  will-change: transform, opacity, filter;
 }
 
 .story-inline-brand {

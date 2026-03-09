@@ -13,12 +13,17 @@ const StorySection = () => {
   const imageUrl = "/images/akbar-khan-architect.png";
 
   useLayoutEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) return;
+
+    const mm = gsap.matchMedia();
+
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         defaults: { ease: "power3.out" },
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 88%",
+          start: "top 82%",
           toggleActions: "restart none none reverse",
           invalidateOnRefresh: true,
         },
@@ -26,40 +31,82 @@ const StorySection = () => {
 
       tl.fromTo(
         ".story-portrait-wrap",
-        { opacity: 0, y: 44, scale: 0.97 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.82 }
+        { clipPath: "inset(0% 0% 100% 0%)", opacity: 0.9 },
+        { clipPath: "inset(0% 0% 0% 0%)", opacity: 1, duration: 1.22, ease: "power4.inOut" }
       )
         .fromTo(
-          ".story-title",
-          { opacity: 0, x: -50 },
-          { opacity: 1, x: 0, duration: 0.75, ease: "power3.out" },
-          "-=0.45"
+          ".story-portrait",
+          { scale: 1.2, yPercent: 4 },
+          { scale: 1, yPercent: 0, duration: 1.85, ease: "power2.out" },
+          "<"
         )
-
-        // 2. Subtitle drifts in slightly after.
+        .fromTo(
+          ".story-title",
+          { opacity: 0, yPercent: 118 },
+          { opacity: 1, yPercent: 0, duration: 0.8 },
+          "-=1.02"
+        )
         .fromTo(
           ".story-subtitle",
-          { opacity: 0, x: -35 },
-          { opacity: 1, x: 0, duration: 0.65, ease: "power3.out" },
-          "-=0.4"
+          { opacity: 0, yPercent: 118 },
+          { opacity: 1, yPercent: 0, duration: 0.66 },
+          "-=0.62"
         )
-
-        // 3. Body paragraphs stagger in with a gentle lift.
         .fromTo(
-          ".story-body p",
-          { opacity: 0, y: 40 },
+          ".story-paragraph",
+          { opacity: 0, y: 34, filter: "blur(4px)" },
           {
             opacity: 1,
             y: 0,
-            duration: 0.7,
-            stagger: 0.15,
-            ease: "power3.out",
+            filter: "blur(0px)",
+            duration: 0.75,
+            stagger: 0.13,
           },
-          "-=0.3"
+          "-=0.35"
+        )
+        .fromTo(
+          ".story-inline-brand-tsol",
+          { letterSpacing: "0.12em", opacity: 0.3 },
+          { letterSpacing: "0em", opacity: 1, duration: 0.58, ease: "power2.out" },
+          "-=0.52"
         );
+
+      mm.add("(min-width: 768px)", () => {
+        gsap.to(".story-portrait", {
+          yPercent: 7,
+          scale: 1.06,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
+          },
+        });
+      });
+
+      mm.add("(max-width: 767px)", () => {
+        gsap.to(".story-portrait", {
+          yPercent: 4,
+          scale: 1.035,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 0.75,
+          },
+        });
+      });
     }, sectionRef);
 
-    return () => ctx.revert();
+    const timer = setTimeout(() => ScrollTrigger.refresh(), 350);
+
+    return () => {
+      clearTimeout(timer);
+      mm.revert();
+      ctx.revert();
+    };
   }, []);
 
   return (
@@ -76,12 +123,16 @@ const StorySection = () => {
         </div>
 
         <div className="story-heading">
-          <h2 className="story-title">Akbar Khan Architect</h2>
-          <p className="story-subtitle">The Founder &amp; Principal Architect</p>
+          <div className="story-title-mask">
+            <h2 className="story-title">Akbar Khan Architect</h2>
+          </div>
+          <div className="story-subtitle-mask">
+            <p className="story-subtitle">The Founder &amp; Principal Architect</p>
+          </div>
         </div>
 
         <div className="story-body">
-          <p>
+          <p className="story-paragraph">
             A seasoned and innovative architect with over three decades of proven expertise in
             conceiving and bringing to fruition a diverse array of residential, commercial,
             healthcare, and public projects. Graduated from the College of Engineering Trivandrum
@@ -90,19 +141,19 @@ const StorySection = () => {
             style and approach, earning the trust and loyalty of a discerning clientele.
           </p>
 
-          <p className="story-inline-brand" aria-label="TSOL architecture">
+          <p className="story-inline-brand story-paragraph" aria-label="TSOL architecture">
             <span className="story-inline-brand-tsol">TSOL</span>
             <span className="story-inline-brand-word">architecture</span>
           </p>
 
-          <p>
+          <p className="story-paragraph">
             Our proficiency extends to utilising a spectrum of cutting-edge software tools, to
             seamlessly translate creative visions into tangible designs. Adept at budget planning,
             negotiation, and project appraisal, we navigate complex landscapes to ensure alignment
             with client expectations and stakeholder interests.
           </p>
 
-          <p>
+          <p className="story-paragraph">
             With a track record of delivering successful projects and an unwavering commitment to
             design excellence, we bring a unique blend of creativity, experience, and business
             acumen to every architectural endeavour.

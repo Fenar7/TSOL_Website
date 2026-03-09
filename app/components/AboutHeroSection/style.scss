@@ -5,14 +5,14 @@
   position: relative;
 }
 
-.about-hero-main::after {
+.about-hero-accent {
   background: $stroke-grey;
-  content: "";
   height: 62px;
   position: absolute;
   right: clamp(-14px, 2vw, 26px);
   top: clamp(410px, 43vw, 436px);
   width: 1px;
+  will-change: transform, opacity;
 }
 
 .about-hero-container.container {
@@ -35,20 +35,24 @@
   line-height: 1;
   margin: 0;
   text-align: center;
+  will-change: transform, opacity, filter;
 }
 
 .about-hero-image-wrap {
   aspect-ratio: 865 / 577;
+  clip-path: inset(0% 0% 0% 0%);
   height: auto;
   margin-top: 20px;
   max-width: 865px;
   overflow: hidden;
   position: relative;
   width: 100%;
+  will-change: clip-path, opacity, transform;
 }
 
 .about-hero-image {
   object-fit: cover;
+  will-change: transform;
 }
 
 .about-hero-copy {
@@ -62,6 +66,16 @@
   margin: 36px auto 0;
   max-width: 1015px;
   text-align: center;
+}
+
+.about-hero-copy-line {
+  display: inline-block;
+  margin-right: 0.2em;
+  will-change: transform, opacity;
+}
+
+.about-hero-copy-line:last-child {
+  margin-right: 0;
 }
 
 @media (max-width: 1439px) {
@@ -92,7 +106,7 @@
     max-width: 900px;
   }
 
-  .about-hero-main::after {
+  .about-hero-accent {
     right: clamp(-12px, 1vw, 8px);
   }
 }
@@ -102,7 +116,7 @@
     padding: 28px 0 58px;
   }
 
-  .about-hero-main::after {
+  .about-hero-accent {
     display: none;
   }
 
