@@ -10,6 +10,10 @@ import "./style.scss";
 gsap.registerPlugin(ScrollTrigger);
 
 const contactCtaImageUrl = "/images/our-motto-image.png";
+const mottoSummary =
+  "Architecture that is not only functional but connects with a deep human need for harmony, expression and belonging.";
+const mottoQuote =
+  "\"Each thing has an outer as well as an inner meaning every external form is complimented by an inner reality which is its hidden, internal essence. The manifest is the sensible form, that which emphasises the quantitative aspect which is most readily comprehensible, such as the shape of a building, the form of a pool, the body of a man. The hidden is the essential or qualitative aspect which all things possess. In order to know a thing is in its completeness, one must not only seek its outward and ephemeral reality but also its essential and inward reality-that in which the eternal beauty of every object resides.\"";
 
 const ContactCtaSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -46,6 +50,18 @@ const ContactCtaSection = () => {
           { scale: 1, duration: 2, ease: "power2.out" },
           "<"
         )
+        .fromTo(
+          ".contact-cta-quote",
+          { opacity: 0, y: 28 },
+          { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
+          "-=1.1"
+        )
+        .fromTo(
+          ".contact-cta-source",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+          "-=0.52"
+        )
 
         // 4. CTA buttons slide up from below with slight stagger
         .fromTo(
@@ -66,8 +82,8 @@ const ContactCtaSection = () => {
           <SectionTitle
             className="contact-cta-title"
             label="Our Motto"
-            subtitle="&quot;Each thing has an outer as well as an inner meaning every external form is complimented by an inner reality which is its hidden, internal essence. The manifest is the sensible form, that which emphasises the quantitative aspect which is most readily comprehensible, such as the shape of a building, the form of a pool, the body of a man. The hidden is the essential or qualitative aspect which all things possess. In order to know a thing is in its completeness, one must not only seek its outward and ephemeral reality but also its essential and inward reality—that in which the eternal beauty of every object resides.&quot;"
-            title="Let's Shape Life Together"
+            subtitle={mottoSummary}
+            title="Let’s Shape Life Together"
           />
 
           {/* Wrapper for clip-path mask + zoom */}
@@ -78,6 +94,17 @@ const ContactCtaSection = () => {
               aria-label="Courtyard home surrounded by trees and tropical planting"
               style={{ backgroundImage: `url(${contactCtaImageUrl})` }}
             />
+          </div>
+
+          <div className="contact-cta-text-block">
+            <p className="contact-cta-quote">{mottoQuote}</p>
+
+            <div className="contact-cta-source">
+              <p className="contact-cta-source-title">-The Sense of Unity</p>
+              <p className="contact-cta-source-authors">
+                Nader Ardalan &amp; Laleh Bakhtar
+              </p>
+            </div>
           </div>
 
           <div className="contact-cta-actions">

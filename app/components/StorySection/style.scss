@@ -1,62 +1,76 @@
 .story-section-main {
   background: $white;
-  padding: clamp(56px, 4.75vw, 91px) 0 clamp(72px, 7.1vw, 136px);
+  padding: 75px 0 122px;
 }
 
 .story-section-container.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   margin-inline: auto;
   max-width: 1720px;
   padding-inline: 0;
   width: calc(100% - 200px);
 }
 
-.story-section-header {
-  margin-bottom: clamp(24px, 1.72vw, 33px);
-  max-width: 1232px;
+.story-portrait-wrap {
+  background: #b67a7a;
+  border-radius: 4px;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  width: min(557px, 100%);
+  aspect-ratio: 557 / 402;
+}
+
+.story-portrait {
+  object-fit: cover;
+}
+
+.story-heading {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  margin-top: 60px;
 }
 
 .story-title {
   color: $black;
   font-family: $font-primary;
-  font-size: clamp(34px, 2.35vw, 45px);
+  font-size: 54px;
   font-style: normal;
-  font-weight: 400;
-  letter-spacing: 0.005em;
-  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1;
   margin: 0;
+  text-align: center;
 }
 
 .story-subtitle {
   color: $black;
   font-family: $font-primary;
-  font-size: clamp(24px, 1.56vw, 30px);
+  font-size: 30px;
   font-style: normal;
   font-weight: 400;
-  letter-spacing: 0.005em;
+  letter-spacing: 0;
   line-height: 1.1;
-  margin: clamp(3px, 0.06vw, 6px) 0 0;
-}
-
-.story-designation {
-  color: $txt-grey;
-  font-family: $font-primary;
-  font-size: clamp(16px, 0.99vw, 19px);
-  font-style: normal;
-  font-weight: 350;
-  letter-spacing: 0.02em;
-  line-height: clamp(24px, 1.56vw, 30px);
-  margin: clamp(8px, 0.73vw, 14px) 0 0;
+  margin: 0;
+  text-align: center;
 }
 
 .story-body {
   color: $txt-grey;
   font-family: $font-primary;
-  font-size: clamp(16px, 0.99vw, 19px);
+  font-size: 25px;
   font-style: normal;
-  font-weight: 350;
+  font-weight: 400;
   letter-spacing: 0.02em;
-  line-height: clamp(25px, 1.56vw, 30px);
-  text-align: justify;
+  line-height: 40px;
+  margin-top: 52px;
+  max-width: 1020px;
+  text-align: center;
+  width: 100%;
 }
 
 .story-body p {
@@ -64,62 +78,133 @@
 }
 
 .story-body p + p {
-  margin-top: clamp(22px, 1.98vw, 38px);
+  margin-top: 38px;
 }
 
-.story-highlight {
+.story-inline-brand {
+  align-items: baseline;
   color: $txt-grey;
-  font-family: $font-primary;
-  font-size: clamp(16px, 0.99vw, 19px);
+  display: inline-flex;
+  gap: 6px;
+  justify-content: center;
+  letter-spacing: 0;
+  width: 100%;
+}
+
+.story-inline-brand-tsol {
+  color: $txt-grey;
+  font-family: $font-neue-haas;
+  font-size: 25px;
   font-style: normal;
   font-weight: 500;
-  letter-spacing: 0.01em;
-  line-height: clamp(25px, 1.56vw, 30px);
+  letter-spacing: 0;
+  line-height: 40px;
 }
 
-@media (max-width: 1023px) {
+.story-inline-brand-word {
+  color: $txt-grey;
+  font-family: $font-neue-haas;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 40px;
+}
+
+@media (max-width: 1439px) {
+  .story-section-main {
+    padding: 64px 0 106px;
+  }
+
+  .story-title {
+    font-size: clamp(42px, 3.75vw, 54px);
+  }
+
+  .story-subtitle {
+    font-size: clamp(24px, 2.08vw, 30px);
+  }
+
+  .story-body,
+  .story-inline-brand-tsol,
+  .story-inline-brand-word {
+    font-size: clamp(20px, 1.74vw, 25px);
+    line-height: clamp(33px, 2.78vw, 40px);
+  }
+}
+
+@media (max-width: 1180px) {
   .story-section-container.container {
     width: calc(100% - 40px);
   }
 
-  .story-section-header {
-    max-width: min(100%, 840px);
+  .story-heading {
+    margin-top: 48px;
+  }
+
+  .story-body {
+    margin-top: 42px;
+    max-width: 900px;
+  }
+}
+
+@media (max-width: 767px) {
+  .story-section-main {
+    padding: 48px 0 74px;
+  }
+
+  .story-heading {
+    gap: 12px;
+    margin-top: 30px;
+  }
+
+  .story-title {
+    font-size: clamp(34px, 9.9vw, 44px);
+  }
+
+  .story-subtitle {
+    font-size: clamp(20px, 5.8vw, 28px);
+  }
+
+  .story-body {
+    font-size: 18px;
+    letter-spacing: 0.01em;
+    line-height: 30px;
+    margin-top: 30px;
+    max-width: 100%;
+  }
+
+  .story-body p + p {
+    margin-top: 28px;
+  }
+
+  .story-inline-brand {
+    gap: 4px;
+  }
+
+  .story-inline-brand-tsol,
+  .story-inline-brand-word {
+    font-size: 18px;
+    line-height: 30px;
   }
 }
 
 @media (max-width: 639px) {
-  .story-section-main {
-    padding: 44px 0 72px;
-  }
-
   .story-section-container.container {
     width: calc(100% - 28px);
   }
 
-  .story-title {
-    font-size: clamp(32px, 8.3vw, 38px);
-    line-height: 1.08;
-  }
-
-  .story-subtitle {
-    font-size: clamp(25px, 7vw, 30px);
-    line-height: 1.12;
-  }
-
-  .story-designation {
-    letter-spacing: 0.01em;
-    line-height: 1.4;
+  .story-portrait-wrap {
+    border-radius: 3px;
   }
 
   .story-body {
-    font-size: 19px;
-    letter-spacing: 0.01em;
-    line-height: 1.42;
-    text-align: left;
+    font-size: 16px;
+    line-height: 27px;
   }
 
-  .story-highlight {
-    font-size: 19px;
-    line-height: 1.42;
+  .story-inline-brand-tsol,
+  .story-inline-brand-word {
+    font-size: 16px;
+    line-height: 27px;
   }
 }

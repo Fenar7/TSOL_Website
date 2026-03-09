@@ -1,6 +1,6 @@
 .contact-cta-main {
   background: $white;
-  padding: 26px 0 64px;
+  padding: 24px 0 66px;
 }
 
 .contact-cta-section-container {
@@ -20,8 +20,12 @@
 }
 
 .contact-cta-title .section-title__title {
-  font-style: italic;
-  font-weight: 400;
+  font-family: $font-primary;
+  font-size: 54px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1;
 }
 
 .contact-cta-title .section-title__subtitle {
@@ -29,17 +33,16 @@
 }
 
 .contact-cta-img-wrap {
-  aspect-ratio: 833 / 522;
+  aspect-ratio: 689 / 381;
   clip-path: inset(0% 0 100% 0);
-  /* hidden before JS — top-to-bottom wipe */
-  margin: 38px auto 0;
+  margin: 33px auto 0;
   overflow: hidden;
   position: relative;
-  width: min(100%, 833px);
+  width: min(100%, 689px);
 }
 
 .contact-cta-image {
-  background-color: #9ea39f;
+  background-color: #dad9d6;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -50,46 +53,120 @@
   width: 100%;
 }
 
+.contact-cta-text-block {
+  margin: 34px auto 0;
+  width: min(100%, 1017px);
+}
+
+.contact-cta-quote {
+  color: $txt-grey;
+  font-family: $font-primary;
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 30px;
+  margin: 0;
+  text-align: center;
+}
+
+.contact-cta-source {
+  color: $txt-grey;
+  margin-left: auto;
+  margin-top: 10px;
+  max-width: 267px;
+  text-align: right;
+}
+
+.contact-cta-source-title {
+  font-family: $font-primary;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 25px;
+  margin: 0;
+}
+
+.contact-cta-source-authors {
+  font-family: $font-primary;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 25px;
+  margin: 0;
+}
+
 .contact-cta-actions {
   align-items: center;
   display: flex;
   gap: 11px;
   justify-content: center;
-  margin-top: 37px;
+  margin-top: 30px;
 }
 
 .contact-cta-btn {
+  border-radius: 4px;
+  font-family: $font-neue-haas;
   font-size: 19px;
+  font-style: normal;
+  font-weight: 400;
   min-height: 45px;
   padding: 11px 18px;
+  white-space: nowrap;
+}
+
+@media (max-width: 1439px) {
+  .contact-cta-main {
+    padding: 24px 0 60px;
+  }
+
+  .contact-cta-title .section-title__title {
+    font-size: clamp(44px, 4.1vw, 54px);
+  }
+
+  .contact-cta-quote {
+    font-size: clamp(17px, 1.4vw, 19px);
+    line-height: clamp(28px, 2vw, 30px);
+  }
+
+  .contact-cta-source-title {
+    font-size: 18px;
+  }
 }
 
 @media (max-width: 1180px) {
+  .contact-cta-section.container {
+    width: calc(100% - 40px);
+  }
+
+  .contact-cta-title {
+    max-width: 100%;
+  }
+
   .contact-cta-title .section-title__subtitle {
     max-width: 900px;
   }
 
-  .contact-cta-img-wrap {
-    margin-top: 30px;
-  }
-}
-
-@media (max-width: 1023px) {
-  .contact-cta-section.container {
-    width: calc(100% - 40px);
+  .contact-cta-text-block {
+    width: min(100%, 900px);
   }
 }
 
 @media (max-width: 767px) {
   .contact-cta-main {
-    padding: 36px 0 54px;
+    padding: 32px 0 54px;
   }
 
   .contact-cta-title .section-title__title {
-    font-size: clamp(40px, 8vw, 58px);
+    font-size: clamp(36px, 9vw, 48px);
   }
 
   .contact-cta-title .section-title__subtitle {
+    font-size: 17px;
+    letter-spacing: 0.01em;
+    line-height: 28px;
     max-width: 100%;
   }
 
@@ -97,16 +174,37 @@
     margin-top: 24px;
   }
 
-  .contact-cta-actions {
-    align-items: stretch;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 24px;
+  .contact-cta-quote {
+    font-size: 17px;
+    letter-spacing: 0.01em;
+    line-height: 29px;
   }
 
-  .contact-cta-btn {
-    justify-content: center;
-    width: min(100%, 320px);
+  .contact-cta-text-block {
+    margin-top: 24px;
+    width: 100%;
+  }
+
+  .contact-cta-source {
+    margin-top: 20px;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .contact-cta-source-title {
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  .contact-cta-source-authors {
+    font-size: 15px;
+    line-height: 25px;
+  }
+
+  .contact-cta-actions {
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
   }
 }
 
@@ -116,12 +214,34 @@
   }
 
   .contact-cta-title .section-title__title {
-    font-size: clamp(34px, 10.5vw, 48px);
+    font-size: clamp(32px, 10.5vw, 42px);
+  }
+
+  .contact-cta-title .section-title__subtitle {
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+  .contact-cta-quote {
+    font-size: 16px;
+    line-height: 27px;
+  }
+
+  .contact-cta-source-title {
+    font-size: 18px;
+  }
+
+  .contact-cta-source-authors {
+    font-size: 15px;
+  }
+
+  .contact-cta-actions {
+    align-items: stretch;
+    flex-direction: column;
   }
 
   .contact-cta-btn {
-    font-size: 17px;
-    min-height: 42px;
-    padding-inline: 16px;
+    justify-content: center;
+    width: min(100%, 310px);
   }
 }

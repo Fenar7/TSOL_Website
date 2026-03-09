@@ -1,0 +1,139 @@
+.about-hero-main {
+  background: $white;
+  overflow: hidden;
+  padding: 33px 0 92px;
+  position: relative;
+}
+
+.about-hero-main::after {
+  background: $stroke-grey;
+  content: "";
+  height: 62px;
+  position: absolute;
+  right: clamp(-14px, 2vw, 26px);
+  top: clamp(410px, 43vw, 436px);
+  width: 1px;
+}
+
+.about-hero-container.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-inline: auto;
+  max-width: 1720px;
+  padding-inline: 0;
+  width: calc(100% - 200px);
+}
+
+.about-hero-title {
+  color: $black;
+  font-family: $font-neue-haas;
+  font-size: 54px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 1;
+  margin: 0;
+  text-align: center;
+}
+
+.about-hero-image-wrap {
+  aspect-ratio: 865 / 577;
+  height: auto;
+  margin-top: 20px;
+  max-width: 865px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.about-hero-image {
+  object-fit: cover;
+}
+
+.about-hero-copy {
+  color: $txt-grey;
+  font-family: $font-primary;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 40px;
+  margin: 36px auto 0;
+  max-width: 1015px;
+  text-align: center;
+}
+
+@media (max-width: 1439px) {
+  .about-hero-main {
+    padding: 30px 0 78px;
+  }
+
+  .about-hero-title {
+    font-size: clamp(42px, 3.8vw, 54px);
+  }
+
+  .about-hero-copy {
+    font-size: clamp(20px, 1.6vw, 25px);
+    line-height: clamp(33px, 2.5vw, 40px);
+  }
+}
+
+@media (max-width: 1180px) {
+  .about-hero-container.container {
+    width: calc(100% - 40px);
+  }
+
+  .about-hero-image-wrap {
+    max-width: 760px;
+  }
+
+  .about-hero-copy {
+    max-width: 900px;
+  }
+
+  .about-hero-main::after {
+    right: clamp(-12px, 1vw, 8px);
+  }
+}
+
+@media (max-width: 767px) {
+  .about-hero-main {
+    padding: 28px 0 58px;
+  }
+
+  .about-hero-main::after {
+    display: none;
+  }
+
+  .about-hero-title {
+    font-size: clamp(36px, 10vw, 48px);
+  }
+
+  .about-hero-image-wrap {
+    margin-top: 14px;
+  }
+
+  .about-hero-copy {
+    font-size: 19px;
+    letter-spacing: 0.01em;
+    line-height: 32px;
+    margin-top: 26px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 639px) {
+  .about-hero-container.container {
+    width: calc(100% - 28px);
+  }
+
+  .about-hero-title {
+    font-size: clamp(32px, 11vw, 42px);
+  }
+
+  .about-hero-copy {
+    font-size: 16px;
+    line-height: 27px;
+  }
+}
