@@ -33,20 +33,6 @@ export const projectType = defineType({
       of: [{ type: "image", options: { hotspot: true } }],
     }),
     defineField({
-      name: "status",
-      title: "Status",
-      type: "string",
-      options: {
-        list: [
-          { title: "Ongoing", value: "Ongoing" },
-          { title: "Completed", value: "Completed" },
-        ],
-        layout: "radio",
-      },
-      initialValue: "Ongoing",
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
       name: "body",
       title: "Body",
       description: "Rich text content for the project detail page (optional)",
@@ -58,13 +44,11 @@ export const projectType = defineType({
     select: {
       title: "title",
       media: "coverImage",
-      subtitle: "status",
     },
-    prepare({ title, media, subtitle }) {
+    prepare({ title, media }) {
       return {
         title: title ?? "Untitled project",
         media,
-        subtitle: subtitle ?? "",
       };
     },
   },

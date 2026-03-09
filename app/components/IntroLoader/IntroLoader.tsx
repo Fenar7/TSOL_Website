@@ -14,6 +14,7 @@ const IntroLoader = () => {
     const loaderRef = useRef<HTMLDivElement>(null);
     const logoBaseRef = useRef<HTMLDivElement>(null);
     const logoFillRef = useRef<HTMLDivElement>(null);
+    const logoSubtitleRef = useRef<HTMLParagraphElement>(null);
     const progressTrackRef = useRef<HTMLDivElement>(null);
     const progressBarRef = useRef<HTMLDivElement>(null);
     const progressTextRef = useRef<HTMLDivElement>(null);
@@ -46,6 +47,7 @@ const IntroLoader = () => {
 
         // Setup initial states
         tl.set(logoFillRef.current, { clipPath: "inset(0 100% 0 0)" })
+            .set(logoSubtitleRef.current, { opacity: 0, y: 8 })
             .set(progressBarRef.current, { scaleX: 0 })
             .set(progressTextRef.current, { opacity: 0, y: 10 })
             .set(logoBaseRef.current, { opacity: 0, scale: 0.95 });
@@ -60,6 +62,15 @@ const IntroLoader = () => {
                 ease: "power3.out",
                 stagger: 0.1,
             }
+        ).to(
+            logoSubtitleRef.current,
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.7,
+                ease: "power2.out",
+            },
+            "-=0.8"
         ).to(
             progressTextRef.current,
             {
@@ -123,7 +134,7 @@ const IntroLoader = () => {
             }
         )
             .to(
-                [logoBaseRef.current, logoFillRef.current],
+                [logoBaseRef.current, logoFillRef.current, logoSubtitleRef.current],
                 {
                     scale: 1.15,
                     opacity: 0,
@@ -172,6 +183,9 @@ const IntroLoader = () => {
                             className="new-intro-logo-image filler"
                         />
                     </div>
+                    <p className="new-intro-logo-subtitle" ref={logoSubtitleRef}>
+                        Architecture
+                    </p>
                 </div>
             </div>
 

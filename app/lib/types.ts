@@ -6,22 +6,19 @@ type SanityImageSource = Parameters<ReturnType<typeof import("@sanity/image-url"
 
 /* ── Project types ── */
 
-export type ProjectStatus = "Ongoing" | "Completed";
-
 export interface SanityProject {
     _id: string;
     title?: string;
     slug: { current: string };
     coverImage: SanityImageSource;
     gallery?: SanityImageSource[];
-    status: ProjectStatus;
     body?: PortableTextBlock[];
 }
 
 /** Listing card — lighter payload (no body / gallery) */
 export type ProjectCard = Pick<
     SanityProject,
-    "_id" | "title" | "slug" | "coverImage" | "status"
+    "_id" | "title" | "slug" | "coverImage"
 >;
 
 /* ── Blog types ── */

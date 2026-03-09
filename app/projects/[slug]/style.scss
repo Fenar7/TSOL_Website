@@ -93,32 +93,6 @@
     width: min(100%, 737px);
 }
 
-.project-kicker-row {
-    align-items: center;
-    display: flex;
-    gap: 15px;
-    margin-bottom: 25px;
-}
-
-.project-kicker-line {
-    background: $stroke-grey;
-    display: block;
-    flex: 0 0 95px;
-    height: 1px;
-}
-
-.project-kicker {
-    color: $txt-grey;
-    font-family: $font-primary;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 350;
-    letter-spacing: 0.01em;
-    line-height: 1;
-    margin: 0;
-    text-transform: uppercase;
-}
-
 .project-title {
     color: $black;
     font-family: $font-primary;
@@ -169,34 +143,6 @@
 .project-description ul {
     list-style: disc;
     margin-left: 28px;
-}
-
-/* ── Full gallery grid ── */
-
-.project-full-gallery {
-    column-gap: 16px;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    margin-top: 56px;
-    row-gap: 16px;
-}
-
-.project-full-gallery-image {
-    aspect-ratio: 548 / 393;
-    background-color: #9f9f9f;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border: 0;
-    border-radius: 8px;
-    cursor: zoom-in;
-    padding: 0;
-    transition: opacity 0.2s ease;
-    width: 100%;
-}
-
-.project-full-gallery-image:hover {
-    opacity: 0.92;
 }
 
 /* ── Back link ── */
@@ -381,10 +327,6 @@
         margin-top: 34px;
     }
 
-    .project-full-gallery {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
     .project-viewer-nav {
         font-size: 42px;
         height: 48px;
@@ -398,9 +340,8 @@
         padding-bottom: 74px;
     }
 
-    /* Hide side thumbs and overflow gallery — single card layout */
-    .project-side-thumbs,
-    .project-full-gallery {
+    /* Hide side thumbs — single card layout */
+    .project-side-thumbs {
         display: none;
     }
 
@@ -445,14 +386,6 @@
 
     .project-heading {
         margin-top: 26px;
-    }
-
-    .project-kicker-row {
-        margin-bottom: 16px;
-    }
-
-    .project-kicker-line {
-        flex-basis: 74px;
     }
 
     .project-title {

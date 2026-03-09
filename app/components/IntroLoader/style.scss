@@ -21,19 +21,21 @@
 .new-intro-logo-container {
     position: relative;
     width: 320px;
-    height: 76px;
+    height: 106px;
 }
 
 .new-intro-logo-base {
     position: absolute;
-    inset: 0;
+    inset: 0 0 auto 0;
+    height: 76px;
     opacity: 0;
     will-change: opacity, transform;
 }
 
 .new-intro-logo-fill {
     position: absolute;
-    inset: 0;
+    inset: 0 0 auto 0;
+    height: 76px;
     will-change: clip-path, opacity, transform;
 }
 
@@ -49,6 +51,23 @@
 /* The filler is pure white to contrast strongly and look like it's lighting up */
 .new-intro-logo-image.filler {
     filter: invert(1) brightness(1);
+}
+
+.new-intro-logo-subtitle {
+    bottom: 0;
+    color: rgba(255, 255, 255, 0.82);
+    font-family: $font-primary;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    left: 50%;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    margin: 0;
+    position: absolute;
+    text-transform: uppercase;
+    transform: translateX(-50%);
+    will-change: opacity, transform;
 }
 
 /* ── Bottom Section (Progress) ── */
@@ -104,7 +123,17 @@
 @media (max-width: 767px) {
     .new-intro-logo-container {
         width: 220px;
+        height: 74px;
+    }
+
+    .new-intro-logo-base,
+    .new-intro-logo-fill {
         height: 52px;
+    }
+
+    .new-intro-logo-subtitle {
+        font-size: 13px;
+        letter-spacing: 0.07em;
     }
 
     .new-intro-loader-bottom {

@@ -15,8 +15,7 @@ const ALL_PROJECTS_QUERY = `
     _id,
     title,
     slug,
-    coverImage,
-    status
+    coverImage
   }
 `;
 
@@ -29,8 +28,7 @@ const HOMEPAGE_PROJECTS_QUERY = `
     _id,
     title,
     slug,
-    coverImage,
-    status
+    coverImage
   }
 `;
 
@@ -45,7 +43,6 @@ const PROJECT_BY_SLUG_QUERY = `
     slug,
     coverImage,
     gallery,
-    status,
     body
   }
 `;

@@ -29,7 +29,7 @@ const ProjectsSection = async () => {
                   <div
                     className="projects-item-image"
                     role="img"
-                    aria-label={project.title}
+                    aria-label={project.title ?? "Project image"}
                     style={{
                       backgroundImage: `url(${urlFor(project.coverImage)
                         .width(600)
@@ -38,7 +38,6 @@ const ProjectsSection = async () => {
                         .url()})`,
                     }}
                   />
-                  <h3 className="projects-item-title">{project.title}</h3>
                 </Link>
               ))}
             </div>

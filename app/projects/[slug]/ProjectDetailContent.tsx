@@ -13,7 +13,6 @@ interface ProjectDetailContentProps {
     title?: string;
     coverImage: SanityImageSource;
     gallery?: SanityImageSource[];
-    status: string;
     body?: PortableTextBlock[];
 }
 
@@ -21,7 +20,6 @@ const ProjectDetailContent = ({
     title,
     coverImage,
     gallery,
-    status,
     body,
 }: ProjectDetailContentProps) => {
     const allImages = useMemo(() => {
@@ -108,9 +106,6 @@ const ProjectDetailContent = ({
         return () => window.removeEventListener("keydown", onKey);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [viewerOpen, activeIndex, isAnimating]);
-
-    /* ── Meta line ── */
-    const metaLine = status ?? "";
 
     return (
         <>
@@ -207,40 +202,13 @@ const ProjectDetailContent = ({
 
                     {/* ── Heading ── */}
                     <div className="project-heading">
-                        <div className="project-kicker-row">
-                            <span className="project-kicker-line" aria-hidden="true" />
-                            <p className="project-kicker">{status}</p>
-                        </div>
                         <h1 className="project-title">{title}</h1>
-                        {metaLine && <p className="project-meta">{metaLine}</p>}
                     </div>
 
                     {/* ── Body ── */}
                     {body && body.length > 0 && (
                         <div className="project-description">
                             <PortableText value={body} />
-                        </div>
-                    )}
-
-                    {/* ── Full gallery grid ── */}
-                    {allImages.length > 4 && (
-                        <div className="project-full-gallery">
-                            {allImages.slice(4).map((img, idx) => (
-                                <button
-                                    key={idx}
-                                    type="button"
-                                    className="project-full-gallery-image"
-                                    style={{
-                                        backgroundImage: `url(${urlFor(img)
-                                            .width(800)
-                                            .height(570)
-                                            .auto("format")
-                                            .url()})`,
-                                    }}
-                                    onClick={() => openViewer(idx + 4)}
-                                    aria-label={`View gallery image ${idx + 5}`}
-                                />
-                            ))}
                         </div>
                     )}
 
