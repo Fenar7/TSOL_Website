@@ -29,29 +29,22 @@ const StorySection = () => {
         { opacity: 0, y: 44, scale: 0.97 },
         { opacity: 1, y: 0, scale: 1, duration: 0.82 }
       )
-      tl.fromTo(
-        ".story-title",
-        { opacity: 0, x: -50 },
-        { opacity: 1, x: 0, duration: 0.75, ease: "power3.out" }
-      )
+        .fromTo(
+          ".story-title",
+          { opacity: 0, x: -50 },
+          { opacity: 1, x: 0, duration: 0.75, ease: "power3.out" },
+          "-=0.45"
+        )
 
-        // 2. Subtitle — "Akbar Khan Architect" drifts in slightly after
+        // 2. Subtitle drifts in slightly after.
         .fromTo(
           ".story-subtitle",
           { opacity: 0, x: -35 },
           { opacity: 1, x: 0, duration: 0.65, ease: "power3.out" },
-          "-=0.45"
+          "-=0.4"
         )
 
-        // 3. Designation — drifts up
-        .fromTo(
-          ".story-designation",
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" },
-          "-=0.35"
-        )
-
-        // 4. Body paragraphs — staggered upward reveal
+        // 3. Body paragraphs stagger in with a gentle lift.
         .fromTo(
           ".story-body p",
           { opacity: 0, y: 40 },

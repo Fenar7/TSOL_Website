@@ -7,7 +7,6 @@ const page = () => {
   return (
     <main className="about-tsol-main">
       <AboutHeroSection/>
-      <AboutSection/>
       <StorySection />
     </main>
   );
