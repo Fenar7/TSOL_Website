@@ -150,115 +150,58 @@ const ClientQuotesSection = () => {
           },
         });
 
-        // 1 ─ Kicker lines expand from centre
+        // Group 1 — header (kicker lines + label + title all together)
         tl.fromTo(
           ".cq-section-title .section-title__kicker-line",
           { scaleX: 0, transformOrigin: "center center" },
-          { scaleX: 1, duration: 0.65, stagger: 0.12, ease: "power4.inOut" }
+          { scaleX: 1, duration: 0.35, stagger: 0.06, ease: "power4.inOut" }
         )
-
-        // 2 ─ Kicker label drops in
         .fromTo(
           ".cq-section-title .section-title__kicker",
-          { opacity: 0, y: -14 },
-          { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
-          "-=0.4"
+          { opacity: 0, y: -10 },
+          { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" },
+          "<0.1"
         )
-
-        // 3 ─ Title rises dramatically with slight scale
         .fromTo(
           ".cq-section-title .section-title__title",
-          { opacity: 0, y: 72, scale: 0.97, transformOrigin: "left bottom" },
-          { opacity: 1, y: 0, scale: 1, duration: 1.05, ease: "power4.out" },
-          "-=0.3"
+          { opacity: 0, y: 40 },
+          { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" },
+          "<0.05"
         )
-
-        // 4 ─ Nav arrows glide in from right
+        // Nav arrows simultaneously with title
         .fromTo(
-          ".cq-nav-btn:first-child",
-          { opacity: 0, x: -16 },
-          { opacity: 0.8, x: 0, duration: 0.55, ease: "power3.out" },
-          "-=0.7"
-        )
-        .fromTo(
-          ".cq-nav-btn:last-child",
-          { opacity: 0, x: 16 },
-          { opacity: 0.8, x: 0, duration: 0.55, ease: "power3.out" },
+          ".cq-nav-btn",
+          { opacity: 0 },
+          { opacity: 0.8, duration: 0.3, stagger: 0.06, ease: "power2.out" },
           "<"
         )
 
-        // 5 ─ Cards: clip-path reveal from bottom (signature style)
+        // Group 2 — cards all reveal together
         .fromTo(
           ".cq-card",
-          {
-            clipPath: "inset(100% 0 0 0)",
-            scale: 0.97,
-            transformOrigin: "bottom center",
-          },
-          {
-            clipPath: "inset(0% 0 0 0)",
-            scale: 1,
-            duration: 1.15,
-            stagger: 0.16,
-            ease: "power4.inOut",
-          },
-          "-=0.45"
+          { clipPath: "inset(100% 0 0 0)", opacity: 0 },
+          { clipPath: "inset(0% 0 0 0)", opacity: 1, duration: 0.55, stagger: 0.08, ease: "power4.out" },
+          "-=0.15"
         )
 
-        // 6 ─ Quote mark pops in with overshoot
+        // Group 3 — card internals all together
         .fromTo(
           ".cq-card-mark",
-          { opacity: 0, scale: 0.25 },
-          {
-            opacity: 0.18,
-            scale: 1,
-            duration: 0.7,
-            stagger: 0.16,
-            ease: "back.out(2.5)",
-          },
-          "-=0.9"
+          { opacity: 0, scale: 0.4 },
+          { opacity: 0.18, scale: 1, duration: 0.3, stagger: 0.06, ease: "back.out(2)" },
+          "-=0.3"
         )
-
-        // 7 ─ Quote text rises inside revealed card
         .fromTo(
-          ".cq-card-quote",
-          { opacity: 0, y: 22 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.75,
-            stagger: 0.16,
-            ease: "power3.out",
-          },
-          "-=0.85"
+          ".cq-card-quote, .cq-card-footer-line, .cq-card-name, .cq-card-role",
+          { opacity: 0, y: 10 },
+          { opacity: 1, y: 0, duration: 0.3, stagger: 0.03, ease: "power3.out" },
+          "<0.05"
         )
-
-        // 8 ─ Footer divider scaleX reveal
-        .fromTo(
-          ".cq-card-footer",
-          { scaleX: 0, transformOrigin: "left center", opacity: 0 },
-          {
-            scaleX: 1,
-            opacity: 1,
-            duration: 0.55,
-            stagger: 0.16,
-            ease: "power3.out",
-          },
-          "-=0.55"
-        )
-
-        // 9 ─ Dots pop in last
         .fromTo(
           ".cq-dot",
           { opacity: 0, scale: 0 },
-          {
-            opacity: 1,
-            scale: 1,
-            duration: 0.4,
-            stagger: 0.06,
-            ease: "back.out(3)",
-          },
-          "-=0.3"
+          { opacity: 1, scale: 1, duration: 0.25, stagger: 0.04, ease: "back.out(2)" },
+          "<"
         );
       });
 
@@ -350,6 +293,7 @@ const ClientQuotesSection = () => {
                 <span className="cq-card-mark" aria-hidden="true">&ldquo;</span>
                 <p className="cq-card-quote">{q.quote}</p>
                 <footer className="cq-card-footer">
+                  <span className="cq-card-footer-line" aria-hidden="true" />
                   <p className="cq-card-name">{q.name}</p>
                   <p className="cq-card-role">
                     {q.role}&nbsp;&middot;&nbsp;{q.location}

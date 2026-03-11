@@ -123,9 +123,16 @@
 }
 
 .cq-card-footer {
-  border-top: 1px solid $stroke-grey;
   margin-top: 24px;
-  padding-top: 18px;
+}
+
+.cq-card-footer-line {
+  background: $stroke-grey;
+  display: block;
+  height: 1px;
+  margin-bottom: 14px;
+  transform-origin: left center;
+  width: 100%;
 }
 
 .cq-card-name {
