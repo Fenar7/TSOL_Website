@@ -15,54 +15,31 @@ const CATEGORIES: {
   label: string;
   imageUrl: string;
 }[] = [
-  {
-    value: "architecture",
-    label: "Architecture",
-    imageUrl: "/images/architecture.png",
-  },
-  {
-    value: "interiors",
-    label: "Interiors",
-    imageUrl: "/images/interior.png",
-  },
-  {
-    value: "landscaping",
-    label: "Landscaping",
-    imageUrl: "/images/landscaping.png",
-  },
+  { value: "architecture", label: "Architecture", imageUrl: "/images/architecture.png" },
+  { value: "interiors",    label: "Interiors",    imageUrl: "/images/interior.png"     },
+  { value: "landscaping",  label: "Landscaping",  imageUrl: "/images/landscaping.png"  },
 ];
-
-const STATUS_FILTERS = ["All", "Ongoing", "Completed"];
 
 interface ProjectsPageSectionProps {
   projects: ProjectCard[];
   initialCategory?: ServiceCategory;
-  initialStatus?: string;
 }
 
 const ProjectsPageSection = ({
   projects,
   initialCategory,
-  initialStatus,
 }: ProjectsPageSectionProps) => {
   const [activeCategory, setActiveCategory] = useState<ServiceCategory | null>(
     initialCategory ?? null
-  );
-  const [activeStatus, setActiveStatus] = useState<string>(
-    initialStatus && STATUS_FILTERS.includes(initialStatus)
-      ? initialStatus
-      : "All"
   );
 
   const gridRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
   /* ── Derive filtered list ── */
-  const filtered = projects.filter((p) => {
-    const catMatch = !activeCategory || p.serviceCategory === activeCategory;
-    const statusMatch = activeStatus === "All" || p.status === activeStatus;
-    return catMatch && statusMatch;
-  });
+  const filtered = projects.filter(
+    (p) => !activeCategory || p.serviceCategory === activeCategory
+  );
 
   /* ── GSAP card entrance on filter change ── */
   useEffect(() => {
@@ -82,7 +59,7 @@ const ProjectsPageSection = ({
         clearProps: "transform,opacity",
       }
     );
-  }, [filtered.length, activeCategory, activeStatus]);
+  }, [filtered.length, activeCategory]);
 
   /* ── Sync URL when category changes ── */
   const handleCategoryClick = (cat: ServiceCategory | null) => {
@@ -109,9 +86,7 @@ const ProjectsPageSection = ({
                 key={cat.value}
                 type="button"
                 className={`projects-cat-card${isActive ? " is-active" : ""}`}
-                onClick={() =>
-                  handleCategoryClick(isActive ? null : cat.value)
-                }
+                onClick={() => handleCategoryClick(isActive ? null : cat.value)}
                 aria-pressed={isActive}
                 aria-label={`Filter by ${cat.label}`}
               >
@@ -126,38 +101,6 @@ const ProjectsPageSection = ({
               </button>
             );
           })}
-        </div>
-
-        {/* ── Status filter pills ── */}
-        <div className="projects-page-filters">
-          <div className="projects-page-filter-group">
-            <span className="projects-page-filter-label">Status</span>
-            <div className="projects-page-filter-pills">
-              {STATUS_FILTERS.map((s) => (
-                <button
-                  key={s}
-                  type="button"
-                  className={`projects-page-filter-pill${activeStatus === s ? " is-active" : ""}`}
-                  onClick={() => setActiveStatus(s)}
-                >
-                  {s}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {(activeCategory || activeStatus !== "All") && (
-            <button
-              type="button"
-              className="projects-page-clear-btn"
-              onClick={() => {
-                setActiveStatus("All");
-                handleCategoryClick(null);
-              }}
-            >
-              Clear filters
-            </button>
-          )}
         </div>
 
         {/* ── Project grid ── */}
@@ -186,11 +129,6 @@ const ProjectsPageSection = ({
                 {project.title && (
                   <p className="projects-page-item-title">{project.title}</p>
                 )}
-                {project.status && (
-                  <span className="projects-page-item-category">
-                    {project.status}
-                  </span>
-                )}
               </Link>
             ))}
           </div>
@@ -200,16 +138,13 @@ const ProjectsPageSection = ({
           </div>
         ) : (
           <div className="projects-page-empty">
-            <p>No projects match the current filters.</p>
+            <p>No projects match the selected category.</p>
             <button
               type="button"
               className="projects-page-clear-btn"
-              onClick={() => {
-                setActiveStatus("All");
-                handleCategoryClick(null);
-              }}
+              onClick={() => handleCategoryClick(null)}
             >
-              Clear filters
+              Show all projects
             </button>
           </div>
         )}

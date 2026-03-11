@@ -1,8 +1,7 @@
-import AboutSection from "./components/AboutSection/AboutSection";
+import ClientQuotesSection from "./components/ClientQuotesSection/ClientQuotesSection";
 import ContactCtaSection from "./components/ContactCtaSection/ContactCtaSection";
 import Hero from "./components/Hero/Hero";
 import OurApproachSection from "./components/OurApproachSection/OurApproachSection";
-import ProjectsSection from "./components/ProjectsSection/ProjectsSection";
 import ServicesSection from "./components/ServicesSection/ServicesSection";
 import TestimonialsSection from "./components/TestimonialsSection/TestimonialsSection";
 import { getTestimonials } from "./lib/queries";
@@ -14,10 +13,9 @@ export default async function Home() {
     <main className="home-main">
       <Hero />
       <OurApproachSection />
-      {/* <ProjectsSection /> */}
       <ServicesSection />
+      <ClientQuotesSection />
       <ContactCtaSection />
-       {/* <AboutSection /> */}
       <TestimonialsSection testimonials={testimonials} />
     </main>
   );

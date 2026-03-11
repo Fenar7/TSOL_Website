@@ -1,0 +1,228 @@
+/* ─────────────────────────────────────────
+   ClientQuotesSection — text testimonial
+   carousel, matching site design tokens
+───────────────────────────────────────── */
+
+.cq-main {
+  background: $white;
+  padding: 72px 0 88px;
+}
+
+.cq-container.container {
+  margin-inline: auto;
+  max-width: 1720px;
+  padding-inline: 0;
+  width: calc(100% - 200px);
+}
+
+/* ── Header row: title left, arrows right ── */
+
+.cq-header {
+  align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 52px;
+}
+
+.cq-section-title {
+  margin-inline: 0;
+  max-width: 520px;
+  text-align: left;
+}
+
+.cq-section-title .section-title__label {
+  justify-content: flex-start;
+}
+
+/* ── Navigation arrows ── */
+
+.cq-nav {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.cq-nav-btn {
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  height: 48px;
+  justify-content: center;
+  opacity: 0.8;
+  padding: 0;
+  transition: opacity 0.2s ease;
+  width: 48px;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.cq-nav-icon {
+  display: block;
+  height: 48px;
+  object-fit: contain;
+  width: 48px;
+}
+
+.cq-nav-icon--prev {
+  transform: rotate(180deg);
+}
+
+/* ── Slider ── */
+
+.cq-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.cq-track {
+  display: flex;
+  gap: 28px;
+  will-change: transform;
+}
+
+.cq-card {
+  background: $white;
+  border: 1px solid $stroke-grey;
+  border-radius: 5px;
+  display: flex;
+  flex: 0 0 calc((100% - 2 * 28px) / 3);
+  flex-direction: column;
+  min-height: 280px;
+  min-width: 0;
+  padding: 32px 30px 28px;
+}
+
+.cq-card-mark {
+  color: $black;
+  display: block;
+  font-family: $font-neue-haas;
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 0.8;
+  margin-bottom: 18px;
+  opacity: 0.18;
+  user-select: none;
+}
+
+.cq-card-quote {
+  color: $black;
+  flex: 1;
+  font-family: $font-neue-haas;
+  font-size: 17px;
+  font-style: italic;
+  font-weight: 350;
+  letter-spacing: 0.005em;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.cq-card-footer {
+  border-top: 1px solid $stroke-grey;
+  margin-top: 24px;
+  padding-top: 18px;
+}
+
+.cq-card-name {
+  color: $black;
+  font-family: $font-neue-haas;
+  font-size: 15px;
+  font-weight: 450;
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+.cq-card-role {
+  color: $txt-grey;
+  font-family: $font-neue-haas;
+  font-size: 13px;
+  font-weight: 350;
+  letter-spacing: 0.04em;
+  margin: 4px 0 0;
+  text-transform: uppercase;
+}
+
+/* ── Dot indicators ── */
+
+.cq-dots {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 36px;
+}
+
+.cq-dot {
+  background: $stroke-grey;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: block;
+  height: 7px;
+  padding: 0;
+  transition: background 0.25s ease, transform 0.25s ease, width 0.25s ease;
+  width: 7px;
+
+  &.is-active {
+    background: $black;
+    border-radius: 4px;
+    width: 22px;
+  }
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 1023px) {
+  .cq-container.container {
+    width: calc(100% - 40px);
+  }
+
+  .cq-header {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .cq-main {
+    padding: 52px 0 64px;
+  }
+
+  .cq-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+
+  .cq-nav {
+    margin-bottom: 0;
+  }
+
+  .cq-card {
+    /* Mobile: 1 visible = 100% wide */
+    flex: 0 0 100%;
+    min-height: 0;
+    padding: 22px 20px 20px;
+  }
+
+  .cq-card-quote {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .cq-card-mark {
+    font-size: 38px;
+    margin-bottom: 14px;
+  }
+}
+
+@media (max-width: 639px) {
+  .cq-container.container {
+    width: calc(100% - 28px);
+  }
+}

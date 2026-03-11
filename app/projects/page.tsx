@@ -10,12 +10,12 @@ export const metadata = {
 };
 
 interface ProjectsPageProps {
-  searchParams: Promise<{ category?: string; status?: string }>;
+  searchParams: Promise<{ category?: string }>;
 }
 
 const ProjectsPage = async ({ searchParams }: ProjectsPageProps) => {
   const projects = await getAllProjects();
-  const { category, status } = await searchParams;
+  const { category } = await searchParams;
 
   const validCategories: ServiceCategory[] = [
     "architecture",
@@ -29,11 +29,7 @@ const ProjectsPage = async ({ searchParams }: ProjectsPageProps) => {
 
   return (
     <main className="projects-page-main">
-      <ProjectsPageSection
-        projects={projects}
-        initialCategory={initialCategory}
-        initialStatus={status}
-      />
+      <ProjectsPageSection projects={projects} initialCategory={initialCategory} />
     </main>
   );
 };
