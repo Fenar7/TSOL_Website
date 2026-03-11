@@ -169,7 +169,7 @@
   --font-optima: #{$font-optima};
   --font-primary: #{$font-primary};
   --site-header-height: 82px;
-  --hero-top-gap: 10px;
+  --hero-top-gap: 0px;
   --hero-bottom-gap: 14px;
 }
 
@@ -203,7 +203,7 @@ body {
 @media (max-width: 1023px) {
   :root {
     --site-header-height: 72px;
-    --hero-top-gap: 8px;
+    --hero-top-gap: 0px;
     --hero-bottom-gap: 10px;
   }
 }
@@ -211,7 +211,7 @@ body {
 @media (max-width: 639px) {
   :root {
     --site-header-height: 66px;
-    --hero-top-gap: 6px;
+    --hero-top-gap: 0px;
     --hero-bottom-gap: 8px;
   }
 }

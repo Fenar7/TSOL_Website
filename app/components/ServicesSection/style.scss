@@ -29,8 +29,37 @@
 .service-item {
   border: 1px solid $stroke-grey;
   border-radius: 5px;
+  display: block;
   min-width: 0;
   padding: 30px;
+  position: relative;
+  text-decoration: none;
+  transition: border-color 0.25s ease;
+
+  &:hover {
+    border-color: darken(#d8d5cc, 18%);
+  }
+}
+
+.service-item--link {
+  cursor: pointer;
+}
+
+.service-item-arrow {
+  bottom: 28px;
+  color: $black;
+  display: block;
+  font-size: 16px;
+  opacity: 0;
+  position: absolute;
+  right: 30px;
+  transform: translateX(-6px);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+
+  .service-item:hover & {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .service-img-wrap {

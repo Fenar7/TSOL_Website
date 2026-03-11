@@ -6,19 +6,25 @@ type SanityImageSource = Parameters<ReturnType<typeof import("@sanity/image-url"
 
 /* ── Project types ── */
 
+export type ProjectStatus = "Ongoing" | "Completed";
+
+export type ServiceCategory = "architecture" | "interiors" | "landscaping";
+
 export interface SanityProject {
     _id: string;
     title?: string;
     slug: { current: string };
     coverImage: SanityImageSource;
     gallery?: SanityImageSource[];
+    status: ProjectStatus;
+    serviceCategory?: ServiceCategory;
     body?: PortableTextBlock[];
 }
 
 /** Listing card — lighter payload (no body / gallery) */
 export type ProjectCard = Pick<
     SanityProject,
-    "_id" | "title" | "slug" | "coverImage"
+    "_id" | "title" | "slug" | "coverImage" | "status" | "serviceCategory"
 >;
 
 /* ── Blog types ── */

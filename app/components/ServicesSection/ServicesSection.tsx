@@ -1,6 +1,7 @@
 "use client";
 
 import { useLayoutEffect, useRef } from "react";
+import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SectionTitle from "../ui/SectionTitle/SectionTitle";
@@ -11,6 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 const servicesItems = [
   {
     id: "service-architecture",
+    categoryParam: "architecture",
     imageUrl: "/images/architecture.png",
     title: "Architecture",
     description:
@@ -18,6 +20,7 @@ const servicesItems = [
   },
   {
     id: "service-interiors",
+    categoryParam: "interiors",
     imageUrl: "/images/interior.png",
     title: "Interiors",
     description:
@@ -25,6 +28,7 @@ const servicesItems = [
   },
   {
     id: "service-landscaping",
+    categoryParam: "landscaping",
     imageUrl: "/images/landscaping.png",
     title: "Landscaping",
     description:
@@ -45,14 +49,11 @@ const ServicesSection = () => {
         },
       });
 
-      // 1. Section label + title fade up
       tl.fromTo(
         ".services-section-title",
         { opacity: 0, y: 50 },
         { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }
       )
-
-        // 2. Cards materialise — rise from below with stagger
         .fromTo(
           ".service-item",
           { opacity: 0, y: 80, borderColor: "transparent" },
@@ -66,8 +67,6 @@ const ServicesSection = () => {
           },
           "-=0.4"
         )
-
-        // 3. Images inside cards — clip-path reveal bottom-to-top with zoom
         .fromTo(
           ".service-img-wrap",
           { clipPath: "inset(100% 0 0% 0)" },
@@ -85,18 +84,8 @@ const ServicesSection = () => {
           { scale: 1, duration: 1.8, stagger: 0.15, ease: "power2.out" },
           "<"
         )
-
-        // 4. Title text inside each card drift up
         .fromTo(
           ".service-item-title",
-          { opacity: 0, y: 25 },
-          { opacity: 1, y: 0, duration: 0.6, stagger: 0.15, ease: "power3.out" },
-          "-=1.4"
-        )
-
-        // 5. Description text fade up with slight delay
-        .fromTo(
-          ".service-item-description",
           { opacity: 0, y: 18 },
           { opacity: 1, y: 0, duration: 0.55, stagger: 0.15, ease: "power3.out" },
           "-=0.6"
@@ -118,8 +107,12 @@ const ServicesSection = () => {
 
           <div className="services-items-container">
             {servicesItems.map((item) => (
-              <article key={item.id} className="service-item">
-                {/* Wrapper div for clip-path mask — keeps border-radius on card intact */}
+              <Link
+                key={item.id}
+                href={`/projects?category=${item.categoryParam}`}
+                className="service-item service-item--link"
+                aria-label={`View ${item.title} projects`}
+              >
                 <div className="service-img-wrap">
                   <div
                     className="service-item-image"
@@ -130,7 +123,8 @@ const ServicesSection = () => {
                 </div>
                 <h3 className="service-item-title">{item.title}</h3>
                 <p className="service-item-description">{item.description}</p>
-              </article>
+                <span className="service-item-arrow" aria-hidden="true">↗</span>
+              </Link>
             ))}
           </div>
         </div>
