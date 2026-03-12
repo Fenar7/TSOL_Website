@@ -20,7 +20,7 @@ const CATEGORIES: {
     label: "Architecture",
     imageUrl: "/images/architecture.png",
     description:
-      "We design with lived experience in mind. Plans are shaped for posture, movement, rest, gathering, and openness, so the space feels clear, calm, and true to life.",
+      "Design with lived experience in mind. Plans are shaped for posture, movement, rest, gathering, and openness, so the space feels clear, calm, and true to life.",
   },
   {
     value: "interiors",
