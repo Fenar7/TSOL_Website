@@ -66,7 +66,7 @@ const Footer = () => {
             <Link href="/">Home</Link>
             <Link href="/about-tsol">About</Link>
             <Link href="/projects">Portfolio</Link>
-            <Link href="/blog">Blog</Link>
+            <Link href="/blog">Articles</Link>
             <Link href="/contact">Contact</Link>
           </div>
         </nav>

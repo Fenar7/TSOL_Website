@@ -141,7 +141,7 @@ const StorySection = () => {
             style and approach, earning the trust and loyalty of a discerning clientele.
           </p>
 
-          <p className="story-inline-brand story-paragraph" aria-label="TSOL architecture">
+          {/* <p className="story-inline-brand story-paragraph" aria-label="TSOL architecture">
             <span className="story-inline-brand-tsol">TSOL</span>
             <span className="story-inline-brand-word">architecture</span>
           </p>
@@ -157,7 +157,7 @@ const StorySection = () => {
             With a track record of delivering successful projects and an unwavering commitment to
             design excellence, we bring a unique blend of creativity, experience, and business
             acumen to every architectural endeavour.
-          </p>
+          </p> */}
         </div>
       </div>
     </section>

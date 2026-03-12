@@ -180,7 +180,7 @@ function VideoLightbox({ testimonial, onClose }: LightboxProps) {
 
         {/* Info */}
         <div className="testimonial-lightbox-info">
-          <p className="testimonial-lightbox-name">Client Testimonial</p>
+          <p className="testimonial-lightbox-name">TSOL Documentary</p>
         </div>
       </div>
     </div>
@@ -276,8 +276,8 @@ const TestimonialsSection = ({ testimonials }: TestimonialsSectionProps) => {
             <div className="testimonials-heading-row">
               <SectionTitle
                 className="testimonials-title"
-                label="Testimonials"
-                title="What Stayed With Them"
+                label="Documentaries"
+                title="Form in Motion"
               />
 
               <div className="testimonials-nav">

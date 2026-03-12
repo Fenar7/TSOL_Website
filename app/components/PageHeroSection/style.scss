@@ -78,6 +78,34 @@
   margin: clamp(10px, 0.94vw, 16px) 0 0;
 }
 
+.page-hero-socials {
+  align-items: center;
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  margin-top: 22px;
+}
+
+.page-hero-social-link {
+  align-items: center;
+  color: $white;
+  display: flex;
+  justify-content: center;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+
+  svg {
+    display: block;
+    height: 30px;
+    width: 30px;
+  }
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+}
+
 .page-hero-content.is-centered {
   left: 50%;
   max-width: min(calc(100% - 36px), 786px);

@@ -9,15 +9,33 @@ import { urlFor } from "@/sanity/image";
 import type { ProjectCard, ServiceCategory } from "../../lib/types";
 import "./style.scss";
 
-/* ── Category config ── */
 const CATEGORIES: {
   value: ServiceCategory;
   label: string;
   imageUrl: string;
+  description: string;
 }[] = [
-  { value: "architecture", label: "Architecture", imageUrl: "/images/architecture.png" },
-  { value: "interiors",    label: "Interiors",    imageUrl: "/images/interior.png"     },
-  { value: "landscaping",  label: "Landscaping",  imageUrl: "/images/landscaping.png"  },
+  {
+    value: "architecture",
+    label: "Architecture",
+    imageUrl: "/images/architecture.png",
+    description:
+      "We design with lived experience in mind. Plans are shaped for posture, movement, rest, gathering, and openness, so the space feels clear, calm, and true to life.",
+  },
+  {
+    value: "interiors",
+    label: "Interiors",
+    imageUrl: "/images/interior.png",
+    description:
+      "Interiors carry the soul of daily life. Proportion, material, comfort, and atmosphere are held with care, so the space feels human, grounded, and worth returning to.",
+  },
+  {
+    value: "landscaping",
+    label: "Landscaping",
+    imageUrl: "/images/landscaping.png",
+    description:
+      "Landscape extends the space into nature. Shade, air, paths, and quiet corners are shaped to feel natural through the day, and to mature with time.",
+  },
 ];
 
 interface ProjectsPageSectionProps {
@@ -77,7 +95,7 @@ const ProjectsPageSection = ({
           title="Emotion Memory Meaning"
         />
 
-        {/* ── Category image-card filters ── */}
+        {/* ── Category filter cards — same design as service cards ── */}
         <div className="projects-cat-cards">
           {CATEGORIES.map((cat) => {
             const isActive = activeCategory === cat.value;
@@ -90,14 +108,17 @@ const ProjectsPageSection = ({
                 aria-pressed={isActive}
                 aria-label={`Filter by ${cat.label}`}
               >
-                <div
-                  className="projects-cat-card-image"
-                  role="img"
-                  aria-label={cat.label}
-                  style={{ backgroundImage: `url(${cat.imageUrl})` }}
-                />
-                <div className="projects-cat-card-overlay" />
-                <span className="projects-cat-card-label">{cat.label}</span>
+                {/* Image wrap — same aspect ratio + overflow as service card */}
+                <div className="projects-cat-card-img-wrap">
+                  <div
+                    className="projects-cat-card-image"
+                    role="img"
+                    aria-label={cat.label}
+                    style={{ backgroundImage: `url(${cat.imageUrl})` }}
+                  />
+                </div>
+                <h3 className="projects-cat-card-title">{cat.label}</h3>
+                <p className="projects-cat-card-desc">{cat.description}</p>
               </button>
             );
           })}

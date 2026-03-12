@@ -2,7 +2,7 @@ import { defineField, defineType } from "sanity";
 
 export const testimonialType = defineType({
     name: "testimonial",
-    title: "Testimonial",
+    title: "Documentary",
     type: "document",
     icon: () => "🎬",
     fields: [
@@ -33,7 +33,7 @@ export const testimonialType = defineType({
     preview: {
         select: { media: "thumbnail" },
         prepare({ media }) {
-            return { title: "Testimonial Video", media };
+            return { title: "Documentary Video", media };
         },
     },
     orderings: [

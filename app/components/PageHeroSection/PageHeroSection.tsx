@@ -22,6 +22,8 @@ type PageHeroSectionProps = {
   overlayOpacity?: number;
   /** When true, play an on-load entrance animation for the hero */
   animated?: boolean;
+  /** When true, show Instagram and Facebook icon links below subtitle */
+  showSocials?: boolean;
 };
 
 const PageHeroSection = ({
@@ -36,6 +38,7 @@ const PageHeroSection = ({
   contentAlign = "left",
   overlayOpacity = 0.2,
   animated = false,
+  showSocials = false,
 }: PageHeroSectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
   const ariaTitle = title ?? `${titleLead} ${titleMain}`.trim();
@@ -77,6 +80,14 @@ const PageHeroSection = ({
           { opacity: 0, y: 25 },
           { opacity: 1, y: 0, duration: 0.65 },
           "-=0.5"
+        )
+
+        // 5. Social icons pop in
+        .fromTo(
+          ".page-hero-social-link",
+          { opacity: 0, scale: 0.7 },
+          { opacity: 1, scale: 1, duration: 0.45, stagger: 0.1, ease: "back.out(2)" },
+          "-=0.3"
         );
     }, sectionRef);
 
@@ -116,6 +127,37 @@ const PageHeroSection = ({
               </h1>
             )}
             {subtitle ? <p className="page-hero-subtitle">{subtitle}</p> : null}
+
+            {showSocials && (
+              <div className="page-hero-socials">
+                {/* Instagram */}
+                <a
+                  href="https://www.instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow us on Instagram"
+                  className="page-hero-social-link"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                    <circle cx="12" cy="12" r="4.5"/>
+                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                  </svg>
+                </a>
+                {/* Facebook */}
+                <a
+                  href="https://www.facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow us on Facebook"
+                  className="page-hero-social-link"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                  </svg>
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </div>

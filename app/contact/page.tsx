@@ -16,6 +16,7 @@ const page = () => {
         className="contact-page-hero"
         priority
         animated
+        showSocials
       />
       <ContactInfoSection />
       <ContactMapSection />
