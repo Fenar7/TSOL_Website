@@ -1,6 +1,7 @@
 "use client";
 
 import { useLayoutEffect, useRef } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ActionButton from "../ui/ActionButton/ActionButton";
@@ -9,7 +10,7 @@ import "./style.scss";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const contactCtaImageUrl = "/images/our-motto-image.png";
+const contactCtaImageSrc = "/images/contact-cta-section.png";
 const mottoSummary =
   "Architecture that is not only functional but connects with a deep human need for harmony, expression and belonging.";
 const mottoQuote =
@@ -88,11 +89,14 @@ const ContactCtaSection = () => {
 
           {/* Wrapper for clip-path mask + zoom */}
           <div className="contact-cta-img-wrap">
-            <div
+            <Image
+              src={contactCtaImageSrc}
+              alt="TSOL - architectural space"
               className="contact-cta-image"
-              role="img"
-              aria-label="Courtyard home surrounded by trees and tropical planting"
-              style={{ backgroundImage: `url(${contactCtaImageUrl})` }}
+              width={1400}
+              height={900}
+              sizes="(max-width: 639px) calc(100vw - 28px), (max-width: 1023px) calc(100vw - 40px), min(100%, 1200px)"
+              priority={false}
             />
           </div>
 
@@ -102,7 +106,7 @@ const ContactCtaSection = () => {
             <div className="contact-cta-source">
               <p className="contact-cta-source-title">-The Sense of Unity</p>
               <p className="contact-cta-source-authors">
-                Nader Ardalan &amp; Laleh Bakhtar
+                Nader Ardalan &amp; Laleh Bakhtiar
               </p>
             </div>
           </div>

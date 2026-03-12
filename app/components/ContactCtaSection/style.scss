@@ -33,23 +33,16 @@
 }
 
 .contact-cta-img-wrap {
-  aspect-ratio: 689 / 381;
   clip-path: inset(0% 0 100% 0);
   margin: 33px auto 0;
   overflow: hidden;
   position: relative;
-  width: min(100%, 689px);
+  width: min(100%, 1200px);
 }
 
 .contact-cta-image {
-  background-color: #dad9d6;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
+  display: block;
+  height: auto;
   width: 100%;
 }
 
