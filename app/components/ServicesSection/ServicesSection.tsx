@@ -117,7 +117,7 @@ const ServicesSection = () => {
       resumeTimer = window.setTimeout(() => { paused = false; }, 5000);
     };
     slider.addEventListener("touchstart", onTouch, { passive: true });
-    const timer = setInterval(advance, 3500);
+    const timer = setInterval(advance, 6000);
     return () => {
       clearInterval(timer);
       clearTimeout(resumeTimer);
