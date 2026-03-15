@@ -96,12 +96,16 @@ const ServicesSection = () => {
     return () => ctx.revert();
   }, []);
 
-  /* ── Mobile auto-advance carousel ── */
+  /* ── Mobile auto-advance carousel (starts only when section is in view) ── */
   useEffect(() => {
     const slider = sliderRef.current;
-    if (!slider) return;
+    const section = sectionRef.current;
+    if (!slider || !section) return;
+
     let idx = 0;
     let paused = false;
+    let resumeTimer = 0;
+    let timer: number | undefined;
 
     const advance = () => {
       if (paused || window.innerWidth > 767) return;
@@ -113,18 +117,35 @@ const ServicesSection = () => {
       }
     };
 
-    let resumeTimer = 0;
+    const startTimer = () => {
+      if (!timer) timer = window.setInterval(advance, 6000);
+    };
+    const stopTimer = () => {
+      if (timer) { clearInterval(timer); timer = undefined; }
+    };
+
     const onTouch = () => {
       paused = true;
       window.clearTimeout(resumeTimer);
       resumeTimer = window.setTimeout(() => { paused = false; }, 5000);
     };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && window.innerWidth <= 767) startTimer();
+        else stopTimer();
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(section);
     slider.addEventListener("touchstart", onTouch, { passive: true });
-    const timer = setInterval(advance, 6000);
+
     return () => {
-      clearInterval(timer);
+      stopTimer();
       clearTimeout(resumeTimer);
       slider.removeEventListener("touchstart", onTouch);
+      observer.disconnect();
     };
   }, []);
 
