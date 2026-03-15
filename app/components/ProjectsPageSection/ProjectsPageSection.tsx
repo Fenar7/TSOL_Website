@@ -121,7 +121,7 @@ const ProjectsPageSection = ({
         {/* ── Dynamic section title ── */}
         <SectionTitle
           className="projects-page-section-title"
-          label={isFiltered ? "Portfolio" : "Selected Works"}
+          label={isFiltered ? "Selected Works" : "Selected Works"}
           title={isFiltered ? (activeCatData?.label ?? "") : "Emotion Memory Meaning"}
         />
 

@@ -39,8 +39,8 @@ const BlogPageSection = ({ posts }: BlogPageSectionProps) => {
       <div className="blog-page-section-container container">
         <SectionTitle
           className="blog-page-section-title"
-          label="The Journal"
-          title="Thoughts from the studio"
+          label="The Article"
+          title="Thoughts from TSOL"
           subtitle="Ideas and lessons that help you design with less noise."
         />
 

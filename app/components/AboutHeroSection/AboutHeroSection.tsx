@@ -12,7 +12,7 @@ const aboutHeroCopyLines = [
   "In architecture, the shape of life is a poetic way of talking about how buildings are shaped around everyday life patterns.",
   "For instance, how people move and pause in a home, how they meet, rest, argue, celebrate or feel safe.",
   "A kitchen becomes central because family life gathers there; streets curve so that people can slow down and linger there-not because straight lines are more efficient.",
-  "At TSOL, we ask: what shape does human life naturally want to take, and how can architecture support it?",
+  "What shape does human life naturally want to take, and how can architecture support it?",
 ];
 
 const AboutHeroSection = () => {
