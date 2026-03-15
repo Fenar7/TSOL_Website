@@ -8,7 +8,7 @@ import "./style.scss";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const StorySection = () => {
+const StorySection = ({ headingTop = false }: { headingTop?: boolean }) => {
   const sectionRef = useRef<HTMLElement>(null);
   const imageUrl = "/images/akbar-khan-architect.png";
 
@@ -112,6 +112,17 @@ const StorySection = () => {
   return (
     <section className="story-section-main" aria-label="The Founder Story" ref={sectionRef}>
       <div className="story-section-container container">
+        {headingTop && (
+          <div className="story-heading story-heading--top">
+            <div className="story-subtitle-mask">
+              <p className="story-subtitle">The Founder &amp; Principal Architect</p>
+            </div>
+            <div className="story-title-mask">
+              <h2 className="story-title">Akbar Khan Architect</h2>
+            </div>
+          </div>
+        )}
+
         <div className="story-portrait-wrap">
           <Image
             src={imageUrl}
@@ -122,14 +133,16 @@ const StorySection = () => {
           />
         </div>
 
-        <div className="story-heading">
-          <div className="story-title-mask">
-            <h2 className="story-title">Akbar Khan Architect</h2>
+        {!headingTop && (
+          <div className="story-heading">
+            <div className="story-title-mask">
+              <h2 className="story-title">Akbar Khan Architect</h2>
+            </div>
+            <div className="story-subtitle-mask">
+              <p className="story-subtitle">The Founder &amp; Principal Architect</p>
+            </div>
           </div>
-          <div className="story-subtitle-mask">
-            <p className="story-subtitle">The Founder &amp; Principal Architect</p>
-          </div>
-        </div>
+        )}
 
         <div className="story-body">
           <p className="story-paragraph">

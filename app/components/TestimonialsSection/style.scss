@@ -114,33 +114,34 @@
 }
 
 .testimonials-heading-row {
-  align-items: flex-start;
+  align-items: center;
   display: flex;
-  justify-content: space-between;
-  gap: 26px;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .testimonials-title {
-  max-width: 737px;
+  max-width: 100%;
+  text-align: center;
+  width: 100%;
 }
 
 .testimonials-title.section-title {
-  align-items: flex-start;
+  align-items: center;
 }
 
 .testimonials-title .section-title__kicker-row {
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .testimonials-title .section-title__title {
-  text-align: left;
+  text-align: center;
 }
 
 .testimonials-nav {
   align-items: center;
   display: flex;
-  gap: 16px;
-  padding-top: 41px;
+  gap: 12px;
 }
 
 .testimonials-nav-btn {
@@ -150,15 +151,15 @@
   cursor: pointer;
   display: inline-flex;
   justify-content: center;
-  min-height: 56px;
-  min-width: 56px;
+  min-height: 32px;
+  min-width: 32px;
   padding: 0;
 }
 
 .testimonials-nav-icon {
   display: block;
-  height: 56px;
-  width: 56px;
+  height: 32px;
+  width: 32px;
 }
 
 .testimonials-nav-icon--prev {
@@ -171,8 +172,10 @@
   margin-top: 34px;
   overflow-x: auto;
   overscroll-behavior-x: contain;
-  scrollbar-width: none;
   scroll-behavior: smooth;
+  scroll-padding-inline-start: 27px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
 }
 
 .testimonial-video-container::-webkit-scrollbar {
@@ -186,6 +189,7 @@
   height: 282px;
   overflow: hidden;
   position: relative;
+  scroll-snap-align: start;
   text-decoration: none;
 }
 

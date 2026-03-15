@@ -76,6 +76,27 @@
   width: 24px;
 }
 
+/* Mobile-only contact quick-action icons — hidden on desktop */
+.header-mobile-actions {
+  align-items: center;
+  display: none;
+  gap: 14px;
+}
+
+.header-mobile-action-btn {
+  align-items: center;
+  color: currentColor;
+  display: flex;
+  justify-content: center;
+  opacity: 0.75;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
 .mobile-toggle {
   align-items: center;
   background: transparent;
@@ -179,6 +200,12 @@
 
   .mobile-toggle {
     display: flex;
+  }
+
+  .header-mobile-actions {
+    display: flex;
+    margin-left: auto;
+    margin-right: 16px;
   }
 
   .mobile-nav {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./style.scss";
@@ -13,6 +13,7 @@ const approachImageThree = "/images/our-approach-3.png";
 
 const OurApproachSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const sliderRef  = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
@@ -64,6 +65,36 @@ const OurApproachSection = () => {
     return () => ctx.revert();
   }, []);
 
+  /* ── Mobile auto-advance carousel ── */
+  useEffect(() => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+    let idx = 0;
+    let paused = false;
+    let resumeTimer = 0;
+
+    const advance = () => {
+      if (paused || window.innerWidth > 767) return;
+      const items = Array.from(slider.children) as HTMLElement[];
+      idx = (idx + 1) % items.length;
+      items[idx]?.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+    };
+
+    const onTouch = () => {
+      paused = true;
+      window.clearTimeout(resumeTimer);
+      resumeTimer = window.setTimeout(() => { paused = false; }, 5000);
+    };
+
+    slider.addEventListener("touchstart", onTouch, { passive: true });
+    const timer = setInterval(advance, 3500);
+    return () => {
+      clearInterval(timer);
+      window.clearTimeout(resumeTimer);
+      slider.removeEventListener("touchstart", onTouch);
+    };
+  }, []);
+
   return (
     <section className="our-approach-main" aria-label="Our Approach" ref={sectionRef}>
       <div className="our-approach-container container">
@@ -86,7 +117,7 @@ const OurApproachSection = () => {
           </p> */}
         </div>
 
-        <div className="our-approach-cards">
+        <div className="our-approach-cards" ref={sliderRef}>
           <article className="our-approach-card">
             <p className="our-approach-card-number">01</p>
             <div className="our-approach-img-wrap">

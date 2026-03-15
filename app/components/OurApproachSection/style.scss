@@ -233,15 +233,42 @@
     line-height: 27px;
   }
 
+  /* Horizontal scroll-snap carousel on mobile */
+  .our-approach-container.container {
+    max-width: 100%;
+    padding-inline: 0;
+    width: 100%;
+  }
+
+  .our-approach-intro {
+    max-width: 100%;
+    padding-inline: 20px;
+  }
+
   .our-approach-cards {
-    grid-template-columns: minmax(0, 1fr);
+    column-gap: 0;
+    display: flex;
+    gap: 14px;
+    grid-template-columns: unset;
     margin-top: 40px;
-    row-gap: 24px;
+    overflow-x: scroll;
+    padding: 0 20px 4px;
+    row-gap: 0;
+    scroll-padding-inline-start: 20px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   .our-approach-card {
-    border-bottom: 1px solid $stroke-grey;
-    padding: 0 0 24px;
+    border-bottom: none;
+    flex: 0 0 83%;
+    min-width: 0;
+    padding: 0 0 8px;
+    scroll-snap-align: start;
   }
 
   .our-approach-card:not(:last-child)::after {

@@ -24,7 +24,7 @@ const contactCards: ContactCard[] = [
   {
     id: "call",
     title: "Call Us",
-    caption: "Speak With us",
+    caption: "Give us a call",
     detail: "+91 123 456 789",
     href: "tel:+91123456789",
     iconSrc: "/images/icons/call.svg",
@@ -35,7 +35,7 @@ const contactCards: ContactCard[] = [
   {
     id: "chat",
     title: "Chat With Us",
-    caption: "Speak With us",
+    caption: "Message on WhatsApp",
     detail: "+91 123 456 789",
     href: "https://wa.me/91123456789",
     iconSrc: "/images/icons/whatsapp.svg",
@@ -46,7 +46,7 @@ const contactCards: ContactCard[] = [
   {
     id: "visit",
     title: "Visit Us",
-    caption: "Speak With us",
+    caption: "Find our studio",
     detail: "View on Google Maps",
     href: "https://maps.google.com/?q=Akbar+Khan+Architect+Kozhikode",
     iconSrc: "/images/icons/location.svg",
@@ -57,7 +57,7 @@ const contactCards: ContactCard[] = [
   {
     id: "mail",
     title: "Mail Us",
-    caption: "Speak With us",
+    caption: "Drop us a line",
     detail: "hello@tsol.com",
     href: "mailto:hello@tsol.com",
     iconSrc: "/images/icons/mail.svg",
@@ -130,7 +130,22 @@ const ContactInfoSection = () => {
     <section className="contact-info-section" aria-label="Contact details" ref={sectionRef}>
       <div className="contact-info-container container">
         {contactCards.map((card) => (
-          <article key={card.id} className="contact-info-card">
+          <a
+            key={card.id}
+            className="contact-info-card"
+            href={card.href}
+            aria-label={card.title}
+            target={
+              card.icon === "location" || card.icon === "whatsapp"
+                ? "_blank"
+                : undefined
+            }
+            rel={
+              card.icon === "location" || card.icon === "whatsapp"
+                ? "noreferrer"
+                : undefined
+            }
+          >
             <div className="contact-info-card-inner">
               <span className={`contact-info-icon is-${card.icon}`} aria-hidden="true">
                 <Image
@@ -145,25 +160,10 @@ const ContactInfoSection = () => {
               <div className="contact-info-copy">
                 <p className="contact-info-title">{card.title}</p>
                 <p className="contact-info-caption">{card.caption}</p>
-                <a
-                  className="contact-info-detail"
-                  href={card.href}
-                  target={
-                    card.icon === "location" || card.icon === "whatsapp"
-                      ? "_blank"
-                      : undefined
-                  }
-                  rel={
-                    card.icon === "location" || card.icon === "whatsapp"
-                      ? "noreferrer"
-                      : undefined
-                  }
-                >
-                  {card.detail}
-                </a>
+                <span className="contact-info-detail">{card.detail}</span>
               </div>
             </div>
-          </article>
+          </a>
         ))}
       </div>
     </section>

@@ -75,6 +75,7 @@ const ClientQuotesSection = () => {
   const sectionRef   = useRef<HTMLElement>(null);
   const trackRef     = useRef<HTMLDivElement>(null);
   const autoTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const touchStartX  = useRef(0);
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [visible, setVisible]         = useState(VISIBLE_DESKTOP);
@@ -286,7 +287,15 @@ const ClientQuotesSection = () => {
         </div>
 
         {/* Slider viewport */}
-        <div className="cq-viewport" aria-live="polite">
+        <div
+          className="cq-viewport"
+          aria-live="polite"
+          onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
+          onTouchEnd={(e) => {
+            const delta = touchStartX.current - e.changedTouches[0].clientX;
+            if (Math.abs(delta) > 50) { delta > 0 ? next() : prev(); }
+          }}
+        >
           <div className="cq-track" ref={trackRef}>
             {QUOTES.map((q) => (
               <article key={q.id} className="cq-card">

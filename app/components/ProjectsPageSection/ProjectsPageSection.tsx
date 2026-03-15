@@ -51,16 +51,19 @@ const ProjectsPageSection = ({
     initialCategory ?? null
   );
 
-  const gridRef = useRef<HTMLDivElement>(null);
+  const gridRef  = useRef<HTMLDivElement>(null);
+  const catsRef  = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
-  /* ── Derive filtered list ── */
+  const isFiltered = activeCategory !== null;
+  const activeCatData = CATEGORIES.find((c) => c.value === activeCategory);
   const filtered = projects.filter(
-    (p) => !activeCategory || p.serviceCategory === activeCategory
+    (p) => p.serviceCategory === activeCategory
   );
 
-  /* ── GSAP card entrance on filter change ── */
+  /* ── GSAP: project cards entrance when entering filtered view ── */
   useEffect(() => {
+    if (!isFiltered) return;
     const grid = gridRef.current;
     if (!grid) return;
     const cards = grid.querySelectorAll(".projects-page-item");
@@ -77,38 +80,75 @@ const ProjectsPageSection = ({
         clearProps: "transform,opacity",
       }
     );
-  }, [filtered.length, activeCategory]);
+  }, [activeCategory, isFiltered]);
 
-  /* ── Sync URL when category changes ── */
-  const handleCategoryClick = (cat: ServiceCategory | null) => {
+  /* ── GSAP: category cards entrance when returning to default view ── */
+  useEffect(() => {
+    if (isFiltered || !catsRef.current) return;
+    const cards = catsRef.current.querySelectorAll(".projects-cat-card");
+    if (!cards.length) return;
+    gsap.fromTo(
+      cards,
+      { opacity: 0, y: 30, clipPath: "inset(100% 0 0 0)" },
+      {
+        opacity: 1,
+        y: 0,
+        clipPath: "inset(0% 0 0 0)",
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "power3.out",
+        clearProps: "transform,opacity,clip-path",
+      }
+    );
+  }, [isFiltered]);
+
+  /* ── Navigate to a category (push so browser back works) ── */
+  const handleCategoryClick = (cat: ServiceCategory) => {
     setActiveCategory(cat);
-    const url = cat ? `/projects?category=${cat}` : "/projects";
-    router.replace(url, { scroll: false });
+    router.push(`/projects?category=${cat}`, { scroll: false });
+  };
+
+  /* ── Back to categories view ── */
+  const handleBack = () => {
+    setActiveCategory(null);
+    router.push("/projects", { scroll: false });
   };
 
   return (
-    <section className="projects-page-section-main" aria-label="All portfolio projects">
+    <section className="projects-page-section-main" aria-label="Portfolio projects">
       <div className="projects-page-section-container container">
+
+        {/* ── Dynamic section title ── */}
         <SectionTitle
           className="projects-page-section-title"
-          label="Selected Works"
-          title="Emotion Memory Meaning"
+          label={isFiltered ? "Portfolio" : "Selected Works"}
+          title={isFiltered ? (activeCatData?.label ?? "") : "Emotion Memory Meaning"}
         />
 
-        {/* ── Category filter cards — same design as service cards ── */}
-        <div className="projects-cat-cards">
-          {CATEGORIES.map((cat) => {
-            const isActive = activeCategory === cat.value;
-            return (
+        {/* ── Back pill — only shown in filtered view ── */}
+        {isFiltered && (
+          <button
+            type="button"
+            className="projects-back-pill"
+            onClick={handleBack}
+            aria-label="Back to all categories"
+          >
+            <span className="projects-back-pill-arrow" aria-hidden="true">←</span>
+            All Categories
+          </button>
+        )}
+
+        {/* ── Category cards — only shown in default view ── */}
+        {!isFiltered && (
+          <div className="projects-cat-cards" ref={catsRef}>
+            {CATEGORIES.map((cat) => (
               <button
                 key={cat.value}
                 type="button"
-                className={`projects-cat-card${isActive ? " is-active" : ""}`}
-                onClick={() => handleCategoryClick(isActive ? null : cat.value)}
-                aria-pressed={isActive}
-                aria-label={`Filter by ${cat.label}`}
+                className="projects-cat-card"
+                onClick={() => handleCategoryClick(cat.value)}
+                aria-label={`Browse ${cat.label} projects`}
               >
-                {/* Image wrap — same aspect ratio + overflow as service card */}
                 <div className="projects-cat-card-img-wrap">
                   <div
                     className="projects-cat-card-image"
@@ -120,55 +160,47 @@ const ProjectsPageSection = ({
                 <h3 className="projects-cat-card-title">{cat.label}</h3>
                 <p className="projects-cat-card-desc">{cat.description}</p>
               </button>
-            );
-          })}
-        </div>
-
-        {/* ── Project grid ── */}
-        {filtered.length > 0 ? (
-          <div className="projects-page-grid" ref={gridRef}>
-            {filtered.map((project) => (
-              <Link
-                key={project._id}
-                href={`/projects/${project.slug.current}`}
-                className="projects-page-item"
-              >
-                <div className="projects-page-item-image-wrap">
-                  <div
-                    className="projects-page-item-image"
-                    role="img"
-                    aria-label={project.title ?? "Project image"}
-                    style={{
-                      backgroundImage: `url(${urlFor(project.coverImage)
-                        .width(600)
-                        .height(430)
-                        .auto("format")
-                        .url()})`,
-                    }}
-                  />
-                </div>
-                {project.title && (
-                  <p className="projects-page-item-title">{project.title}</p>
-                )}
-              </Link>
             ))}
           </div>
-        ) : projects.length === 0 ? (
-          <div className="projects-page-empty">
-            <p>No projects have been added yet. Check back soon.</p>
-          </div>
-        ) : (
-          <div className="projects-page-empty">
-            <p>No projects match the selected category.</p>
-            <button
-              type="button"
-              className="projects-page-clear-btn"
-              onClick={() => handleCategoryClick(null)}
-            >
-              Show all projects
-            </button>
-          </div>
         )}
+
+        {/* ── Projects grid — only shown in filtered view ── */}
+        {isFiltered && (
+          filtered.length > 0 ? (
+            <div className="projects-page-grid" ref={gridRef}>
+              {filtered.map((project) => (
+                <Link
+                  key={project._id}
+                  href={`/projects/${project.slug.current}`}
+                  className="projects-page-item"
+                >
+                  <div className="projects-page-item-image-wrap">
+                    <div
+                      className="projects-page-item-image"
+                      role="img"
+                      aria-label={project.title ?? "Project image"}
+                      style={{
+                        backgroundImage: `url(${urlFor(project.coverImage)
+                          .width(600)
+                          .height(430)
+                          .auto("format")
+                          .url()})`,
+                      }}
+                    />
+                  </div>
+                  {project.title && (
+                    <p className="projects-page-item-title">{project.title}</p>
+                  )}
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className="projects-page-empty">
+              <p>No {activeCatData?.label.toLowerCase()} projects yet. Check back soon.</p>
+            </div>
+          )
+        )}
+
       </div>
     </section>
   );

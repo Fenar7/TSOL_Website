@@ -38,9 +38,41 @@
   margin-top: 60px;
 }
 
+/* Home-page variant — heading sits above the portrait */
+.story-heading--top {
+  margin-bottom: 32px;
+  margin-top: 0;
+}
+
 .story-title-mask,
 .story-subtitle-mask {
   overflow: hidden;
+}
+
+.story-title {
+  color: $black;
+  font-family: $font-primary;
+  font-size: 54px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1;
+  margin: 0;
+  text-align: center;
+  will-change: transform, opacity;
+}
+
+.story-subtitle {
+  color: $black;
+  font-family: $font-primary;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.1;
+  margin: 0;
+  text-align: center;
+  will-change: transform, opacity;
 }
 
 .story-title {

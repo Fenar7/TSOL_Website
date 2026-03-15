@@ -81,6 +81,7 @@
   opacity: 0.72;
 }
 
+/* Desktop narrow → 2 columns */
 @media (max-width: 1439px) {
   .contact-info-card {
     min-height: 232px;
@@ -98,29 +99,34 @@
   }
 }
 
-@media (max-width: 639px) {
+/* Mobile — icon-only 4-column strip */
+@media (max-width: 767px) {
   .contact-info-container.container {
-    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     width: calc(100% - 28px);
   }
 
   .contact-info-card {
-    min-height: 206px;
+    border-radius: 8px;
+    min-height: unset;
+    text-decoration: none;
   }
 
   .contact-info-card-inner {
-    padding: 20px 18px 22px;
+    align-items: center;
+    justify-content: center;
+    min-height: 72px;
+    padding: 16px 8px;
   }
 
-  .contact-info-title {
-    font-size: 24px;
+  /* Hide all text on mobile — icon only */
+  .contact-info-copy {
+    display: none;
   }
 
-  .contact-info-caption {
-    font-size: 16px;
-  }
-
-  .contact-info-detail {
-    font-size: 26px;
+  .contact-info-icon {
+    align-items: center;
+    justify-content: center;
   }
 }

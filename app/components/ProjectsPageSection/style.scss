@@ -20,6 +20,37 @@
   word-spacing: 0.2em;
 }
 
+/* ── Back pill button ── */
+
+.projects-back-pill {
+  align-items: center;
+  background: transparent;
+  border: 1px solid $stroke-grey;
+  border-radius: 9999px;
+  color: $txt-grey;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: $font-primary;
+  font-size: 14px;
+  font-weight: 350;
+  gap: 8px;
+  letter-spacing: 0.04em;
+  margin-top: 18px;
+  padding: 8px 20px;
+  text-transform: uppercase;
+  transition: border-color 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    border-color: $black;
+    color: $black;
+  }
+}
+
+.projects-back-pill-arrow {
+  font-size: 16px;
+  line-height: 1;
+}
+
 /* ── Category filter cards — match service card design exactly ── */
 
 .projects-cat-cards {
@@ -210,6 +241,11 @@
     width: calc(100% - 40px);
   }
 
+  .projects-cat-cards {
+    column-gap: 24px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .projects-page-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -218,6 +254,26 @@
 @media (max-width: 767px) {
   .projects-page-section-main {
     padding: 48px 0 62px;
+  }
+
+  .projects-cat-cards {
+    column-gap: 0;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 18px;
+  }
+
+  .projects-cat-card {
+    padding: 22px 20px;
+  }
+
+  .projects-cat-card-title {
+    font-size: 26px;
+    margin: 14px 0 0;
+  }
+
+  .projects-cat-card-desc {
+    font-size: 15px;
+    line-height: 24px;
   }
 
   .projects-page-grid {

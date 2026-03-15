@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -38,6 +38,7 @@ const servicesItems = [
 
 const ServicesSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const sliderRef  = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -95,6 +96,35 @@ const ServicesSection = () => {
     return () => ctx.revert();
   }, []);
 
+  /* ── Mobile auto-advance carousel ── */
+  useEffect(() => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+    let idx = 0;
+    let paused = false;
+
+    const advance = () => {
+      if (paused || window.innerWidth > 767) return;
+      const items = Array.from(slider.children) as HTMLElement[];
+      idx = (idx + 1) % items.length;
+      items[idx]?.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+    };
+
+    let resumeTimer = 0;
+    const onTouch = () => {
+      paused = true;
+      window.clearTimeout(resumeTimer);
+      resumeTimer = window.setTimeout(() => { paused = false; }, 5000);
+    };
+    slider.addEventListener("touchstart", onTouch, { passive: true });
+    const timer = setInterval(advance, 3500);
+    return () => {
+      clearInterval(timer);
+      clearTimeout(resumeTimer);
+      slider.removeEventListener("touchstart", onTouch);
+    };
+  }, []);
+
   return (
     <section className="services-section-main" ref={sectionRef}>
       <div className="services-section-container flex items-center justify-center">
@@ -105,7 +135,7 @@ const ServicesSection = () => {
             title="The Shape Of Life"
           />
 
-          <div className="services-items-container">
+          <div className="services-items-container" ref={sliderRef}>
             {servicesItems.map((item) => (
               <Link
                 key={item.id}
