@@ -107,7 +107,10 @@ const ServicesSection = () => {
       if (paused || window.innerWidth > 767) return;
       const items = Array.from(slider.children) as HTMLElement[];
       idx = (idx + 1) % items.length;
-      items[idx]?.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+      const target = items[idx];
+      if (target) {
+        slider.scrollTo({ left: target.offsetLeft, behavior: "smooth" });
+      }
     };
 
     let resumeTimer = 0;
