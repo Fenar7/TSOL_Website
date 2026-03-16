@@ -3,15 +3,41 @@
 import { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import type { ApproachItem } from "@/app/lib/types";
 import "./style.scss";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const approachImageOne = "/images/our-approach-1.png";
-const approachImageTwo = "/images/our-approach-2.png";
-const approachImageThree = "/images/our-approach-3.png";
+/* ── Static fallback — used when no data is published in Sanity ── */
+const STATIC_ITEMS: ApproachItem[] = [
+  {
+    _id: "static-1",
+    order: 1,
+    highlightWord: "Space",
+    body: "is defined by how it is lived in. By posture and movement, rest and gathering, silence and openness.",
+    imageUrl: "/images/our-approach-1.png",
+    imageAlt: "Courtyard architecture with plants and people",
+  },
+  {
+    _id: "static-2",
+    order: 2,
+    highlightWord: "Soul",
+    body: "is what turns structure into presence. It is the quiet quality that makes a space feel alive and worth returning to.",
+    imageUrl: "/images/our-approach-2.png",
+    imageAlt: "House and landscape approach view",
+  },
+  {
+    _id: "static-3",
+    order: 3,
+    highlightWord: "Timeless",
+    body: "structures emerge from design that stays relevant to life, being rooted in unchanging human values and natural principles.",
+    imageUrl: "/images/our-approach-3.png",
+    imageAlt: "Traditional house facade",
+  },
+];
 
-const OurApproachSection = () => {
+const OurApproachSection = ({ items = [] }: { items?: ApproachItem[] }) => {
+  const cards = items.length > 0 ? items : STATIC_ITEMS;
   const sectionRef = useRef<HTMLElement>(null);
   const sliderRef  = useRef<HTMLDivElement>(null);
 
@@ -127,70 +153,30 @@ const OurApproachSection = () => {
             <p className="our-approach-kicker">Our Approach</p>
             <span className="our-approach-kicker-line" aria-hidden="true" />
           </div>
-
-          {/* <p className="our-approach-copy">
-            The buildings form emerges from lived patterns. Instead of starting
-            with dramatic shapes or fashionable style,{" "}
-            <strong className="our-approach-copy-large">TSOL, thinks</strong> about{" "}
-            <strong>The Shape of Life</strong> start with daily human activities..
-            how people move, pause, how they meet, rest , argue, celebrate or feel
-            safe. A kitchen becomes central because family life gathers there -
-            streets curve because people slow down and linger there - not because
-            straight lines are more efficient.
-          </p> */}
         </div>
 
         <div className="our-approach-cards" ref={sliderRef}>
-          <article className="our-approach-card">
-            <p className="our-approach-card-number">01</p>
-            <div className="our-approach-img-wrap">
-              <div
-                className="our-approach-card-image"
-                role="img"
-                aria-label="Courtyard architecture with plants and people"
-                style={{ backgroundImage: `url(${approachImageOne})` }}
-              />
-            </div>
-            <p className="our-approach-card-text">
-              <span className="our-approach-card-text-lead">Space</span> is defined
-              by how it is lived in. By posture and movement, rest and gathering,
-              silence and openness.
-            </p>
-          </article>
-
-          <article className="our-approach-card">
-            <p className="our-approach-card-number">02</p>
-            <div className="our-approach-img-wrap">
-              <div
-                className="our-approach-card-image"
-                role="img"
-                aria-label="House and landscape approach view"
-                style={{ backgroundImage: `url(${approachImageTwo})` }}
-              />
-            </div>
-            <p className="our-approach-card-text">
-              <span className="our-approach-card-text-lead">Soul</span> is what turns
-              structure into presence. It is the quiet quality that makes a space
-              feel alive and worth returning to.
-            </p>
-          </article>
-
-          <article className="our-approach-card">
-            <p className="our-approach-card-number">03</p>
-            <div className="our-approach-img-wrap">
-              <div
-                className="our-approach-card-image"
-                role="img"
-                aria-label="Traditional house facade"
-                style={{ backgroundImage: `url(${approachImageThree})` }}
-              />
-            </div>
-            <p className="our-approach-card-text">
-              <span className="our-approach-card-text-lead">Timeless</span> structures
-              emerge from design that stays relevant to life, being rooted in
-              unchanging human values and natural principles.
-            </p>
-          </article>
+          {cards.map((card, index) => (
+            <article key={card._id} className="our-approach-card">
+              <p className="our-approach-card-number">
+                {String(index + 1).padStart(2, "0")}
+              </p>
+              <div className="our-approach-img-wrap">
+                <div
+                  className="our-approach-card-image"
+                  role="img"
+                  aria-label={card.imageAlt ?? card.highlightWord}
+                  style={{ backgroundImage: `url(${card.imageUrl ?? ""})` }}
+                />
+              </div>
+              <p className="our-approach-card-text">
+                <span className="our-approach-card-text-lead">
+                  {card.highlightWord}
+                </span>
+                {" "}{card.body}
+              </p>
+            </article>
+          ))}
         </div>
       </div>
     </section>

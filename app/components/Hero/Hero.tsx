@@ -5,7 +5,9 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import "./style.scss";
 
-const Hero = () => {
+const FALLBACK_IMAGE = "/images/hero-image.png";
+
+const Hero = ({ imageUrl }: { imageUrl?: string }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
   const leftBrandRef = useRef<HTMLDivElement>(null);
@@ -60,7 +62,7 @@ const Hero = () => {
         <div className="hero-card">
           <Image
             ref={imageRef}
-            src="/images/hero-image.png"
+            src={imageUrl || FALLBACK_IMAGE}
             alt="Contemporary architecture building"
             fill
             priority

@@ -5,15 +5,19 @@ import OurApproachSection from "./components/OurApproachSection/OurApproachSecti
 import ServicesSection from "./components/ServicesSection/ServicesSection";
 import StorySection from "./components/StorySection/StorySection";
 import TestimonialsSection from "./components/TestimonialsSection/TestimonialsSection";
-import { getTestimonials } from "./lib/queries";
+import { getTestimonials, getHeroImageUrl, getApproachItems } from "./lib/queries";
 
 export default async function Home() {
-  const testimonials = await getTestimonials();
+  const [testimonials, heroImageUrl, approachItems] = await Promise.all([
+    getTestimonials(),
+    getHeroImageUrl(),
+    getApproachItems(),
+  ]);
 
   return (
     <main className="home-main">
-      <Hero />
-      <OurApproachSection />
+      <Hero imageUrl={heroImageUrl ?? undefined} />
+      <OurApproachSection items={approachItems} />
       <ServicesSection />
       <StorySection headingTop />
       <ClientQuotesSection />

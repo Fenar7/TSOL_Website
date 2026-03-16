@@ -44,3 +44,14 @@ export type BlogPostCard = Pick<
     SanityBlogPost,
     "_id" | "title" | "slug" | "coverImage" | "excerpt" | "date"
 >;
+
+/* ── Our Approach types ── */
+
+export interface ApproachItem {
+  _id: string;
+  order: number;
+  highlightWord: string;
+  body: string;
+  imageUrl: string | null;
+  imageAlt?: string;
+}

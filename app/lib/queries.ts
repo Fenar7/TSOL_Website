@@ -1,5 +1,6 @@
 import { client } from "@/sanity/client";
 import type {
+  ApproachItem,
   BlogPostCard,
   ProjectCard,
   SanityBlogPost,
@@ -131,4 +132,38 @@ const ALL_TESTIMONIALS_QUERY = `
 
 export async function getTestimonials(): Promise<SanityTestimonial[]> {
   return client.fetch<SanityTestimonial[]>(ALL_TESTIMONIALS_QUERY);
+}
+
+/* ================================================================== */
+/*  SITE SETTINGS                                                      */
+/* ================================================================== */
+
+const SITE_SETTINGS_QUERY = `
+  *[_type == "siteSettings"][0] {
+    "heroImageUrl": heroImage.asset->url
+  }
+`;
+
+export async function getHeroImageUrl(): Promise<string | null> {
+  const result = await client.fetch<{ heroImageUrl?: string } | null>(SITE_SETTINGS_QUERY);
+  return result?.heroImageUrl ?? null;
+}
+
+/* ================================================================== */
+/*  OUR APPROACH                                                       */
+/* ================================================================== */
+
+const APPROACH_ITEMS_QUERY = `
+  *[_type == "approachItem"] | order(order asc) {
+    _id,
+    order,
+    highlightWord,
+    body,
+    "imageUrl": image.asset->url,
+    imageAlt
+  }
+`;
+
+export async function getApproachItems(): Promise<ApproachItem[]> {
+  return client.fetch<ApproachItem[]>(APPROACH_ITEMS_QUERY);
 }
